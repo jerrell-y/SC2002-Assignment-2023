@@ -105,4 +105,17 @@ public class CampInfo {
     public String getStaffInCharge() {
         return staffInCharge;
     }
+
+    public String toString() {
+        return  "Camp Name: " + campName +
+                "\nStart Date: " + startDate +
+                "\nEnd Date: " + endDate +
+                "\nRegistration End Date: " + regEndDate +
+                "\nUser Group: " + userGroup +
+                "\nLocation: " + location +
+                "\nTotal Slots: " + totalSlots +
+                "\nCamp Commitee Slots: " + campCommiteeSlots +
+                "\nDescription: " + description +
+                "\nStaff in charge: " + staffInCharge;
+    }
 }

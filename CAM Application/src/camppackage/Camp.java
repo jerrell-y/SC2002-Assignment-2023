@@ -35,4 +35,9 @@ public class Camp {
     public void addSuggestion(Suggestion suggestion) {
         suggestions.add(suggestion);
     }
+
+    public String generateReport() {
+        return campInfo.toString();
+        //add student infomation / camp commitee information
+    }
 }
