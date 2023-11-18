@@ -16,7 +16,7 @@ public class Camp {
         this.visibility = visibility;
         campAttendees = new ArrayList<Student>();
         campCommitees = new ArrayList<Student>();
-        enquires = new ArrayList<Enquiry>();
+        enquiries = new ArrayList<Enquiry>();
         suggestions = new ArrayList<Suggestion>();
     }
 
@@ -30,6 +30,10 @@ public class Camp {
 
     public void addEnquiry(Enquiry enquiry) {
         enquiries.add(enquiry);
+    }
+
+    public void deleteEnquiry(int index) {
+        enquiries.remove(index);
     }
 
     public void addSuggestion(Suggestion suggestion) {

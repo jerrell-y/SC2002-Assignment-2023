@@ -15,6 +15,18 @@ public class Enquiry {
         this.reply = "";
     }
 
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public boolean isAnswered() {
+        return answered;
+    }
+
+    public String getReply() {
+        return reply;
+    }
+
     public void setAnswered(boolean answered) {
         this.answered = answered;
     }

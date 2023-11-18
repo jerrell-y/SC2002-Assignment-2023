@@ -1,24 +1,26 @@
 package camppackage;
 import java.util.Calendar;
 
+import user.Faculty;
+
 public class CampInfo {
     private String campName;
     private Calendar startDate;
     private Calendar endDate;
     private Calendar regEndDate;
-    private userGroup userGroup;
+    private Faculty faculty;
     private String location;
     private int totalSlots;
     private int campCommiteeSlots;
     private String description;
     private String staffInCharge;
 
-    public CampInfo(String campName, Calendar startDate, Calendar endDate, Calendar regEndDate, userGroup userGroup, String location, int totalSlots, int campCommiteeSlots, String description, String staffInCharge) {
+    public CampInfo(String campName, Calendar startDate, Calendar endDate, Calendar regEndDate, Faculty faculty, String location, int totalSlots, int campCommiteeSlots, String description, String staffInCharge) {
         this.campName = campName;
         this.startDate = startDate;
         this.endDate = endDate;
         this.regEndDate = regEndDate;
-        this.userGroup = userGroup;
+        this.faculty = faculty;
         this.location = location;
         this.totalSlots = totalSlots;
         this.campCommiteeSlots = campCommiteeSlots;
@@ -58,12 +60,12 @@ public class CampInfo {
         return regEndDate;
     }
 
-    public void setUserGroup(userGroup userGroup) {
-        this.userGroup = userGroup;
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
     }
 
-    public userGroup getUserGroup() {
-        return userGroup;
+    public Faculty getUserGroup() {
+        return faculty;
     }
 
     public void setLocation(String location) {
@@ -111,7 +113,7 @@ public class CampInfo {
                 "\nStart Date: " + startDate +
                 "\nEnd Date: " + endDate +
                 "\nRegistration End Date: " + regEndDate +
-                "\nUser Group: " + userGroup +
+                "\nFaculty: " + faculty +
                 "\nLocation: " + location +
                 "\nTotal Slots: " + totalSlots +
                 "\nCamp Commitee Slots: " + campCommiteeSlots +
