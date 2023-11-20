@@ -15,6 +15,7 @@ public class MainUI {
         
         //if user = student, show StudentUI
         //else if user = staff, show StaffUI
+        System.out.println("h");
 
     }
 }
