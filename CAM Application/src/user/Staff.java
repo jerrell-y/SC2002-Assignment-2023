@@ -1,8 +1,10 @@
 package user;
+import manager.CampManager;
 import camppackage.*;
 import java.util.*;
 import java.text.SimpleDateFormat;
 public class Staff {
+    public Staff(){};
     ArrayList<Camp> campDatabase = new ArrayList<>();
 
     public void CreateCamp () {
@@ -59,28 +61,28 @@ public class Staff {
         String staffInCharge= sc.nextLine();
         CampInfo x = new CampInfo(campname, startdate, enddate, regdate, Faculty.valueOf(faculty.toUpperCase()), location, totalSlots, campCommitteeSlots, description, staffInCharge);
         Camp c = new Camp(x, true);
-        campDatabase.add(c);
-
+        // add camp in database;
     }
 
     public void EditCamp (Camp campName) {
         for(int i=0;i<campDatabase.toArray().length;i++){
-            if(campDatabase[i].==)
+            if(campDatabase[i].campName)
         }
 
     }
 
     public void DeleteCamp () {
+        CampManager.deleteCamp();
     }
 
     public void ViewCamp (Camp campName){
         campName.generateReport();
     }
 
-    public void GenerateStudentReport () {
+    public void GenerateStudentReport (Camp campName) {campName.generateReport();
     }
 
-    public void GenerateCommitteeReport () {
+    public static void GenerateCommitteeReport(Camp campName) {campName.generateReport();
     }
 
 }

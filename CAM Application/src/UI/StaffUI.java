@@ -1,5 +1,8 @@
+package UI;
 import java.lang.String;
 import java.util.Scanner;
+
+import camppackage.Camp;
 import user.Staff;
 public class StaffUI {
     public void main(String[] args) {
@@ -21,7 +24,9 @@ public class StaffUI {
             }
             case 2: {
                 String campName;
-                Staff.EditCamp(Camp campName);
+                System.out.println("enter camp name you wish to edit");
+                campName=sc.nextLine();
+                Staff.EditCamp(campName);
                 break;
             }
             case 3: {
@@ -44,3 +49,5 @@ public class StaffUI {
             default:
                 throw new IllegalStateException("Unexpected value: " + choice);
         }
+    }
+}
