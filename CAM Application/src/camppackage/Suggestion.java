@@ -8,7 +8,7 @@ public class Suggestion {
     private boolean status;
 
     public Camp getCamp() {
-		return camp;
+	return camp;
 	}
     
     public Suggestion(String title, String suggestion, String campCommiteeName) {
@@ -23,22 +23,22 @@ public class Suggestion {
     }
     
     public void viewSuggestion(String suggestion) {
-		System.out.println("Here is the suggestion submitted: " + suggestion);
+	System.out.println("Here is the suggestion submitted: " + suggestion);
 	}
     
     public String editSuggestion(String suggestion) {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Please enter the new suggestion: ");
-		String newSuggestion = sc.nextLine();
-		return newSuggestion;
+	Scanner sc = new Scanner(System.in);
+	System.out.println("Please enter the new suggestion: ");
+	String newSuggestion = sc.nextLine();
+	return newSuggestion;
     }
     
     public String getSuggestion() {
-		return suggestion;
+	return suggestion;
 	}
     
     public void setSuggestion(String suggestion) {
-		this.suggestion = suggestion;
+	this.suggestion = suggestion;
 	}
     
 }
