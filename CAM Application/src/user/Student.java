@@ -1,12 +1,19 @@
 package user;
 
-public class Student {
+import camppackage.Camp;
+
+public class Student extends User{
 	private int points;
 	private int[] registeredCamps;
 	
 	enum role {
 		COMMITTEE,
 		ATTENDEE
+	}
+
+	public Student(String userID, String password, String name, Faculty faculty) {
+		super(userID, password, name, faculty);
+		this.points = 0;
 	}
 	
 	public void viewCamps(campDatabase c) {

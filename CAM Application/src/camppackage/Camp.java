@@ -3,21 +3,31 @@ package camppackage;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class Camp {
-    private CampInfo campInfo;
+import user.Faculty;
+import user.Student;
+
+public class Camp extends CampInfo{
     private boolean visibility;
     private ArrayList<Student> campAttendees;
     private ArrayList<Student> campCommitees;
     private ArrayList<Enquiry> enquiries;
     private ArrayList<Suggestion> suggestions;
 
-    public Camp (CampInfo campInfo, boolean visibility) {
-        this.campInfo = campInfo;
+    public Camp (String campName, Calendar startDate, Calendar endDate, Calendar regEndDate, Faculty faculty, String location, int totalSlots, int campCommiteeSlots, String description, String staffInCharge, boolean visibility) {
+        super(campName, startDate, endDate, regEndDate, faculty, location, totalSlots, campCommiteeSlots, description, staffInCharge);
         this.visibility = visibility;
         campAttendees = new ArrayList<Student>();
         campCommitees = new ArrayList<Student>();
         enquiries = new ArrayList<Enquiry>();
         suggestions = new ArrayList<Suggestion>();
+    }
+
+    public void setVisibility(boolean visibility) {
+        this.visibility = visibility;
+    }
+
+    public boolean getVisibility() {
+        return visibility;
     }
 
     public void addAttendee(Student student) {
@@ -41,7 +51,27 @@ public class Camp {
     }
 
     public String generateReport() {
-        return campInfo.toString();
+        return super.toString();
         //add student infomation / camp commitee information
+    }
+
+    public boolean isAttendee(Student student) {
+        int i;
+        for (i = 0; i != campAttendees.size(); i++) {
+            if (campAttendees.get(i).getUserID() == student.getUserID()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isCommitee(Student student) {
+        int i;
+        for (i = 0; i != campCommitees.size(); i++) {
+            if (campAttendees.get(i).getUserID() == student.getUserID()) {
+                return true;
+            }
+        }
+        return false;
     }
 }

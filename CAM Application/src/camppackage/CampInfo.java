@@ -64,7 +64,7 @@ public class CampInfo {
         this.faculty = faculty;
     }
 
-    public Faculty getUserGroup() {
+    public Faculty getFaculty() {
         return faculty;
     }
 
