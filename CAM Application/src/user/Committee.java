@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class CampCommittee {
+public class CommiteeMember {
 
-	private Camp camp;
+    private Camp camp;
     private ArrayList<Suggestion> mySuggestions = new ArrayList<Suggestion>();
     private int points;
     
@@ -20,7 +20,7 @@ public class CampCommittee {
         Suggestion suggestion = new Suggestion(camp, suggestion);
     	camp.addSuggestion(suggestion);
         this.Suggestion(suggestion);
-        addPoints(1);
+       givePoints(1);
     }
         
     public void viewEnquiry(Camp camp) {
@@ -43,14 +43,14 @@ public class CampCommittee {
         }
     }
 	
-	public void editSuggestion(Suggestion suggestion) {
+    public void editSuggestion(Suggestion suggestion) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please edit your submitted suggestion: ");
         String userInputString = scanner.nextLine();
         suggestion.setSuggestion(userInputString);
     }
 	
-	public void deleteSuggestion(Camp camp, Suggestion suggestion) {
+    public void deleteSuggestion(Camp camp, Suggestion suggestion) {
         camp.removeSuggestion(suggestion);
         this.removemySuggestion(suggestion);
         givePoints(-1);
