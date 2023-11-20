@@ -2,10 +2,12 @@ package UI;
 
 public class StudentUI {
 
-    public void showWithdraw() {
+    //public void showWithdraw() {
 
-    }
+   // }
+	
     public void start() {
+    	//switch ()
         //Switch case for all functions
         //1. View available camps
         //2. View registered camps
