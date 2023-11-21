@@ -29,7 +29,7 @@ public class CampManager {
         int i;
         for (i = 0; i != campList.size(); i++) {
             if (campList.get(i).getFaculty() == faculty || campList.get(i).getFaculty() == Faculty.NTU) {
-                if (campList.get(i).getVisibility() == true) {
+                if (campList.get(i).getVisibility()) {
                     availList.add(campList.get(i));
                 }
             }
@@ -45,7 +45,7 @@ public class CampManager {
     public void deleteCamp(Camp camp) {
         int i;
         for (i = 0; i != campList.size(); i++) {
-            if (campList.get(i) == camp) {
+            if (campList.get(i).equals(camp)) {
                 campList.remove(i);
                 //Database.update();
                 break;

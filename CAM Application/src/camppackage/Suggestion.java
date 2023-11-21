@@ -8,7 +8,7 @@ public class Suggestion {
     private boolean status;
 
     public Camp getCamp() {
-	return camp;
+	    return camp;
 	}
     
     public Suggestion(String title, String suggestion, String campCommiteeName) {

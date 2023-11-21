@@ -2,7 +2,7 @@ package database;
 
 import user.User;
 import user.Faculty;
-import camppackage.CampInfo;
+import camppackage.Camp;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -21,19 +21,10 @@ public class Database {
             System.out.println("Name: " + user.getName() + " userID: " + user.getUserID() + " Faculty: " + user.getFaculty() + " Password: " + user.getPassword());
         }
 
-        List<CampInfo> camps = getCampInfo();
+        List<Camp> camps = getCamp();
 
-        for (CampInfo camp : camps) {
-            System.out.println("Camp Name: " + camp.getCampName() +
-            "\nStart Date: " + camp.getStartDate() +
-            "\nEnd Date: " + camp.getEndDate() +
-            "\nRegistration End Date: " + camp.getRegEndDate() +
-            "\nFaculty: " + camp.getFaculty() +
-            "\nLocation: " + camp.getLocation() +
-            "\nTotal Slots: " + camp.getTotalSlots() +
-            "\nCamp Commitee Slots: " + camp.getCampCommiteeSlots() +
-            "\nDescription: " + camp.getDescription() +
-            "\nStaff in charge: " + camp.getStaffInCharge());
+        for (Camp camp : camps) {
+            System.out.println(camp.toString());
         }
     }
 
@@ -80,9 +71,9 @@ public class Database {
         return users;
     }
 
-    public static List<CampInfo> getCampInfo() {
+    public static List<Camp> getCamp() {
 
-        List<CampInfo> campInfo = new ArrayList<>();
+        List<Camp> camp = new ArrayList<>();
 
         // Import CampInfo
         String camps = "../data/camp_info.csv";
@@ -101,13 +92,20 @@ public class Database {
                 int campCommiteeSlots = Integer.parseInt(values[7]);
                 String description = values[8];
                 String staffInCharge = values[9];
-                campInfo.add(new CampInfo(campName, startDate, endDate, regEndDate, faculty, location, totalSlots, campCommiteeSlots, description, staffInCharge));
+                Boolean visibility;
+                if (values[10].equals("True")) {
+                    visibility = true;
+                }
+                else {
+                    visibility = false;
+                }
+                camp.add(new Camp(campName, startDate, endDate, regEndDate, faculty, location, totalSlots, campCommiteeSlots, description, staffInCharge, visibility));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return campInfo;
+        return camp;
 
     }
 
