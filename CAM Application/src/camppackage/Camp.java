@@ -2,16 +2,17 @@ package camppackage;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.Date;
 
 import user.Faculty;
 import user.Student;
 
 public class Camp{
+    private int campID;
     private String campName;
-    private Calendar startDate;
-    private Calendar endDate;
-    private Calendar regEndDate;
+    private Date startDate;
+    private Date endDate;
+    private Date regEndDate;
     private Faculty faculty;
     private String location;
     private int totalSlots;
@@ -24,7 +25,10 @@ public class Camp{
     private ArrayList<Enquiry> enquiries;
     private ArrayList<Suggestion> suggestions;
 
-    public Camp (String campName, Calendar startDate, Calendar endDate, Calendar regEndDate, Faculty faculty, String location, int totalSlots, int campCommiteeSlots, String description, String staffInCharge, boolean visibility) {
+    private static int totalCamps;
+
+    public Camp (String campName, Date startDate, Date endDate, Date regEndDate, Faculty faculty, String location, int totalSlots, int campCommiteeSlots, String description, String staffInCharge, boolean visibility) {
+        this.campID = ++totalCamps;
         this.campName = campName;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -42,6 +46,37 @@ public class Camp{
         suggestions = new ArrayList<Suggestion>();
     }
 
+    public Camp (int campID, String campName, Date startDate, Date endDate, Date regEndDate, Faculty faculty, String location, int totalSlots, int campCommiteeSlots, String description, String staffInCharge, boolean visibility) {
+        this.campID = campID;
+        this.campName = campName;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.regEndDate = regEndDate;
+        this.faculty = faculty;
+        this.location = location;
+        this.totalSlots = totalSlots;
+        this.campCommiteeSlots = campCommiteeSlots;
+        this.description = description;
+        this.staffInCharge = staffInCharge;
+        this.visibility = visibility;
+        campAttendees = new ArrayList<Student>();
+        campCommitees = new ArrayList<Student>();
+        enquiries = new ArrayList<Enquiry>();
+        suggestions = new ArrayList<Suggestion>();
+    }
+
+    public static void setTotalCamps(int count) {
+        Camp.totalCamps = count;
+    }
+
+    public void setCampID(int campID) {
+        this.campID = campID;
+    }
+
+    public int getCampID() {
+        return campID;
+    }
+
     public void setCampName(String campName) {
         this.campName = campName;
     }
@@ -50,27 +85,27 @@ public class Camp{
         return campName;
     }
 
-    public void setStartDate(Calendar startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public Calendar getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setEndDate(Calendar endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
-    public Calendar getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setRegEndDate(Calendar regEndDate) {
+    public void setRegEndDate(Date regEndDate) {
         this.regEndDate = regEndDate;
     }
 
-    public Calendar getRegEndDate() {
+    public Date getRegEndDate() {
         return regEndDate;
     }
 

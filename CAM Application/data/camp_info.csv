@@ -1,2 +1,2 @@
-Camp Name,Start Date,End Date,Registration End Date,Faculty,Location,Total Slots,Camp Commitee Slots,Description,Staff In Charge
-FOP 2023,20231205,20231208,20231200,SCSE,LT1A,40,5,Freshman Orientation Program,HUKUMAR
+CampID, Camp Name,Start Date,End Date,Registration End Date,Faculty,Location,Total Slots,Camp Commitee Slots,Description,Staff In Charge
+1, FOP 2023,2023-12-05,2023-12-08,2023-12-00,SCSE,LT1A,40,5,Freshman Orientation Program,HUKUMAR

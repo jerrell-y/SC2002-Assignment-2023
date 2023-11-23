@@ -3,18 +3,19 @@ package database;
 import user.User;
 import user.Faculty;
 import camppackage.Camp;
+import util.DateHelper;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Date;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class Database {
     // testing if users are entered correctly
     public static void main(String[] args) {
-        List<User> users = getUsers();
+        ArrayList<User> users = getUsers();
         
         // Print all users
         for (User user : users) {
@@ -28,9 +29,9 @@ public class Database {
         }
     }
 
-    public static List<User> getUsers() {
+    public static ArrayList<User> getUsers() {
 
-        List<User> users = new ArrayList<>();
+        ArrayList<User> users = new ArrayList<>();
 
         // Import Students
         String students = "../data/student list.csv";
@@ -71,9 +72,9 @@ public class Database {
         return users;
     }
 
-    public static List<Camp> getCamp() {
+    public static ArrayList<Camp> getCamp() {
 
-        List<Camp> camp = new ArrayList<>();
+        ArrayList<Camp> camp = new ArrayList<>();
 
         // Import CampInfo
         String camps = "../data/camp_info.csv";
@@ -82,24 +83,25 @@ public class Database {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
-                String campName = values[0]; 
-                Calendar startDate = parseDate(values[1]);
-                Calendar endDate = parseDate(values[2]);
-                Calendar regEndDate = parseDate(values[3]);
-                Faculty faculty = Faculty.valueOf(values[4]);
-                String location = values[5];
-                int totalSlots = Integer.parseInt(values[6]);
-                int campCommiteeSlots = Integer.parseInt(values[7]);
-                String description = values[8];
-                String staffInCharge = values[9];
+                int campID = values[0]
+                String campName = values[1]; 
+                Date startDate = DateHelper.stringToDate(values[2]);
+                Date endDate = DateHelper.stringToDate(values[3]);
+                Date regEndDate = DateHelper.stringToDate(values[4]);
+                Faculty faculty = Faculty.valueOf(values[5]);
+                String location = values[6];
+                int totalSlots = Integer.parseInt(values[7]);
+                int campCommiteeSlots = Integer.parseInt(values[8]);
+                String description = values[9];
+                String staffInCharge = values[10];
                 Boolean visibility;
-                if (values[10].equals("True")) {
+                if (values[11].equals("True")) {
                     visibility = true;
                 }
                 else {
                     visibility = false;
                 }
-                camp.add(new Camp(campName, startDate, endDate, regEndDate, faculty, location, totalSlots, campCommiteeSlots, description, staffInCharge, visibility));
+                camp.add(new Camp(campID, campName, startDate, endDate, regEndDate, faculty, location, totalSlots, campCommiteeSlots, description, staffInCharge, visibility));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -107,15 +109,5 @@ public class Database {
 
         return camp;
 
-    }
-
-    private static Calendar parseDate(String dateString) {
-        Calendar calendar = Calendar.getInstance();
-        int year = Integer.parseInt(dateString.substring(0, 4));
-        // Subtract 1 from month because Calendar months are 0-based
-        int month = Integer.parseInt(dateString.substring(4, 6)) - 1;
-        int day = Integer.parseInt(dateString.substring(6, 8));
-        calendar.set(year, month, day);
-        return calendar;
     }
 }
