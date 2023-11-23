@@ -1,37 +1,30 @@
 package camppackage;
 
-public class Enquiry {
-    private String title;
-    private String content;
-    private String studentName;
-    private boolean answered;
+public class Enquiry extends Message {
+
     private String reply;
+    private boolean answered;
 
-    public Enquiry(String title, String content, String studentName) {
-        this.title = title;
-        this.content = content;
-        this.studentName = studentName;
-        this.answered = false;
-        this.reply = "";
+    public Enquiry(String content, String name, String userID, String reply, boolean answered) {
+        super(content, name, userID);
+        this.reply = reply;
+        this.answered = answered;
     }
 
-    public String getStudentName() {
-        return studentName;
+    public Enquiry(String content, String name, String userID){
+        super(content, name, userID);
+        reply = "";
+        answered = false;
     }
 
-    public boolean isAnswered() {
-        return answered;
+    public String getReply() { return reply; }
+    public boolean isAnswered() { return answered; }
+
+    public void setReply(String reply) {
+        this.reply = reply;
     }
 
     public void setAnswered(boolean answered) {
         this.answered = answered;
-    }
-
-    public String getReply() {
-        return reply;
-    }
-
-    public void setReply(String reply) {
-        this.reply = reply;
     }
 }
