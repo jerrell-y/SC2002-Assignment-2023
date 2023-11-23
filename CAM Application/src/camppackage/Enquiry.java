@@ -23,12 +23,12 @@ public class Enquiry {
         return answered;
     }
 
-    public String getReply() {
-        return reply;
-    }
-
     public void setAnswered(boolean answered) {
         this.answered = answered;
+    }
+
+    public String getReply() {
+        return reply;
     }
 
     public void setReply(String reply) {
