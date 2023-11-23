@@ -15,23 +15,24 @@ public class StudentUI {
     	
     	switch (x) {
     	case 1:
-			viewManager.viewAvailableCamps();
+			ViewAvailableCamps.displayCamps();
 			System.out.println("Enter a campID: ");
 			x = scan.nextInt();
-			campDatabase.searchCampID(x);
-			
+			campDatabase.searchCampID(x);   //get that specific camp
+
 			System.out.println("1. Register as committee");
 			System.out.println("2. Register as attendee");
 			System.out.println("3. Go back");
+
 			x = scan.nextInt();
 			switch(x){
 				case 1:
-					//get camp from the database with that ID
+					camp.toString();
 					camp.registerCommittee();
 					break;
 						
 				case 2:
-					//get camp from the database with that ID
+					camp.toString();
 					camp.registerAttendee();
 					break;
 
@@ -39,25 +40,33 @@ public class StudentUI {
 					break;
 			}
 
-    	break;
+    		break;
     	
     	case 2:
-    		viewManager.viewRegisteredCamps();
-			System.out.println("1. Enter a campID: ");
-			System.out.println("2. Go back");
+			ViewRegisteredCamps.displayCamps();
+			System.out.println("Enter a campID: ");
 			x = scan.nextInt();
+			campDatabase.searchCampID(x);     //find the camp
 
+			System.out.println("1. Withdraw from camp");    //havent checked if its committee or attendee yet
+			System.out.println("2. View enquiry");
+			System.out.println("3. Go back");
+
+			x = scan.nextInt();
 			switch(x){
 				case 1:
-
+					camp.withdraw();
 					break;
-				case 2:  //go back
+
+				case 2:
+					camp.enquirylist();   //need to add more here
+					break;
+
+				case 3:   //go back
 					break;
 			}
 
-
     		break;
-    	}
     	
     	case 3:
 			System.out.println("Enter new password:")
