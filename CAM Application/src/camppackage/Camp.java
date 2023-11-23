@@ -171,6 +171,9 @@ public class Camp{
         enquiries.remove(index);
     }
 
+    public ArrayList<Enquiry> getEnquiries() {return enquiries;}
+
+
     public void addSuggestion(Suggestion suggestion) {
         suggestions.add(suggestion);
     }

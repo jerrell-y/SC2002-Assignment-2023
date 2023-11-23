@@ -7,13 +7,13 @@ import user.Faculty;
 import user.Student;
 
 public class CampManager {
-    private ArrayList<Camp> campList;
+    private static ArrayList<Camp> campList;
 
-    public CampManager(ArrayList<Camp> campList) {
-        this.campList = campList;
-    }
+    //public CampManager(ArrayList<Camp> campList) {
+    //    this.campList = campList;
+    //}
 
-    public ArrayList<Camp> getRegisteredCamps(Student student) {
+    public static ArrayList<Camp> getRegisteredCamps(Student student) {
         ArrayList<Camp> regList = new ArrayList<Camp>();
         int i;
         for (i = 0; i != campList.size(); i++) {
@@ -37,12 +37,12 @@ public class CampManager {
         return campList;
     }
 
-    public void addCamp(Camp camp) {
+    public static void addCamp(Camp camp) {
         campList.add(camp);
         //Database.update();
     }
 
-    public void deleteCamp(Camp camp) {
+    public static void deleteCamp(Camp camp) {
         int i;
         for (i = 0; i != campList.size(); i++) {
             if (campList.get(i).equals(camp)) {
