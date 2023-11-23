@@ -11,6 +11,7 @@ public class StudentUI {
     	
     	switch (x) {
     	case 1: //view available camps
+			if (camp.getVisibility(camp) == true && user.getFaculty(camp) == camp.getFaculty(camp))
     		//visibility == true, check if faculty matches user's faculty
 			//show list of camps
 				//1. Choose a specific camp
@@ -22,11 +23,9 @@ public class StudentUI {
 					
     		break;
     	
-    	case 2: //view registered camps
-    		//show list of camps, need a method to iterate thru camp database and search
-    		//array list of all the members in that camp
-    		y = scan.nextInt(); //choose a specific camp
-    	//	generateReport(); print camp info
+    	case 2:
+    		
+    		
     		break;
     	}
     	
