@@ -3,10 +3,6 @@ package UI;
 import java.util.Scanner;
 
 public class StudentUI {
-
-    //public void showWithdraw() {
-
-   // }
 	
     public void start() {
     	Scanner scan = new Scanner(System.in);    	
@@ -15,7 +11,15 @@ public class StudentUI {
     	
     	switch (x) {
     	case 1: //view available camps
-    		//visibility == true, faculty matches user's faculty
+    		//visibility == true, check if faculty matches user's faculty
+			//show list of camps
+				//1. Choose a specific camp
+					//print camp details
+					//1. register
+					//2. viewenquiry
+						//add enquiry, edit, delete enquiry
+					//3. go back
+					
     		break;
     	
     	case 2: //view registered camps
@@ -28,18 +32,35 @@ public class StudentUI {
     	
     	case 3:
     		break;
-    		
-    	//Switch case for all functions
-        //1. View available camps
+    	
+		//attendee
         //2. View registered camps
-            // Show list of camps
+            // Show list of registered camps and their roles
             // 1. Choose a specific camp
                 // print camp details
                 // 1. Withdraw
                     //showWithdraw(camp)
-                // 2. AddSuggestions
-                // 3. AddEnquiry
-                // 4. ViewEnquiry
+                // 2. ViewEnquiry
+					//1. Add
+					//2. Edit
+					//3. Delete
+				// 3. exit
+        //3. Exit
+
+		//committee
+        //2. View registered camps
+            // Show list of registered camps and their roles
+            // 1. Choose a specific camp
+                // print camp details
+                // 1. View enquiry
+					//1. Add
+					//2. Edit
+					//3. Delete
+                // 2. View suggestions
+					//1. Add
+					//2. Edit
+					//3. Delete
+				// 3. exit
         //3. Exit
     }
 }
