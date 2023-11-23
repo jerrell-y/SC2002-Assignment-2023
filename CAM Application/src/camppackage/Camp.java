@@ -8,6 +8,7 @@ import user.Faculty;
 import user.Student;
 
 public class Camp{
+    private int campID;
     private String campName;
     private Date startDate;
     private Date endDate;
@@ -24,7 +25,10 @@ public class Camp{
     private ArrayList<Enquiry> enquiries;
     private ArrayList<Suggestion> suggestions;
 
+    private static int totalCamps;
+
     public Camp (String campName, Date startDate, Date endDate, Date regEndDate, Faculty faculty, String location, int totalSlots, int campCommiteeSlots, String description, String staffInCharge, boolean visibility) {
+        this.campID = ++totalCamps;
         this.campName = campName;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -40,6 +44,37 @@ public class Camp{
         campCommitees = new ArrayList<Student>();
         enquiries = new ArrayList<Enquiry>();
         suggestions = new ArrayList<Suggestion>();
+    }
+
+    public Camp (int campID, String campName, Date startDate, Date endDate, Date regEndDate, Faculty faculty, String location, int totalSlots, int campCommiteeSlots, String description, String staffInCharge, boolean visibility) {
+        this.campID = campID;
+        this.campName = campName;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.regEndDate = regEndDate;
+        this.faculty = faculty;
+        this.location = location;
+        this.totalSlots = totalSlots;
+        this.campCommiteeSlots = campCommiteeSlots;
+        this.description = description;
+        this.staffInCharge = staffInCharge;
+        this.visibility = visibility;
+        campAttendees = new ArrayList<Student>();
+        campCommitees = new ArrayList<Student>();
+        enquiries = new ArrayList<Enquiry>();
+        suggestions = new ArrayList<Suggestion>();
+    }
+
+    public void setTotalCamps(int count) {
+        Camp.totalCamps = count;
+    }
+
+    public void setCampID(int campID) {
+        this.campID = campID;
+    }
+
+    public int getCampID() {
+        return campID;
     }
 
     public void setCampName(String campName) {
