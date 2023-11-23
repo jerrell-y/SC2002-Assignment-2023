@@ -1,21 +1,26 @@
 package user;
 
-import camppackage.Camp;
-
 public class Student extends User{
 	private int points;
-	private int[] registeredCamps;
+	// private int[] registeredCamps;
 	
-	enum role {
-		COMMITTEE,
-		ATTENDEE
+	// enum role {
+	//	COMMITTEE,
+	//	ATTENDEE
+	// }
+
+	public Student(String userID, String password, String name, Faculty faculty, int points) {
+		super(userID, password, name, faculty);
+		this.points = points;
 	}
 
-	public Student(String userID, String password, String name, Faculty faculty) {
-		super(userID, password, name, faculty);
-		this.points = 0;
+	public int getPoints() { return points; }
+	
+	public void setPoints(int points) {
+		this.points = points;
 	}
 	
+	/* 
 	public void viewCamps(campDatabase c) {
 		for (int i=0;i<c.camps.length();i++) {
 			if (checkRole(c.camps[i]) != 2 && c.camps[i].getVisiblity() == true) {
@@ -80,5 +85,5 @@ public class Student extends User{
 		
 	//	System.out.println("Student not registered for any camp yet.");
 		return 2;
-	}
+	} */
 }

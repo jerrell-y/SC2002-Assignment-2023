@@ -1,19 +1,23 @@
 package login;
 
 import user.User;
-import database.Database;
+import database.UserDatabase;
 
 import java.util.List;
 
 public class LoginManager {
-    public static boolean login(String userID, String password) {
-        List<User> users = Database.getUsers();
+    public static User login(String userID, String password) {
+        //Import from database
+        UserDatabase userDB = new UserDatabase();
+        userDB.load();
+        List<User> users = userDB.getUsers();
+
         for (User user : users) {
             if (user.getUserID().equals(userID) && PasswordManager.checkPassword(user.getPassword(), password)) {
-                return true; // Successful login
+                return user; // Successful login
             }
         }
-        return false; // Login failed
+        return null; // Login failed
 
     } 
 

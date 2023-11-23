@@ -2,8 +2,10 @@ package login;
 
 import java.util.Scanner;
 
+import user.User;
+
 public class LoginUI {
-    public static void main(String[] args) {
+    /* public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int choice = 0;
         do {
@@ -19,36 +21,25 @@ public class LoginUI {
             }
         } while (choice != 2);
         sc.close();
-    }
+    } */
 
-    private static void displayLoginForm() {
+    public static User displayLoginForm() {
+        Scanner sc = new Scanner(System.in);
         String userID, password;
+        User loggedInUser;
         while (true) {
-            userID = inputUserID();
-            password = inputPassword();
-            if(LoginManager.login(userID, password)) {
+            System.out.print("Enter userID: ");
+            userID = sc.nextLine();
+            System.out.print("Enter Password: ");
+            password = sc.nextLine();
+            loggedInUser = LoginManager.login(userID, password);
+            if(loggedInUser != null) {
                 break;
             } else {
                 System.out.println("Invalid userID or password");
             }
         }
         System.out.println("Login Succesfull");
-
-    }
-
-    private static String inputUserID() {
-        Scanner sc = new Scanner(System.in);
-        String userID;
-        System.out.print("Enter userID: ");
-        userID = sc.nextLine();
-        return userID;
-    }
-
-    private static String inputPassword(){
-        Scanner sc = new Scanner(System.in);
-        String password;
-        System.out.print("Enter Password: ");
-        password = sc.nextLine();
-        return password;
+        return loggedInUser;
     }
 }

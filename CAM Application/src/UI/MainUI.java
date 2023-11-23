@@ -1,17 +1,13 @@
 package UI;
 
-import java.util.ArrayList;
-
-import camppackage.Camp;
 import user.Staff;
 import user.Student;
 import user.User;
+import login.LoginUI;
 
 public class MainUI {
-    private User user;
+    private static User user;
     public static void main(String[] args) {
-        //Import from database
-
         //Keeps running as once you exit StudentUI/StaffUI you come back to the main menu screen.
         while (true) {
             System.out.println("-----------------------------");
@@ -19,13 +15,14 @@ public class MainUI {
             System.out.println("-----------------------------");
             
             //LoginUI here
-            //user = get from LoginUI
-            
+            user = LoginUI.displayLoginForm();
             if (user instanceof Student) {
                 //show StudentUI
+                System.out.println("student logged in");
             }
             else if (user instanceof Staff) {
                 //show StaffUI
+                System.out.println("staff logged in");
             }
         }
     }

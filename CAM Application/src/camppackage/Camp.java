@@ -20,8 +20,8 @@ public class Camp{
     private String description;
     private String staffInCharge;
     private boolean visibility;
-    private ArrayList<Student> campAttendees;
-    private ArrayList<Student> campCommitees;
+    private ArrayList<String> campAttendees;
+    private ArrayList<String> campCommitees;
     private ArrayList<Enquiry> enquiries;
     private ArrayList<Suggestion> suggestions;
 
@@ -40,13 +40,14 @@ public class Camp{
         this.description = description;
         this.staffInCharge = staffInCharge;
         this.visibility = visibility;
-        campAttendees = new ArrayList<Student>();
-        campCommitees = new ArrayList<Student>();
+        campAttendees = new ArrayList<String>();
+        campCommitees = new ArrayList<String>();
         enquiries = new ArrayList<Enquiry>();
         suggestions = new ArrayList<Suggestion>();
     }
 
-    public Camp (int campID, String campName, Date startDate, Date endDate, Date regEndDate, Faculty faculty, String location, int totalSlots, int campCommiteeSlots, String description, String staffInCharge, boolean visibility) {
+    public Camp (int campID, String campName, Date startDate, Date endDate, Date regEndDate, Faculty faculty, String location, int totalSlots, int campCommiteeSlots, String description, String staffInCharge, boolean visibility,
+                 ArrayList<String> campAttendees, ArrayList<String> campCommitees, ArrayList<Enquiry> enquiries, ArrayList<Suggestion> suggestions) {
         this.campID = campID;
         this.campName = campName;
         this.startDate = startDate;
@@ -59,10 +60,10 @@ public class Camp{
         this.description = description;
         this.staffInCharge = staffInCharge;
         this.visibility = visibility;
-        campAttendees = new ArrayList<Student>();
-        campCommitees = new ArrayList<Student>();
-        enquiries = new ArrayList<Enquiry>();
-        suggestions = new ArrayList<Suggestion>();
+        this.campAttendees = campAttendees; 
+        this.campCommitees = campCommitees;
+        this.enquiries = enquiries;
+        this.suggestions = suggestions;
     }
 
     public static void setTotalCamps(int count) {
