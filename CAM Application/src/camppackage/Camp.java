@@ -65,7 +65,7 @@ public class Camp{
         suggestions = new ArrayList<Suggestion>();
     }
 
-    public void setTotalCamps(int count) {
+    public static void setTotalCamps(int count) {
         Camp.totalCamps = count;
     }
 
