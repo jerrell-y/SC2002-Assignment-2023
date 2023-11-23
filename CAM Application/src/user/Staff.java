@@ -1,13 +1,15 @@
 package user;
-import manager.CampManager;
+import manager.*;
 import camppackage.*;
 import java.util.*;
 import java.text.SimpleDateFormat;
-public class Staff {
-    public Staff(){};
-    ArrayList<Camp> campDatabase = new ArrayList<>();
+public class Staff extends User{
 
-    public void CreateCamp () {
+
+    public Staff(String userID, String password, String name, Faculty faculty) {
+        super(userID, password, name, faculty);
+    }
+    public void CreateCamp() {
         Scanner sc = new Scanner(System.in);
         System.out.println("enter camp name");
         String campname = sc.nextLine();
@@ -25,7 +27,6 @@ public class Staff {
         }
         System.out.println("Enter an end date (format yyyy-MM-dd):");
         String enddateString = sc.nextLine();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Calendar enddate = null;
         try {
             Date date = sdf.parse(enddateString);
@@ -59,30 +60,47 @@ public class Staff {
         String description= sc.nextLine();
         System.out.println("Enter staff in charge");
         String staffInCharge= sc.nextLine();
-        CampInfo x = new CampInfo(campname, startdate, enddate, regdate, Faculty.valueOf(faculty.toUpperCase()), location, totalSlots, campCommitteeSlots, description, staffInCharge);
-        Camp c = new Camp(x, true);
-        // add camp in database;
+        boolean visibility;
+        System.out.println("Enter 1 if you want the camp to be visible");
+        int v=sc.nextInt();
+        if(v==1){
+            visibility=true;
+        }
+        else visibility=false;
+        Camp c = new Camp(campname, startdate, enddate, regdate, Faculty.valueOf(faculty.toUpperCase()), location, totalSlots, campCommitteeSlots, description, staffInCharge,visibility);
+        CampManager.addCamp(c);
+
     }
 
-    public void EditCamp (Camp campName) {
-        for(int i=0;i<campDatabase.toArray().length;i++){
-            if(campDatabase[i].campName)
-        }
+    public void EditCamp () {
+        String campName;
+        System.out.println("enter camp name you wish to edit");
+        campName=sc.nextLine();
+        CampManager.EditCamp(campName);
 
     }
 
     public void DeleteCamp () {
-        CampManager.deleteCamp();
+        Camp c;
+        CampManager.deleteCamp(c);
     }
 
-    public void ViewCamp (Camp campName){
+    public void ViewCamps (){
         campName.generateReport();
     }
 
-    public void GenerateStudentReport (Camp campName) {campName.generateReport();
+    public void GenerateStudentReport (Camp campName) {
+        campName.generateReport();
     }
 
-    public static void GenerateCommitteeReport(Camp campName) {campName.generateReport();
+    public static void GenerateCommitteeReport(Camp campName) {
+        campName.generateReport();
+    }
+    public void ViewEnquiries(Camp camp){
+        System.out.println(camp.getEnquiries());
+    }
+    public void Answer(Camp camp){
+        camp.answerEnquiry();
     }
 
 }
