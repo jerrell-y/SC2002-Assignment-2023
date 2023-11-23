@@ -25,7 +25,9 @@ public class StudentUI {
     	}
     	
     	case 3:
-			changePassword();
+			System.out.println("Enter new password:")
+			String newPass = scan.next();
+			user.setPassword(newPass);
     		break;
     	
 		case 4:           //logout
