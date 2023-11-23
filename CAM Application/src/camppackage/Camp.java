@@ -193,7 +193,7 @@ public class Camp{
     public boolean isCommitee(Student student) {
         int i;
         for (i = 0; i != campCommitees.size(); i++) {
-            if (campAttendees.get(i).getUserID() == student.getUserID()) {
+            if (campCommitees.get(i).getUserID() == student.getUserID()) {
                 return true;
             }
         }
