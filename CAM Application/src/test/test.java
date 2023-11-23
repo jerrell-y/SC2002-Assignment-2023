@@ -25,5 +25,11 @@ public class test {
         System.out.println(sf.formatFull(s));
         System.out.println(cf.formatShort(c));
         System.out.println(cf.formatFull(c));
+
+        StaticTest.setCamp(c);
+        System.out.println();
+        System.out.println("In test: " + StaticTest.getString());
+        System.out.println();
+        testStatic.show();
     }
 }
