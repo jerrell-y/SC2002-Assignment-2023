@@ -34,12 +34,19 @@ public class LoginUI {
             password = sc.nextLine();
             loggedInUser = LoginManager.login(userID, password);
             if(loggedInUser != null) {
+                if (LoginManager.isDefaultPassword(loggedInUser)) {
+                    System.out.println("You are using the default password. You must change your password now.");
+                    System.out.print("Enter your new password: ");
+                    String newPassword = sc.nextLine();
+                    LoginManager.changePassword(loggedInUser, newPassword);
+                    System.out.println("Your password has been changed successfully.");
+                }
                 break;
             } else {
                 System.out.println("Invalid userID or password");
             }
         }
-        System.out.println("Login Succesfull");
+        System.out.println("Login Successfull");
         return loggedInUser;
     }
 }
