@@ -2,6 +2,9 @@ package UI;
 
 import java.util.Scanner;
 
+import view.ViewAvailableCamps;
+import view.ViewRegisteredCamps;
+
 public class StudentUI {
 	
     public void start() {
