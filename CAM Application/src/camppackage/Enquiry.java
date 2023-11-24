@@ -17,8 +17,13 @@ public class Enquiry extends Message {
         answered = false;
     }
 
-    public String getReply() { return reply; }
-    public boolean isAnswered() { return answered; }
+    public String getReply() { 
+        return reply; 
+    }
+
+    public boolean isAnswered() {
+         return answered; 
+    }
 
     public void setReply(String reply) {
         this.reply = reply;

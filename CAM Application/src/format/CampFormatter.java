@@ -7,11 +7,11 @@ import camppackage.Camp;
 public class CampFormatter implements iFormatter<Camp>{
 
     public String formatShort(Camp camp) {
-        return "Camp Name: " + camp.getCampName();
+        return camp.getCampID() + ". Camp Name: " + camp.getCampName();
     }
 
     public String formatFull(Camp camp) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return  "Camp Name: " + camp.getCampName() +
                 "\nStart Date: " + dateFormat.format(camp.getStartDate().getTime()) +
                 "\nEnd Date: " + dateFormat.format(camp.getEndDate().getTime()) +

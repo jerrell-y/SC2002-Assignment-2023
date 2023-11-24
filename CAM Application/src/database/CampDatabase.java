@@ -81,4 +81,8 @@ public class CampDatabase implements Database<Camp> {
     public void update(){
         //
     };
+
+    public static ArrayList<Camp> getCamps() {
+        return camps;
+    }
 }

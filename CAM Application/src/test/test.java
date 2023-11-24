@@ -1,7 +1,7 @@
 package test;
 
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.Date;
 
 import camppackage.Camp;
 import format.CampFormatter;
@@ -12,12 +12,9 @@ import user.Student;
 public class test {
     public static void main(String[] args) {
         Student s = new Student("zng052", "123456", "Zhuo Quan", Faculty.SCSE);
-        Calendar x = Calendar.getInstance();
-        Calendar y = Calendar.getInstance();
-        Calendar z = Calendar.getInstance();
-        x.set(2023, 11, 28);
-        y.set(2023, 11, 30);
-        z.set(2023, 11,27);
+        Date x = new Date(2023, 11,28);
+        Date y = new Date(2023, 11,30);
+        Date z = new Date(2023, 11,27);
         Camp c = new Camp("Camp 1", x, y, z, Faculty.SCSE, "NTU", 10, 5, "Please join!", "John Adams", false);
 
         StudentFormatter sf = new StudentFormatter();
@@ -27,7 +24,7 @@ public class test {
         System.out.println(cf.formatShort(c));
         System.out.println(cf.formatFull(c));
         ArrayList<Integer> xx = new ArrayList<Integer>();
-        xx.add(0)
+        xx.add(0);
 
         StaticTest.setCamp(c);
         StaticTest.setX(xx);

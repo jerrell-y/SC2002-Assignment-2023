@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 import camppackage.Camp;
-import manager.CampManager;
+import manager.OldCampManager;
 import user.Faculty;
 import user.Staff;
 import user.User;

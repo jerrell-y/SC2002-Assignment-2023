@@ -3,53 +3,33 @@ package manager;
 import java.util.ArrayList;
 
 import camppackage.Camp;
-import user.Faculty;
-import user.Student;
 
 public class CampManager {
-    private static ArrayList<Camp> campList;
+    private static Camp camp;
 
-    //public CampManager(ArrayList<Camp> campList) {
-    //    this.campList = campList;
-    //}
-
-    public static ArrayList<Camp> getRegisteredCamps(Student student) {
-        ArrayList<Camp> regList = new ArrayList<Camp>();
+    public static void setCamp(Camp camp) {
+        CampManager.camp = camp;
+    }
+    
+    public boolean isAttendee(String userID) {
         int i;
-        for (i = 0; i != campList.size(); i++) {
-            if (campList.get(i).isAttendee(student)) {
-                regList.add(campList.get(i));
+        ArrayList<String> campAttendees = camp.getCampAttendees();
+        for (i = 0; i != campAttendees.size(); i++) {
+            if (campAttendees.get(i).equals(userID)) {
+                return true;
             }
         }
-        return regList;
+        return false;
     }
 
-    public ArrayList<Camp> getAvailableCamps(Faculty faculty) {
-        ArrayList<Camp> availList = new ArrayList<Camp>();
+    public boolean isCommitee(String userID) {
         int i;
-        for (i = 0; i != campList.size(); i++) {
-            if (campList.get(i).getFaculty() == faculty || campList.get(i).getFaculty() == Faculty.NTU) {
-                if (campList.get(i).getVisibility()) {
-                    availList.add(campList.get(i));
-                }
+        ArrayList<String> campCommitees = camp.getCampCommitees();
+        for (i = 0; i != campCommitees.size(); i++) {
+            if (campCommitees.get(i).equals(userID)) {
+                return true;
             }
         }
-        return campList;
-    }
-
-    public static void addCamp(Camp camp) {
-        campList.add(camp);
-        //Database.update();
-    }
-
-    public static void deleteCamp(Camp camp) {
-        int i;
-        for (i = 0; i != campList.size(); i++) {
-            if (campList.get(i).equals(camp)) {
-                campList.remove(i);
-                //Database.update();
-                break;
-            }
-        }
+        return false;
     }
 }

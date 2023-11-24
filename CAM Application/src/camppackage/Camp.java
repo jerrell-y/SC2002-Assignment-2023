@@ -1,11 +1,9 @@
 package camppackage;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 import user.Faculty;
-import user.Student;
 
 public class Camp{
     private int campID;
@@ -46,8 +44,7 @@ public class Camp{
         suggestions = new ArrayList<Suggestion>();
     }
 
-    public Camp (int campID, String campName, Date startDate, Date endDate, Date regEndDate, Faculty faculty, String location, int totalSlots, int campCommiteeSlots, String description, String staffInCharge, boolean visibility,
-                 ArrayList<String> campAttendees, ArrayList<String> campCommitees, ArrayList<Enquiry> enquiries, ArrayList<Suggestion> suggestions) {
+    public Camp (int campID, String campName, Date startDate, Date endDate, Date regEndDate, Faculty faculty, String location, int totalSlots, int campCommiteeSlots, String description, String staffInCharge, boolean visibility, ArrayList<String> campAttendees, ArrayList<String> campCommitees, ArrayList<Enquiry> enquiries, ArrayList<Suggestion> suggestions) {
         this.campID = campID;
         this.campName = campName;
         this.startDate = startDate;
@@ -60,7 +57,7 @@ public class Camp{
         this.description = description;
         this.staffInCharge = staffInCharge;
         this.visibility = visibility;
-        this.campAttendees = campAttendees; 
+        this.campAttendees = campAttendees;
         this.campCommitees = campCommitees;
         this.enquiries = enquiries;
         this.suggestions = suggestions;
@@ -158,21 +155,6 @@ public class Camp{
         return staffInCharge;
     }
 
-    //Returns the camp infomation in a single string. (Excluding visibility)
-    public String toString() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
-        return  "Camp Name: " + campName +
-                "\nStart Date: " + dateFormat.format(startDate.getTime()) +
-                "\nEnd Date: " + dateFormat.format(endDate.getTime()) +
-                "\nRegistration End Date: " + dateFormat.format(regEndDate.getTime()) +
-                "\nFaculty: " + faculty +
-                "\nLocation: " + location +
-                "\nTotal Slots: " + totalSlots +
-                "\nCamp Commitee Slots: " + campCommiteeSlots +
-                "\nDescription: " + description +
-                "\nStaff in charge: " + staffInCharge;
-    }
-
     public void setVisibility(boolean visibility) {
         this.visibility = visibility;
     }
@@ -181,22 +163,36 @@ public class Camp{
         return visibility;
     }
 
-    public void addAttendee(Student student) {
-        campAttendees.add(student);
+    public ArrayList<String> getCampAttendees() {
+        return campAttendees;
     }
 
-    public void addCommitee(Student student) {
-        campCommitees.add(student);
+    public void setCampAttendees(ArrayList<String> campAttendees) {
+        this.campAttendees = campAttendees;
     }
 
-    public void deleteAttendee(Student student) {
-        int i;
-        for (i = 0; i != campAttendees.size(); i++) {
-            if (campAttendees.get(i).equals(student)) {
-                campAttendees.remove(i);
-                break;
-            }
-        }
+    public ArrayList<String> getCampCommitees() {
+        return campCommitees;
+    }
+
+    public void setCampCommitees(ArrayList<String> campCommitees) {
+        this.campCommitees = campCommitees;
+    }
+
+    public ArrayList<Enquiry> getEnquiries() {
+        return enquiries;
+    }
+
+    public void setEnquiries(ArrayList<Enquiry> enquiries) {
+        this.enquiries = enquiries;
+    }
+
+    public ArrayList<Suggestion> getSuggestions() {
+        return suggestions;
+    }
+
+    public void setSuggestions(ArrayList<Suggestion> suggestions) {
+        this.suggestions = suggestions;
     }
 
     public void addEnquiry(Enquiry enquiry) {
@@ -207,35 +203,7 @@ public class Camp{
         enquiries.remove(index);
     }
 
-    public ArrayList<Enquiry> getEnquiries() {return enquiries;}
-
-
     public void addSuggestion(Suggestion suggestion) {
         suggestions.add(suggestion);
-    }
-
-    public String generateReport() {
-        return toString();
-        //add student infomation / camp commitee information
-    }
-
-    public boolean isAttendee(Student student) {
-        int i;
-        for (i = 0; i != campAttendees.size(); i++) {
-            if (campAttendees.get(i).getUserID() == student.getUserID()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean isCommitee(Student student) {
-        int i;
-        for (i = 0; i != campCommitees.size(); i++) {
-            if (campCommitees.get(i).getUserID() == student.getUserID()) {
-                return true;
-            }
-        }
-        return false;
     }
 }

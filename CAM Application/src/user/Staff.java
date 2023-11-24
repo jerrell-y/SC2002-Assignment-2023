@@ -1,16 +1,14 @@
 package user;
-//import manager.*;
-//import camppackage.*;
-//import java.util.*;
-//import java.text.SimpleDateFormat;
+import manager.*;
+import camppackage.*;
+import java.util.*;
+import java.text.SimpleDateFormat;
 public class Staff extends User{
 
 
     public Staff(String userID, String password, String name, Faculty faculty) {
         super(userID, password, name, faculty);
     }
-
-    /* 
     public void CreateCamp() {
         Scanner sc = new Scanner(System.in);
         System.out.println("enter camp name");
@@ -70,7 +68,7 @@ public class Staff extends User{
         }
         else visibility=false;
         Camp c = new Camp(campname, startdate, enddate, regdate, Faculty.valueOf(faculty.toUpperCase()), location, totalSlots, campCommitteeSlots, description, staffInCharge,visibility);
-        CampManager.addCamp(c);
+        OldCampManager.addCamp(c);
 
     }
 
@@ -78,13 +76,13 @@ public class Staff extends User{
         String campName;
         System.out.println("enter camp name you wish to edit");
         campName=sc.nextLine();
-        CampManager.EditCamp(campName);
+        OldCampManager.EditCamp(campName);
 
     }
 
     public void DeleteCamp () {
         Camp c;
-        CampManager.deleteCamp(c);
+        OldCampManager.deleteCamp(c);
     }
 
     public void ViewCamps (){
@@ -103,6 +101,6 @@ public class Staff extends User{
     }
     public void Answer(Camp camp){
         camp.answerEnquiry();
-    } */
+    }
 
 }
