@@ -7,7 +7,7 @@ import camppackage.Camp;
 public class CampFormatter implements iFormatter<Camp>{
 
     public String formatShort(Camp camp) {
-        return camp.getCampID() + ". Camp Name: " + camp.getCampName();
+        return "Camp Name: " + camp.getCampName();
     }
 
     public String formatFull(Camp camp) {
@@ -18,7 +18,7 @@ public class CampFormatter implements iFormatter<Camp>{
                 "\nRegistration End Date: " + dateFormat.format(camp.getRegEndDate().getTime()) +
                 "\nFaculty: " + camp.getFaculty() +
                 "\nLocation: " + camp.getLocation() +
-                "\nTotal Slots: " + camp.getTotalSlots() +
+                "\nCamp Attendee Slots: " + camp.getCampAttendeeSlots() +
                 "\nCamp Commitee Slots: " + camp.getCampCommiteeSlots() +
                 "\nDescription: " + camp.getDescription() +
                 "\nStaff in charge: " + camp.getStaffInCharge();

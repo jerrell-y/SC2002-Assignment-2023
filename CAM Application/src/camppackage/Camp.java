@@ -13,7 +13,7 @@ public class Camp{
     private Date regEndDate;
     private Faculty faculty;
     private String location;
-    private int totalSlots;
+    private int campAttendeeSlots;
     private int campCommiteeSlots;
     private String description;
     private String staffInCharge;
@@ -25,7 +25,7 @@ public class Camp{
 
     private static int totalCamps;
 
-    public Camp (String campName, Date startDate, Date endDate, Date regEndDate, Faculty faculty, String location, int totalSlots, int campCommiteeSlots, String description, String staffInCharge, boolean visibility) {
+    public Camp (String campName, Date startDate, Date endDate, Date regEndDate, Faculty faculty, String location, int campAttendeeSlots, int campCommiteeSlots, String description, String staffInCharge, boolean visibility) {
         this.campID = ++totalCamps;
         this.campName = campName;
         this.startDate = startDate;
@@ -33,7 +33,7 @@ public class Camp{
         this.regEndDate = regEndDate;
         this.faculty = faculty;
         this.location = location;
-        this.totalSlots = totalSlots;
+        this.campAttendeeSlots = campAttendeeSlots;
         this.campCommiteeSlots = campCommiteeSlots;
         this.description = description;
         this.staffInCharge = staffInCharge;
@@ -44,7 +44,7 @@ public class Camp{
         suggestions = new ArrayList<Suggestion>();
     }
 
-    public Camp (int campID, String campName, Date startDate, Date endDate, Date regEndDate, Faculty faculty, String location, int totalSlots, int campCommiteeSlots, String description, String staffInCharge, boolean visibility, ArrayList<String> campAttendees, ArrayList<String> campCommitees, ArrayList<Enquiry> enquiries, ArrayList<Suggestion> suggestions) {
+    public Camp (int campID, String campName, Date startDate, Date endDate, Date regEndDate, Faculty faculty, String location, int campAttendeeSlots, int campCommiteeSlots, String description, String staffInCharge, boolean visibility, ArrayList<String> campAttendees, ArrayList<String> campCommitees, ArrayList<Enquiry> enquiries, ArrayList<Suggestion> suggestions) {
         this.campID = campID;
         this.campName = campName;
         this.startDate = startDate;
@@ -52,7 +52,7 @@ public class Camp{
         this.regEndDate = regEndDate;
         this.faculty = faculty;
         this.location = location;
-        this.totalSlots = totalSlots;
+        this.campAttendeeSlots = campAttendeeSlots;
         this.campCommiteeSlots = campCommiteeSlots;
         this.description = description;
         this.staffInCharge = staffInCharge;
@@ -123,12 +123,12 @@ public class Camp{
         return location;
     }
 
-    public void setTotalSlots(int totalSlots) {
-        this.totalSlots = totalSlots;
+    public void setCampAttendeeSlots(int campAttendeeSlots) {
+        this.campAttendeeSlots = campAttendeeSlots;
     }
 
-    public int getTotalSlots() {
-        return totalSlots;
+    public int getCampAttendeeSlots() {
+        return campAttendeeSlots;
     }
 
     public void setCampCommiteeSlots(int campCommiteeSlots) {
@@ -193,6 +193,14 @@ public class Camp{
 
     public void setSuggestions(ArrayList<Suggestion> suggestions) {
         this.suggestions = suggestions;
+    }
+
+    public void addCampAttendee(String userID) {
+        campAttendees.add(userID);
+    }
+
+    public void addCampCommitee(String userID) {
+        campAttendees.add(userID);
     }
 
     public void addEnquiry(Enquiry enquiry) {

@@ -1,5 +1,7 @@
 package view;
 
+import java.util.ArrayList;
+
 public interface ViewCamps{
-	public void displayCamps();
+	public ArrayList<Integer> displayCamps();
 }

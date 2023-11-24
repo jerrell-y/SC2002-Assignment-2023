@@ -38,7 +38,6 @@ public class Staff extends User{
         }
         System.out.println("Enter a reg end date (format yyyy-MM-dd):");
         String regdateString = sc.nextLine();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Calendar regdate = null;
         try {
             Date date = sdf.parse(regdateString);
@@ -102,5 +101,5 @@ public class Staff extends User{
     public void Answer(Camp camp){
         camp.answerEnquiry();
     }
-
+    
 }

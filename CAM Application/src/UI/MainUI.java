@@ -3,6 +3,7 @@ package UI;
 import user.Staff;
 import user.Student;
 import user.User;
+import user.UserManager;
 import login.LoginUI;
 
 public class MainUI {
@@ -16,6 +17,7 @@ public class MainUI {
             
             //LoginUI here
             user = LoginUI.displayLoginForm();
+            UserManager.setUser(user);
             if (user instanceof Student) {
                 //show StudentUI
                 System.out.println("student logged in");
