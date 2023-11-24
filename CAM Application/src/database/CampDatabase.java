@@ -85,4 +85,13 @@ public class CampDatabase implements Database<Camp> {
     public static ArrayList<Camp> getCamps() {
         return camps;
     }
+
+    public static Camp getCampByID(int campID) {
+        for (Camp camp : camps) {
+            if (camp.getCampID() == campID) {
+                return camp;
+            }
+        }
+        return null;
+    }
 }
