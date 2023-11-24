@@ -34,7 +34,7 @@ public class CampDatabase implements Database<Camp> {
                 Date regEndDate = DateHelper.stringToDate(values[4]);
                 Faculty faculty = Faculty.valueOf(values[5]);
                 String location = values[6];
-                int totalSlots = Integer.parseInt(values[7]);
+                int campAttendeeSlots = Integer.parseInt(values[7]);
                 int campCommiteeSlots = Integer.parseInt(values[8]);
                 String description = values[9];
                 String staffInCharge = values[10];
@@ -66,7 +66,7 @@ public class CampDatabase implements Database<Camp> {
                 }
 
                 if(max < campID) { max = campID; }
-                camps.add(new Camp(campID, campName, startDate, endDate, regEndDate, faculty, location, totalSlots, 
+                camps.add(new Camp(campID, campName, startDate, endDate, regEndDate, faculty, location, campAttendeeSlots, 
                 campCommiteeSlots, description, staffInCharge, visibility, campAttendees, 
                 campcommitees, enquiries, suggestions));
             }

@@ -3,17 +3,21 @@ package login;
 import user.User;
 import database.UserDatabase;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class LoginManager {
     public static User login(String userID, String password) {
         //Import from database
-        UserDatabase userDB = new UserDatabase();
-        userDB.load();
-        List<User> users = userDB.getUsers();
+        UserDatabase userDB = UserDatabase.getInstance();
+        if (userDB.getUsers().isEmpty()) {
+            userDB.load();
+        }
+        ArrayList<User> users = userDB.getUsers();
+
+        String userIDLower = userID.toLowerCase();
 
         for (User user : users) {
-            if (user.getUserID().equals(userID) && PasswordManager.checkPassword(user.getPassword(), password)) {
+            if (user.getUserID().toLowerCase().equals(userIDLower) && PasswordManager.checkPassword(user.getPassword(), password)) {
                 return user; // Successful login
             }
         }
@@ -29,6 +33,6 @@ public class LoginManager {
         // Logic to change the user's password
         user.setPassword(PasswordManager.encrypt(newPassword));
         System.out.println("new password = " + user.getPassword());
-        // Update the database with the new password
+        UserDatabase.getInstance().update();
     }
 }
