@@ -1,5 +1,5 @@
 package view;
 
 public interface ViewCamps{
-	public void displayCamps();
+	public static void displayCamps(ArrayList<Camp> c);
 }
