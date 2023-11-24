@@ -13,7 +13,7 @@ public class ViewAvailableCamps implements ViewCamps {
     public ArrayList<Integer> displayCamps() {
         int count = 0;
         CampFormatter cf = new CampFormatter();
-        ArrayList<Camp> campList = CampDatabase.getCamps(); 
+        ArrayList<Camp> campList = CampDatabase.getInstance().getCamps();
         ArrayList<Integer> availableCamps = new ArrayList<Integer>();
         User user = UserManager.getUser();
         int i;

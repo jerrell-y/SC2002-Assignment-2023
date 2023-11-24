@@ -12,7 +12,7 @@ public class CampManager {
     private static Camp camp;
 
     public static void setCamp(int campID) {
-        CampManager.camp = CampDatabase.getCampsByID(campID);
+        CampManager.camp = CampDatabase.getInstance().getCampByID(campID);
     }
     
     public static boolean isAttendee() {

@@ -11,7 +11,7 @@ public class ViewRegisteredCamps implements ViewCamps {
     public ArrayList<Integer> displayCamps() {
         int count = 0;
         CampFormatter cf = new CampFormatter();
-        ArrayList<Camp> campList = CampDatabase.getCamps(); 
+        ArrayList<Camp> campList = CampDatabase.getInstance().getCamps(); 
         ArrayList<Integer> registeredCamps = new ArrayList<Integer>();
         int i;
         for (i = 0; i != campList.size(); i++) {

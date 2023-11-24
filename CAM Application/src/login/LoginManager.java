@@ -1,9 +1,13 @@
 package login;
 
 import user.User;
+import database.CampDatabase;
 import database.UserDatabase;
+import format.CampFormatter;
 
 import java.util.ArrayList;
+
+import camppackage.Camp;
 
 public class LoginManager {
     public static User login(String userID, String password) {
@@ -12,6 +16,24 @@ public class LoginManager {
         if (userDB.getUsers().isEmpty()) {
             userDB.load();
         }
+        CampDatabase campDB = CampDatabase.getInstance();
+        if (campDB.getCamps().isEmpty()) {
+            campDB.load();
+        }
+
+        // TESTING
+        ArrayList<Camp> camps = campDB.getCamps();
+        if (!camps.isEmpty()) {
+            System.out.println("CampDatabase has been initialized and loaded correctly!");
+            for (Camp camp : camps) {
+                CampFormatter cf = new CampFormatter();
+                System.out.println(cf.formatFull(camp));
+            }
+        } else {
+            System.out.println("CampDatabase is empty or not initialized correctly.");
+        }
+        // TESTING
+
         ArrayList<User> users = userDB.getUsers();
 
         String userIDLower = userID.toLowerCase();
