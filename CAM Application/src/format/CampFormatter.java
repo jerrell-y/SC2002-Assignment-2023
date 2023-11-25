@@ -14,7 +14,7 @@ public class CampFormatter implements iFormatter<Camp>{
         return instance;
     }
 
-    
+
 
     public String formatShort(Camp camp) {
         return "Camp Name: " + camp.getCampName();
@@ -28,8 +28,10 @@ public class CampFormatter implements iFormatter<Camp>{
                 "\nRegistration End Date: " + dateFormat.format(camp.getRegEndDate().getTime()) +
                 "\nFaculty: " + camp.getFaculty() +
                 "\nLocation: " + camp.getLocation() +
-                "\nCamp Attendee Slots: " + camp.getCampAttendeeSlots() +
-                "\nCamp Commitee Slots: " + camp.getCampCommiteeSlots() +
+                "\nTotal Camp Attendee Slots: " + camp.getCampAttendeeSlots() +
+                "\nRemaining Camp Attendee Slots: " + (camp.getCampAttendeeSlots() - camp.getCampAttendees().size()) +
+                "\nTotal Camp Commitee Slots: " + camp.getCampCommiteeSlots() +
+                "\nRemaining Camp Attendee Slots: " + (camp.getCampCommiteeSlots() - camp.getCampCommitees().size()) +
                 "\nDescription: " + camp.getDescription() +
                 "\nStaff in charge: " + camp.getStaffInCharge();
     }

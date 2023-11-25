@@ -185,9 +185,10 @@ public class CampDatabase implements Database<Camp> {
         return null;
     }
 
-    public void addCamp(Camp camp) {
+    public boolean addCamp(Camp camp) {
         camps.add(camp);
         CampDatabase.getInstance().update();
+        return true;
     }
 
     public void deleteCamp(Camp camp) {
