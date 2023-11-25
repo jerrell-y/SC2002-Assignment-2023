@@ -187,9 +187,11 @@ public class CampDatabase implements Database<Camp> {
 
     public void addCamp(Camp camp) {
         camps.add(camp);
+        CampDatabase.getInstance().update();
     }
 
     public void deleteCamp(Camp camp) {
         camps.remove(camp);
+        CampDatabase.getInstance().update();
     }
 }
