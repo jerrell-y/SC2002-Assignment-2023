@@ -1,5 +1,5 @@
 package user;
-
+/* 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -64,3 +64,4 @@ public class CommiteeMember {
         return this.points;
     }	
 	
+*/

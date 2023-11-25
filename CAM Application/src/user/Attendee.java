@@ -1,5 +1,5 @@
 package user;
-
+/*
 import java.util.Scanner;
 
 public class Attendee {
@@ -68,3 +68,4 @@ public class Attendee {
 		}
 	}
 }
+*/
