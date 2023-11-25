@@ -196,7 +196,9 @@ public class StudentUI {
 									int x = scan.nextInt();
 									switch(x) {
 										case 1:
-											SuggestionManager.addSuggestion(s);
+											System.out.println("Enter suggestion: ");
+											String sgn = scan.next();
+											SuggestionManager.addSuggestion(sgn);
 											break;
 										case 2:
 											break;

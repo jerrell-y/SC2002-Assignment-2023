@@ -5,9 +5,7 @@ import java.util.Objects;
 
 import camppackage.Camp;
 import database.CampDatabase;
-import database.UserDatabase;
 import format.CampFormatter;
-import user.Student;
 import user.User;
 import user.UserManager;
 import camppackage.Enquiry;
@@ -56,7 +54,6 @@ public class CampManager {
         return false;
     }
     public static boolean isInCharge(Camp camp) {
-        int i;
         User user = UserManager.getUser();
         String st = camp.getStaffInCharge();
         if(Objects.equals(st, user.getName())){
