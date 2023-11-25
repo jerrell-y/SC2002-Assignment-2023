@@ -56,10 +56,19 @@ public class CampDatabase implements Database<Camp> {
                 boolean visibility = "True".equalsIgnoreCase(values[11]);
 
                 // Parsing CampAttendees and Campcommitees
-                ArrayList<String> campAttendees = new ArrayList<>(
+                String attendees = values[12].replaceAll("\\[|\\]|\"", "");
+                ArrayList<String> campAttendees = new ArrayList<String>();
+                if (!attendees.equals("")) {
+                    campAttendees = new ArrayList<>(
                         Arrays.asList(values[12].replaceAll("\\[|\\]|\"", "").split(",")));
-                ArrayList<String> campcommitees = new ArrayList<>(
+                }
+
+                String commitees = values[12].replaceAll("\\[|\\]|\"", "");
+                ArrayList<String> campCommitees = new ArrayList<String>();
+                if (!commitees.equals("")) {
+                    campCommitees = new ArrayList<>(
                         Arrays.asList(values[13].replaceAll("\\[|\\]|\"", "").split(",")));
+                }
 
                 // Parsing Enquiries
                 ArrayList<Enquiry> enquiries = new ArrayList<>();
@@ -125,7 +134,7 @@ public class CampDatabase implements Database<Camp> {
                 camps.add(
                         new Camp(campID, campName, startDate, endDate, regEndDate, faculty, location, campAttendeeSlots,
                                 campCommiteeSlots, description, staffInCharge, visibility, campAttendees,
-                                campcommitees, enquiries, suggestions));
+                                campCommitees, enquiries, suggestions));
             }
             Camp.setTotalCamps(max);
         } catch (IOException e) {

@@ -1,4 +1,4 @@
-Name,Email,Faculty,Password,Points
+Name,Email,Faculty,Password,Points,CommitteeCampID
 CHERN ,YCHERN@e.ntu.edu.sg,SCSE,11507a0e2f5e69d5dfa40a62a1bd7b6ee57e6bcd85c67c9b8431b36fff21c437,0
 KOH ,KOH1@e.ntu.edu.sg,ADM,5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8,0
 BRANDON ,BR015@e.ntu.edu.sg,EEE,5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8,0

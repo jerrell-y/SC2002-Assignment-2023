@@ -218,7 +218,7 @@ public class Camp{
     }
 
     public void addCampCommitee(String userID) {
-        campAttendees.add(userID);
+        campCommitees.add(userID);
     }
 
     public void addEnquiry(Enquiry enquiry) {

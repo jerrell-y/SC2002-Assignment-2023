@@ -64,18 +64,12 @@ public class StudentUI {
 									if (success) {
 										System.out.println("Successfully registered as a commitee member! \n");
 									}
-									else {
-										System.out.println("There are no more slots available! \n");
-									}
 									break;
 										
 								case 2:
 									success = CampManager.registerAttendee();
 									if (success) {
 										System.out.println("Successfully registered as an attendee! \n");
-									}
-									else {
-										System.out.println("There are no more slots available! \n");
 									}
 									break;
 
@@ -122,7 +116,8 @@ public class StudentUI {
 								System.out.println("Successfully removed from camp");
 								break;
 
-							case 2:
+							case 2: 
+								/* 
 								ArrayList<Enquiry> enq = CampManager.getEnquiryByUser();
 								if (enq == null) {
 									System.out.println("1. Add enquiry");
@@ -163,6 +158,7 @@ public class StudentUI {
 									}
 
 								}
+								*/
 								
 								break;
 
