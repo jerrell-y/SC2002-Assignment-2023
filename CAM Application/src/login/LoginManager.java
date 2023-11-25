@@ -8,6 +8,8 @@ import format.CampFormatter;
 import java.util.ArrayList;
 
 import camppackage.Camp;
+import camppackage.Enquiry;
+import camppackage.Suggestion;
 
 public class LoginManager {
     public static User login(String userID, String password) {
@@ -28,6 +30,15 @@ public class LoginManager {
             for (Camp camp : camps) {
                 CampFormatter cf = new CampFormatter();
                 System.out.println(cf.formatFull(camp));
+                ArrayList<Enquiry> e = camp.getEnquiries();
+                for (Enquiry i : e) {
+                    System.out.println(i.getContent() + "," + i.getName() + "," + i.getUserID() + "," + i.getReply() + "," + i.isAnswered());
+                }
+
+                ArrayList<Suggestion> s = camp.getSuggestions();
+                for (Suggestion j : s){
+                    System.out.println(j.getContent() + "," + j.getName() + "," + j.getUserID() + "," + j.getStatus());
+                }
             }
         } else {
             System.out.println("CampDatabase is empty or not initialized correctly.");

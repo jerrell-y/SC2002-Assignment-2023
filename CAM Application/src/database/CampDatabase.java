@@ -63,25 +63,60 @@ public class CampDatabase implements Database<Camp> {
 
                 // Parsing Enquiries
                 ArrayList<Enquiry> enquiries = new ArrayList<>();
-                String[] enquiryData = values[14].replaceAll("\\[|\\]", "").split("\\],\\[");
-                for (String enquiry : enquiryData) {
-                    String[] parts = enquiry.split(",", -1);
+                // Remove the outermost brackets
+                String[] enquiryData = values[14].substring(2, values[14].length() - 2).split("\\],\\[");
+
+                for (int j = 0; j < enquiryData.length; j++) {
+                    // If it's the first enquiry, remove the leading '['
+                    if (j == 0 && enquiryData[j].startsWith("[")) {
+                        enquiryData[j] = enquiryData[j].substring(1);
+                    }
+
+                    // Split each enquiry into parts
+                    String[] parts = enquiryData[j].split(",", -1);
+                    // Trim each part to remove any leading or trailing whitespace
+                    for (int i = 0; i < parts.length; i++) {
+                        parts[i] = parts[i].replaceAll("^\"|\"$", "").trim();
+                    }
+
                     // Assuming the constructor Enquiry(String content, String name, String userID,
                     // String reply, boolean answered)
+                    String content = parts[0];
+                    String name = parts.length > 1 ? parts[1] : "";
+                    String userID = parts.length > 2 ? parts[2] : "";
                     String reply = parts.length > 3 ? parts[3] : "";
-                    boolean answered = parts.length > 4 && "True".equalsIgnoreCase(parts[4]);
-                    enquiries.add(new Enquiry(parts[0], parts[1], parts[2], reply, answered));
+                    boolean answered = parts.length > 4 && parts[4].equalsIgnoreCase("true");
+
+                    // Add the new enquiry to the list
+                    enquiries.add(new Enquiry(content, name, userID, reply, answered));
                 }
 
                 // Parsing Suggestions
                 ArrayList<Suggestion> suggestions = new ArrayList<>();
-                String[] suggestionData = values[15].replaceAll("\\[|\\]", "").split("\\],\\[");
-                for (String suggestion : suggestionData) {
-                    String[] parts = suggestion.split(",");
+                // Remove the very first '[' and the very last ']' from the string
+                String[] suggestionData = values[15].substring(2, values[15].length() - 2).split("\\],\\[");
+
+                for (int j = 0; j < suggestionData.length; j++) {
+                    // If it's the first suggestion, remove the leading '['
+                    if (j == 0 && suggestionData[j].startsWith("[")) {
+                        suggestionData[j] = suggestionData[j].substring(1);
+                    }
+
+                    // Split each suggestion into parts, accounting for possible empty fields
+                    String[] parts = suggestionData[j].split(",", -1);
+                    // Trim each part to remove any leading or trailing whitespace and remove quotes
+                    for (int i = 0; i < parts.length; i++) {
+                        parts[i] = parts[i].replaceAll("^\"|\"$", "").trim();
+                    }
                     // Assuming the constructor Suggestion(String content, String name, String
-                    // userID, int status)
-                    boolean status = parts.length > 3 && "True".equalsIgnoreCase(parts[3]);
-                    suggestions.add(new Suggestion(parts[0], parts[1], parts[2], status));
+                    // userID, boolean status)
+                    String content = parts[0];
+                    String name = parts.length > 1 ? parts[1] : "";
+                    String userID = parts.length > 2 ? parts[2] : "";
+                    boolean status = parts.length > 3 && parts[3].equalsIgnoreCase("true");
+
+                    // Add the new suggestion to the list
+                    suggestions.add(new Suggestion(content, name, userID, status));
                 }
 
                 if (max < campID) {
