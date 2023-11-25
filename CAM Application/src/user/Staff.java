@@ -40,46 +40,101 @@ public class Staff extends User{
             case 1:{
                 System.out.println("Enter new name");
                 String name=sc.nextLine();
-                
                 c.setCampName(name);
                 CampDatabase.getInstance().update();
                 System.out.println("DONE");
+                break;
             }
             case 2:{
                 System.out.println("Enter new start date");
+                String date=sc.nextLine();
+                Date d=util.DateHelper.stringToDate(date);
+                c.setStartDate(d);
+                CampDatabase.getInstance().update();
+                System.out.println("DONE");
+                break;
             }
             case 3:{
                 System.out.println("Enter new end date");
+                String date=sc.nextLine();
+                Date d=util.DateHelper.stringToDate(date);
+                c.setEndDate(d);
+                CampDatabase.getInstance().update();
+                System.out.println("DONE");
+                break;
             }
             case 4:{
                 System.out.println("Enter new registration end date");
+                String date=sc.nextLine();
+                Date d=util.DateHelper.stringToDate(date);
+                c.setRegEndDate(d);
+                CampDatabase.getInstance().update();
+                System.out.println("DONE");
+                break;
             }
             case 5:{
                 System.out.println("Enter new faculty");
+                String f=sc.nextLine();
+                c.setFaculty(Faculty.valueOf(f.toUpperCase()));
+                CampDatabase.getInstance().update();
+                System.out.println("DONE");
+                break;
             }
             case 6:{
                 System.out.println("Enter new location");
+                String location=sc.nextLine();
+                c.setLocation(location);
+                CampDatabase.getInstance().update();
+                System.out.println("DONE");
+                break;
             }
             case 7:{
                 System.out.println("Enter new total slots");
+                int i =sc.nextInt();
+                sc.nextLine();
+                c.setCampAttendeeSlots(i);
+                CampDatabase.getInstance().update();
+                System.out.println("DONE");
+                break;
             }
             case 8:{
                 System.out.println("Enter new camp committee slots");
+                int i=sc.nextInt();
+                sc.nextLine();
+                c.setCampCommiteeSlots(i);
+                CampDatabase.getInstance().update();
+                System.out.println("DONE");
+                break;
             }
             case 9:{
                 System.out.println("Enter new description");
+                String des=sc.nextLine();
+                c.setDescription(des);
+                CampDatabase.getInstance().update();
+                System.out.println("DONE");
+                break;
             }
             case 10:{
                 System.out.println("Enter new visibility: 1 for on, 0 for off");
+                int x= sc.nextInt();
+                sc.nextLine();
+                if(x==1) {
+                    c.setVisibility(true);
+                }
+                else c.setVisibility(false);
+                CampDatabase.getInstance().update();
+                System.out.println("DONE");
+                break;
             }
         }
     }
-    /*public void DeleteCamp (int ID) {
+    public void DeleteCamp (int ID) {
+        Camp c= CampManager.getCamp();
 
-        CampDatabase.getInstance().deleteCamp(c);
+        CampDatabase.getInstance().deleteCamp(c.getCampID());
+
     }
 
-     */
     public void ViewEnquiries(Camp camp){
         System.out.println(camp.getEnquiries());
     }
