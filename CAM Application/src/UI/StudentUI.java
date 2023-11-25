@@ -3,8 +3,10 @@ package UI;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import camppackage.Enquiry;
 import login.LoginManager;
 import manager.CampManager;
+import manager.EnquiryManager;
 import user.UserManager;
 import view.ViewAvailableCamps;
 import view.ViewRegisteredCamps;
@@ -118,14 +120,16 @@ public class StudentUI {
 								break;
 
 							case 2:
-								/*ArrayList<Enquiry> e = campManager.getEnquiryByID(c);   //not implemented yet
-								if (e == null) {
+								ArrayList<Enquiry> enq = CampManager.getEnquiryByUser();
+								if (enq == null) {
 									System.out.println("1. Add enquiry");
 									System.out.println("2. Go back");
 									x = scan.nextInt();
 									switch(x) {
 										case 1:
-											campManager.addEnquiry(e);
+											System.out.println("Enter your enquiry: ");
+											String enqy = scan.next();
+											EnquiryManager.addEnquiry(enqy);
 											break;
 										case 2:
 											break;
@@ -133,7 +137,7 @@ public class StudentUI {
 
 								}
 								else {
-									e.printAllEnquiries();
+									EnquiryManager.printAllEnquiry();
 
 									System.out.println("1. Add enquiry");
 									System.out.println("2. Edit enquiry");
@@ -141,20 +145,20 @@ public class StudentUI {
 									System.out.println("4. Go back");
 									switch(x) {
 										case 1:
-											campManager.addEnquiry(e);
+											EnquiryManager.addEnquiry();
 											break;
 										case 2:
-											campManager.editEnquiry(e);
+											EnquiryManager.editEnquiry();
 											break;
 										case 3:
-											campManager.deleteEnquiry(e);
+											EnquiryManager.deleteEnquiry();
 											break;
 										case 4:
 											break;
 									}
 
 								}
-								*/
+								
 								break;
 
 							case 3:   //go back

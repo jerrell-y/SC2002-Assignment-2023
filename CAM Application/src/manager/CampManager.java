@@ -9,12 +9,17 @@ import format.CampFormatter;
 import user.Student;
 import user.User;
 import user.UserManager;
+import camppackage.Enquiry;
 
 public class CampManager {
     private static Camp camp;
 
     public static void setCamp(int campID) {
         CampManager.camp = CampDatabase.getInstance().getCampByID(campID);
+    }
+
+    public static Camp getCamp() {
+        return camp;
     }
     
     public static boolean isAttendee() {
@@ -93,6 +98,23 @@ public class CampManager {
                 CampDatabase.getInstance().update();
                 break;
             }
+        }
+    }
+
+    public static ArrayList<Enquiry> getEnquiryByUser() {
+        User user = UserManager.getUser();
+        ArrayList<Enquiry> eqr = camp.getEnquiries();
+        ArrayList<Enquiry> eqr2 = new ArrayList<Enquiry>();
+        for (int i = 0; i != eqr.size(); i++) {
+            if (eqr.get(i).getUserID() == user.getUserID()) {
+                eqr2.add(eqr.get(i));
+            }
+        }
+        if (eqr2.size() == 0){
+            return null;
+        }
+        else{
+            return eqr2;
         }
     }
 }
