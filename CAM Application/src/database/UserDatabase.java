@@ -43,7 +43,8 @@ public class UserDatabase implements Database<User> {
                 Faculty faculty = Faculty.valueOf(values[2]);
                 String password = values[3];
                 int points = Integer.parseInt(values[4]);
-                users.add(new Student(userID, password, name, faculty, points));
+                int commiteeCampID = Integer.parseInt(values[5]);
+                users.add(new Student(userID, password, name, faculty, points, commiteeCampID));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -77,7 +78,7 @@ public class UserDatabase implements Database<User> {
                 PrintWriter staffWriter = new PrintWriter(new FileWriter(staffFile))) {
 
             // Writing headers
-            studentWriter.println("Name,Email,Faculty,Password,Points");
+            studentWriter.println("Name,Email,Faculty,Password,Points,CommitteeCampID");
             staffWriter.println("Name,Email,Faculty,Password");
 
             for (User user : users) {
@@ -96,6 +97,7 @@ public class UserDatabase implements Database<User> {
                 if (user instanceof Student) {
                     Student student = (Student) user;
                     sb.append(",").append(student.getPoints());
+                    sb.append(",").append(student.getCommiteeCampID());
                     studentWriter.println(sb.toString());
                 } else if (user instanceof Staff) {
                     staffWriter.println(sb.toString());
