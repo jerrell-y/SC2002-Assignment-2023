@@ -31,10 +31,11 @@ public class EnquiryManager {
     public static void editEnquiry(String enq) { 
         if (enquiry.isAnswered()) {
             System.out.println("The enquiry has already been answered!\n");
-            return;
         }
-        enquiry.setContent(enq);
-        CampDatabase.getInstance().update();
+        else {
+            enquiry.setContent(enq);
+            CampDatabase.getInstance().update();
+        }
     }
 
     public static void deleteEnquiry(int enquiryNum) { 
@@ -47,10 +48,11 @@ public class EnquiryManager {
     public static void replyEnquiry(String reply) {
         if (enquiry.isAnswered()) {
             System.out.println("The enquiry has already been answered!\n");
-            return;
         }
-        enquiry.setReply(reply);
-        CampDatabase.getInstance().update();
+        else{
+            enquiry.setReply(reply);
+            CampDatabase.getInstance().update();
+        }
     }
 
 
@@ -72,7 +74,7 @@ public class EnquiryManager {
         return eqr.size(); 
     }
 
-        public static void printAllEnquiry() { 
+    public static void printAllEnquiry() { 
         Camp c = CampManager.getCamp();
         ArrayList<Enquiry> eqr = c.getEnquiries();
         int counter=1;
