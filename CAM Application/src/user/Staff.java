@@ -79,7 +79,8 @@ public class Staff extends User{
         System.out.println(camp.getEnquiries());
     }
     public void GenerateReport(){}
+    //public void GenerateReport(){}
     public void ViewSuggestions(){
-        Camp camp;
+        SuggestionManager.printAllSuggestions();
     }
 }

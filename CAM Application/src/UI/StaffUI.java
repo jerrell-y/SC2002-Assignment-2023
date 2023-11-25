@@ -32,14 +32,23 @@ public class StaffUI {
             choice = sc.nextInt();
             switch (choice) {
                 case 1: {
+                    String dateString;
                     System.out.println("enter camp name");
                     String campname = sc.nextLine();
-                    System.out.println("Enter a start date (format yyyy-MM-dd):");
-                    String dateString = sc.nextLine();
-                    Date startdate = util.DateHelper.stringToDate(dateString);
-                    System.out.println("Enter an end date (format yyyy-MM-dd):");
-                    dateString = sc.nextLine();
-                    Date enddate = util.DateHelper.stringToDate(dateString);
+                    int c=0;
+                    Date startdate, enddate;
+                    do {
+                        if(c>0){
+                            System.out.println("start date cannot be after end date");
+                        }
+                        System.out.println("Enter a start date (format yyyy-MM-dd):");
+                        dateString = sc.nextLine();
+                        startdate = util.DateHelper.stringToDate(dateString);
+                        System.out.println("Enter an end date (format yyyy-MM-dd):");
+                        dateString = sc.nextLine();
+                        enddate = util.DateHelper.stringToDate(dateString);
+                        c++;
+                    }while(startdate.compareTo(enddate)>0);
                     System.out.println("Enter a reg end date (format yyyy-MM-dd):");
                     dateString = sc.nextLine();
                     Date regenddate = DateHelper.stringToDate(dateString);

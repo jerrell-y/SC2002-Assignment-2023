@@ -33,6 +33,9 @@ public class StudentUI {
 						ViewAvailableCamps vac = new ViewAvailableCamps();
 						ArrayList<Integer> availableCamps = vac.displayCamps();
 						System.out.println();
+						if (availableCamps.size() == 0) {
+							break;
+						}
 
 						do {
 							System.out.println("Choose a camp: ");
@@ -92,6 +95,10 @@ public class StudentUI {
 					ArrayList<Integer> registeredCamps = vrc.displayCamps();
 					System.out.println();
 
+					if (registeredCamps.size() == 0) {
+						break;
+					}
+
 					do {
 						System.out.println("Choose a camp: ");
 						campChoice = scan.nextInt();
@@ -120,8 +127,8 @@ public class StudentUI {
 								if (enq == null) {
 									System.out.println("1. Add enquiry");
 									System.out.println("2. Go back");
-									int subsubChoice = scan.nextInt();
-									switch(subsubChoice) {
+									x = scan.nextInt();
+									switch(x) {
 										case 1:
 											System.out.println("Enter your enquiry: ");
 											String enqy = scan.next();
@@ -141,17 +148,12 @@ public class StudentUI {
 									System.out.println("2. Edit enquiry");
 									System.out.println("3. Delete enquiry");
 									System.out.println("4. Go back");
-									int subsubChoice = scan.nextInt();
-									switch(subsubChoice) {
+									switch(x) {
 										case 1:
-											System.out.println("Enter your enquiry: ");
-											String enqy = scan.next();
-											EnquiryManager.addEnquiry(enqy);
+											EnquiryManager.addEnquiry();
 											break;
 										case 2:
-											System.out.println("Enter new enquiry: ");
-											enqy = scan.next();
-											EnquiryManager.editEnquiry(enqy);
+											EnquiryManager.editEnquiry();
 											break;
 										case 3:
 											EnquiryManager.deleteEnquiry(enquiryNum);
