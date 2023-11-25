@@ -211,11 +211,15 @@ public class Camp{
         enquiries.add(enquiry);
     }
 
-    public void deleteEnquiry(int index) {
+    public void removeEnquiry(int index) {
         enquiries.remove(index);
     }
 
     public void addSuggestion(Suggestion suggestion) {
         suggestions.add(suggestion);
+    }
+
+    public void removeSuggestion(int index) {
+        suggestions.remove(index);
     }
 }

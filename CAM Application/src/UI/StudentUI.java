@@ -32,11 +32,6 @@ public class StudentUI {
 						int campChoice;
 						ViewAvailableCamps vac = new ViewAvailableCamps();
 						ArrayList<Integer> availableCamps = vac.displayCamps();
-
-						if (availableCamps.isEmpty()) {
-							System.out.println("There are currently no available camps.\n");
-							break;
-						}
 						System.out.println();
 
 						do {
@@ -66,12 +61,18 @@ public class StudentUI {
 									if (success) {
 										System.out.println("Successfully registered as a commitee member! \n");
 									}
+									else {
+										System.out.println("There are no more slots available! \n");
+									}
 									break;
 										
 								case 2:
 									success = CampManager.registerAttendee();
 									if (success) {
 										System.out.println("Successfully registered as an attendee! \n");
+									}
+									else {
+										System.out.println("There are no more slots available! \n");
 									}
 									break;
 
@@ -90,11 +91,6 @@ public class StudentUI {
 					ViewRegisteredCamps vrc = new ViewRegisteredCamps();
 					ArrayList<Integer> registeredCamps = vrc.displayCamps();
 					System.out.println();
-
-					if (registeredCamps.isEmpty()) {
-						System.out.println("You are currently not registered in any camps.\n");
-						break;
-					}
 
 					do {
 						System.out.println("Choose a camp: ");
@@ -137,8 +133,10 @@ public class StudentUI {
 
 								}
 								else {
-									EnquiryManager.printAllEnquiry();
-
+									EnquiryManager.printUserEnquiry();
+									System.out.println("Select an enquiry: ");
+									int enquiryNum = scan.nextInt();     //need to check if within eqr.size()
+									EnquiryManager.setEnquiry(enquiryNum);
 									System.out.println("1. Add enquiry");
 									System.out.println("2. Edit enquiry");
 									System.out.println("3. Delete enquiry");
@@ -151,7 +149,7 @@ public class StudentUI {
 											EnquiryManager.editEnquiry();
 											break;
 										case 3:
-											EnquiryManager.deleteEnquiry();
+											EnquiryManager.deleteEnquiry(enquiryNum);
 											break;
 										case 4:
 											break;
@@ -217,21 +215,24 @@ public class StudentUI {
 								break;
 
 							case 2:
-								/* 
-								ArrayList<Enquiry> e = campManager.getAllEnquiry(c);   //not implemented yet
-
-								e.printAllEnquiries();
+								EnquiryManager.printAllEnquiry();
+								System.out.println("Select an enquiry: ");
+								int enquiryNum = scan.nextInt();
+								EnquiryManager.setEnquiry(enquiryNum);
 
 								System.out.println("1. Reply enquiry");
 								System.out.println("2. Go back");
-								switch(x) {
+								int choicee = scan.nextInt();
+								switch(choicee) {
 									case 1:
-										campManager.replyEnquiry(e);
+										System.out.println("Enter reply: ");
+										String reply = scan.next();
+										EnquiryManager.replyEnquiry(reply);
 										break;
 									case 2:
 										break;
 								}
-								*/
+								
 								break;
 
 							case 3:   //generate report
