@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
+
+import database.CampDatabase;
 import login.*;
 import camppackage.Camp;
 
@@ -115,7 +117,7 @@ public class StaffUI {
                         case 2: {
                             System.out.println("Enter Camp ID of camp you wish to delete");
                             int ID = sc.nextInt();
-                           // s.DeleteCamp(ID);
+                            CampDatabase.getInstance().deleteCamp(ID);
                             break;
                         }
                         case 3: {
