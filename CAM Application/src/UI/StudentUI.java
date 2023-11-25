@@ -110,8 +110,9 @@ public class StudentUI {
 					
 					if (CampManager.isAttendee()) {
 						System.out.println("1. Withdraw from camp");
-						System.out.println("2. View enquiry");
-						System.out.println("3. Go back");
+						System.out.println("2. Add new enquiry");
+						System.out.println("3. View enquiries");
+						System.out.println("4. Go back");
 
 						subChoice = scan.nextInt();
 						switch (subChoice) {

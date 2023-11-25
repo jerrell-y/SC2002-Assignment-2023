@@ -123,7 +123,7 @@ public class CampManager {
         ArrayList<Enquiry> eqr = camp.getEnquiries();
         ArrayList<Enquiry> eqr2 = new ArrayList<Enquiry>();
         for (int i = 0; i != eqr.size(); i++) {
-            if (eqr.get(i).getUserID() == user.getUserID()) {
+            if (eqr.get(i).getUserID().equals(user.getUserID())) {
                 eqr2.add(eqr.get(i));
             }
         }

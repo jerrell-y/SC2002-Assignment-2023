@@ -55,6 +55,7 @@ public class EnquiryManager {
         else{
             enquiry.setReply(reply);
             user2.addPoints();                         //need upcast?
+            enquiry.setAnswered(true);
             CampDatabase.getInstance().update();
         }
     }
@@ -67,7 +68,8 @@ public class EnquiryManager {
         int counter=1;
 
         for (int i=0; i<eqr.size(); i++) {
-            if (user.getUserID() == eqr.get(i).getUserID()) {
+            System.out.println("\n\n" + user.getUserID() + "," + eqr.get(i).getUserID());
+            if (user.getUserID().equals(eqr.get(i).getUserID())) {
                 System.out.println(counter + ". Name: " + eqr.get(i).getName() + "Content: " + eqr.get(i).getContent());
                 if (eqr.get(i).isAnswered()){
                     System.out.println("Reply: " + eqr.get(i).getReply());
