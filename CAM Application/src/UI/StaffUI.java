@@ -201,6 +201,7 @@ public class StaffUI {
 						}
 					} while (!newPass1.equals(newPass2));
                     LoginManager.changePassword(s, newPass1);
+                    System.out.println("Your password has been changed successfully. Please login again");
                     choice = 5;
                     break;
                 }

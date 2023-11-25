@@ -274,8 +274,8 @@ public class StudentUI {
 							System.out.println("Please enter the same password!\n");
 						}
 					} while (!newPass1.equals(newPass2));
-
 					LoginManager.changePassword(UserManager.getUser(), newPass1);
+					System.out.println("Your password has been changed successfully. Please login again");
 					mainChoice = 4;
 					break;
 				
