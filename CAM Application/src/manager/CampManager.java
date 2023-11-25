@@ -67,6 +67,19 @@ public class CampManager {
             return false;
         }
         camp.addCampCommitee(user.getUserID());
+        
         return true;
+    }
+
+    public static void withdraw() {
+        User user = UserManager.getUser();
+        int i;
+        ArrayList<String> campAttendees = camp.getCampAttendees();
+        for (i = 0; i != campAttendees.size(); i++) {
+            if (campAttendees.get(i).equals(user.getUserID())) {
+                camp.removeCampAttendee(i);
+                break;
+            }
+        }
     }
 }

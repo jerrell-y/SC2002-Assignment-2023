@@ -11,7 +11,7 @@ import user.UserManager;
 public class ViewAvailableCamps implements ViewCamps {
 
     public ArrayList<Integer> displayCamps() {
-        int count = 0;
+        int count = 1;
         CampFormatter cf = new CampFormatter();
         ArrayList<Camp> campList = CampDatabase.getInstance().getCamps();
         ArrayList<Integer> availableCamps = new ArrayList<Integer>();
