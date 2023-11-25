@@ -13,13 +13,8 @@ public class Staff extends User{
     public Staff(String userID, String password, String name, Faculty faculty) {
         super(userID, password, name, faculty);
     }
-<<<<<<< HEAD
-
-    /*public void CreateCamp() {
-=======
     Staff s;
     public static void CreateCamp() {
->>>>>>> 102a334e6608b96fd2b732378af7116262add00f
         Scanner sc = new Scanner(System.in);
         System.out.println("enter camp name");
         String campname = sc.nextLine();
@@ -123,8 +118,4 @@ public class Staff extends User{
     public void ViewSuggestions(){
         Camp camp;
     }
-<<<<<<< HEAD
-    */
-=======
->>>>>>> 102a334e6608b96fd2b732378af7116262add00f
 }
