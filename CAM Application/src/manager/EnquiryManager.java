@@ -11,8 +11,9 @@ import user.UserManager;
 public class EnquiryManager {
     private static Enquiry enquiry;
 
-    public static void setEnquiry(Enquiry enquiry) {
-        EnquiryManager.enquiry = enquiry;
+    public static void setEnquiry(int enquiryNum) {
+        Camp c = CampManager.getCamp();
+        EnquiryManager.enquiry = c.getEnquiries().get(enquiryNum);
     }
 
     public static Enquiry getEnquiry() {
@@ -22,8 +23,8 @@ public class EnquiryManager {
     public static void addEnquiry(String enq) { 
         User user = UserManager.getUser();
         Camp c = CampManager.getCamp();
-        Enquiry eqr2 = new Enquiry(enq, user.getName(), user.getUserID());
-        c.addEnquiry(eqr2);
+        Enquiry eqr = new Enquiry(enq, user.getName(), user.getUserID());
+        c.addEnquiry(eqr);
         UserDatabase.getInstance().update();
     }
 
@@ -38,31 +39,32 @@ public class EnquiryManager {
     }
 
     public static void deleteEnquiry() { 
-        return; 
+        
+        return;
     }
 
-    public static void printUserEnquiry() { 
+    public static int printUserEnquiry() { 
         Camp c = CampManager.getCamp();
         User user = UserManager.getUser();
         ArrayList<Enquiry> eqr = c.getEnquiries();
 
-        for (int i=0; i<eqr.size(); i++) {
+        for (int i=1; i<=eqr.size(); i++) {
             if (user.getUserID() == eqr.get(i).getUserID()) {
-                System.out.println("Name: " + eqr.get(i).getName() + "Content: " + eqr.get(i).getContent());
+                System.out.println(i + ". Name: " + eqr.get(i).getName() + "Content: " + eqr.get(i).getContent());
                 if (eqr.get(i).isAnswered()){
                     System.out.println("Reply: " + eqr.get(i).getReply());
                 }
             }
         }
-        return; 
+        return eqr.size(); 
     }
 
         public static void printAllEnquiry() { 
         Camp c = CampManager.getCamp();
         ArrayList<Enquiry> eqr = c.getEnquiries();
 
-        for (int i=0; i<eqr.size(); i++) {
-            System.out.println("Name: " + eqr.get(i).getName() + "Content: " + eqr.get(i).getContent());
+        for (int i=1; i<=eqr.size(); i++) {
+            System.out.println(i + ". Name: " + eqr.get(i).getName() + "Content: " + eqr.get(i).getContent());
             if (eqr.get(i).isAnswered()){
                    System.out.println("Reply: " + eqr.get(i).getReply());
             }

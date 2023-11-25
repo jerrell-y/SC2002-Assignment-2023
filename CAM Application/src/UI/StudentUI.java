@@ -32,11 +32,6 @@ public class StudentUI {
 						int campChoice;
 						ViewAvailableCamps vac = new ViewAvailableCamps();
 						ArrayList<Integer> availableCamps = vac.displayCamps();
-
-						if (availableCamps.isEmpty()) {
-							System.out.println("There are currently no available camps.\n");
-							break;
-						}
 						System.out.println();
 
 						do {
@@ -66,12 +61,18 @@ public class StudentUI {
 									if (success) {
 										System.out.println("Successfully registered as a commitee member! \n");
 									}
+									else {
+										System.out.println("There are no more slots available! \n");
+									}
 									break;
 										
 								case 2:
 									success = CampManager.registerAttendee();
 									if (success) {
 										System.out.println("Successfully registered as an attendee! \n");
+									}
+									else {
+										System.out.println("There are no more slots available! \n");
 									}
 									break;
 
@@ -90,11 +91,6 @@ public class StudentUI {
 					ViewRegisteredCamps vrc = new ViewRegisteredCamps();
 					ArrayList<Integer> registeredCamps = vrc.displayCamps();
 					System.out.println();
-
-					if (registeredCamps.isEmpty()) {
-						System.out.println("You are currently not registered in any camps.\n");
-						break;
-					}
 
 					do {
 						System.out.println("Choose a camp: ");
@@ -120,7 +116,8 @@ public class StudentUI {
 								break;
 
 							case 2:
-								/*ArrayList<Enquiry> enq = CampManager.getEnquiryByUser();
+								ArrayList<Enquiry> enq = CampManager.getEnquiryByUser();
+								EnquiryManager.setEnquiry(enq);
 								if (enq == null) {
 									System.out.println("1. Add enquiry");
 									System.out.println("2. Go back");
@@ -138,12 +135,9 @@ public class StudentUI {
 								}
 								else {
 									EnquiryManager.printUserEnquiry();
-									int anotherChoice = scan.nextInt();
-									switch (anotherChoice) {
-										case 1:
-										
-											break;
-									}
+									System.out.println("Select an enquiry: ");
+									int enquiryNum = scan.nextInt();     //need to check if within eqr.size()
+									EnquiryManager.setEnquiry(enquiryNum);
 									System.out.println("1. Add enquiry");
 									System.out.println("2. Edit enquiry");
 									System.out.println("3. Delete enquiry");
@@ -169,7 +163,7 @@ public class StudentUI {
 
 								}
 								
-								break;*/
+								break;
 
 							case 3:   //go back
 								break;
