@@ -47,14 +47,14 @@ public class EnquiryManager {
     }
 
     public static void replyEnquiry(String reply) {          
-        User user = UserManager.getUser();
-        Student user2 = (Student) user;
+     //   User user = UserManager.getUser();
+    //    Student user2 = (Student) user;
         if (enquiry.isAnswered()) {
             System.out.println("The enquiry has already been answered!\n");
         }
         else{
             enquiry.setReply(reply);
-            user2.addPoints();                         //need upcast?
+       //     user2.addPoints();                         //need upcast?
             enquiry.setAnswered(true);
             CampDatabase.getInstance().update();
         }

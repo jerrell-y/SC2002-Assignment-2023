@@ -221,7 +221,7 @@ public class StudentUI {
 								EnquiryManager.printAllEnquiry();
 								System.out.println("Select an enquiry: ");
 								int enquiryNum = scan.nextInt();
-								EnquiryManager.setEnquiry(enquiryNum);
+								EnquiryManager.setEnquiry(enquiryNum-1);
 
 								System.out.println("1. Reply enquiry");
 								System.out.println("2. Go back");
@@ -229,7 +229,8 @@ public class StudentUI {
 								switch(choicee) {
 									case 1:
 										System.out.println("Enter reply: ");
-										String reply = scan.next();
+										scan.nextLine();
+										String reply = scan.nextLine();
 										EnquiryManager.replyEnquiry(reply);
 										break;
 									case 2:
