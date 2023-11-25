@@ -13,6 +13,5 @@ public class Student extends User{
 	public void addPoints() {
 		points++;
 	}
-
 }
 
