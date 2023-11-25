@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
-
+import login.*;
 import camppackage.Camp;
 import manager.OldCampManager;
 import user.Faculty;
@@ -20,9 +20,9 @@ public class StaffUI {
         System.out.println("Select Function");
         System.out.println("1. Create camp");
         System.out.println("2. View Created camps");
-        System.out.println("4. View all camps");
-        System.out.println("5. Change password");
-        System.out.println("6. Logout");
+        System.out.println("3. View all camps");
+        System.out.println("4. Change password");
+        System.out.println("5. Logout");
         choice = sc.nextInt();
         switch (choice) {
             case 1: {
@@ -69,23 +69,18 @@ public class StaffUI {
                 break;
             }
             case 3: {
-                s.DeleteCamp();
+                s.ViewCreateCamps();
                 break;
             }
             case 4: {
-                s.ViewCamps();
+                String newPW;
+                System.out.println("Enter new password");
+                newPW=sc.nextLine();
+                LoginManager.changePassword(s,newPW);
                 break;
             }
             case 5: {
-                Staff.GenerateStudentReport();
                 break;
-            }
-            case 6: {
-                Staff.GenerateCommitteeReport();
-                break;
-            }
-            case 7:{
-
             }
             default:
                 throw new IllegalStateException("Unexpected value: " + choice);

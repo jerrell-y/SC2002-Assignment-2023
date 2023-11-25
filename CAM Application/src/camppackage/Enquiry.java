@@ -10,7 +10,6 @@ public class Enquiry extends Message {
         this.reply = reply;
         this.answered = answered;
     }
-
     public Enquiry(String content, String name, String userID){
         super(content, name, userID);
         reply = "";
