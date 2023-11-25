@@ -155,7 +155,7 @@ public class StudentUI {
 											EnquiryManager.editEnquiry(enqy);
 											break;
 										case 3:
-											EnquiryManager.deleteEnquiry();
+											EnquiryManager.deleteEnquiry(enquiryNum);
 											break;
 										case 4:
 											break;

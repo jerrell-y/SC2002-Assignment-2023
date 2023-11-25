@@ -211,7 +211,7 @@ public class Camp{
         enquiries.add(enquiry);
     }
 
-    public void deleteEnquiry(int index) {
+    public void removeEnquiry(int index) {
         enquiries.remove(index);
     }
 
