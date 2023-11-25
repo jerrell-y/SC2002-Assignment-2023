@@ -122,7 +122,20 @@ public class StaffUI {
                             break;
                         }
                         case 5: {
-                            s.GenerateReport();
+                            int a;
+                            do{
+                                System.out.println("1. Generate student report");
+                                System.out.println("2. Generate committee report");
+                                a=sc.nextInt();
+                            }
+                            while(a<0 || a>2);
+                            if(a==1){
+                                CampManager.generateStudentReport();
+                            }
+                            else{
+                                CampManager.generateCommitteeReport();
+
+                            }
                             break;
                         }
                         case 6: {

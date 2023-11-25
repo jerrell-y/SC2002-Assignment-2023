@@ -226,8 +226,12 @@ public class CampDatabase implements Database<Camp> {
         return true;
     }
 
-    public void deleteCamp(Camp camp) {
-        camps.remove(camp);
-        CampDatabase.getInstance().update();
+    public void deleteCamp(int campID) {
+        for (Camp camp : camps) {
+            if (camp.getCampID() == campID) {
+                camps.remove(camp);
+                CampDatabase.getInstance().update();
+            }
+        }
     }
 }
