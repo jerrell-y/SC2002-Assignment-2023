@@ -55,6 +55,7 @@ public class EnquiryManager {
         else{
             enquiry.setReply(reply);
             user2.addPoints();                         //need upcast?
+            enquiry.setAnswered(true);
             CampDatabase.getInstance().update();
         }
     }
