@@ -22,6 +22,7 @@ public class LoginUI {
         } while (choice != 2);
         sc.close();
     } */
+    private static boolean changedDefaultPassword = false;
 
     public static User displayLoginForm() {
         Scanner sc = new Scanner(System.in);
@@ -47,14 +48,24 @@ public class LoginUI {
 						}
 					} while (!newPass1.equals(newPass2));
                     LoginManager.changePassword(loggedInUser, newPass1);
-                    System.out.println("Your password has been changed successfully.");
+                    System.out.println("Your password has been changed successfully. Please login again");
+                    changedDefaultPassword = true;
                 }
                 break;
             } else {
                 System.out.println("Invalid userID or password");
             }
         }
-        System.out.println("Login Successful");
+        // System.out.println("Login Successful");
         return loggedInUser;
     }
+
+    public static boolean getChangedDefaultPassword() {
+        return changedDefaultPassword;
+    }
+
+    public static void setChangedDefaultPassword(boolean changedDefaultPassword) {
+        LoginUI.changedDefaultPassword = changedDefaultPassword;
+    }
+
 }
