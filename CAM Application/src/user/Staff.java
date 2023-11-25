@@ -3,6 +3,7 @@ import manager.*;
 import camppackage.*;
 import java.util.*;
 import util.DateHelper;
+import view.*;
 import java.text.SimpleDateFormat;
 public class Staff extends User{
 
@@ -61,14 +62,19 @@ public class Staff extends User{
         OldCampManager.deleteCamp(c);
     }
 
-    public void ViewCamps (){
-        campName.generateReport();
+    public void ViewCreateCamps (){
+        view.ViewCreatedCamps();
+        Scanner sc= new Scanner(System.in);
+        int ch= sc.nextInt();
+
+
     }
     public void ViewEnquiries(Camp camp){
         System.out.println(camp.getEnquiries());
     }
-    public void Answer(Camp camp){
-        camp.answerEnquiry();
+    public void ViewSuggestions(){
+        Camp camp;
     }
+
     
 }
