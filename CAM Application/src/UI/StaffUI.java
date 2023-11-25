@@ -7,7 +7,8 @@ import java.util.Date;
 import java.util.Scanner;
 import login.*;
 import camppackage.Camp;
-import manager.OldCampManager;
+
+import manager.CampManager;
 import user.Faculty;
 import user.Staff;
 import user.User;
@@ -72,6 +73,17 @@ public class StaffUI {
                     ViewCreatedCamps v= new ViewCreatedCamps();
                     ArrayList<Integer> CreatedCamps = v.displayCamps();
                     System.out.println();
+                    int ch,subch;
+                    do {
+                        System.out.println("Choose a camp: ");
+                        ch = sc.nextInt();
+                        if (ch > CreatedCamps.size() || ch <= 0) {
+                            System.out.println("Please enter a valid camp number! \n");
+                        }
+                    } while (ch > CreatedCamps.size() || ch <= 0);
+                    CampManager.setCamp(CreatedCamps.get(ch-1));
+                    CampManager.printDetails();
+                    do{
                     System.out.println("Select Function");
                     System.out.println("1. Edit Camp");
                     System.out.println("2. Delete Camp");
@@ -79,8 +91,8 @@ public class StaffUI {
                     System.out.println("4. View suggestions");
                     System.out.println("5. Generate report");
                     System.out.println("6. Go back");
-                    int ch = sc.nextInt();
-                    switch (ch) {
+                    subch = sc.nextInt();
+                    switch (subch) {
                         case 1: {
                             s.EditCamp();
                             break;
@@ -88,7 +100,7 @@ public class StaffUI {
                         case 2: {
                             System.out.println("Enter Camp ID of camp you wish to delete");
                             int ID = sc.nextInt();
-                            s.DeleteCamp(ID);
+                           // s.DeleteCamp(ID);
                             break;
                         }
                         case 3: {
@@ -111,9 +123,11 @@ public class StaffUI {
                             throw new IllegalStateException("Unexpected value: " + choice);
                     }
                     break;
-                }
+                }while(subch<=0 && subch>6);}
                 case 3: {
-                    s.ViewCreatedCamps();
+                    ViewAllCamps v= new ViewAllCamps();
+                    ArrayList<Integer> AllCamps = v.displayCamps();
+                    System.out.println();
                     break;
                 }
                 case 4: {
