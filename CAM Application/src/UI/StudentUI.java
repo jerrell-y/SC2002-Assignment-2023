@@ -129,10 +129,15 @@ public class StudentUI {
 								break;
 					
 							case 3:
-								EnquiryManager.printUserEnquiry();
+								ArrayList<Enquiry> userEnquiries = EnquiryManager.printUserEnquiry();
+								if (userEnquiries.size() == 0) {
+									System.out.println("You have no enquiries!\n");
+									break;
+								}
+
 								System.out.println("Select an enquiry: ");
-								int enquiryNum = scan.nextInt();     //need to check if within eqr.size()
-								EnquiryManager.setEnquiry(enquiryNum-1);
+								int enquiryNum = scan.nextInt();
+								EnquiryManager.setEnquiry(userEnquiries.get(enquiryNum-1));
 								System.out.println("1. Edit enquiry");
 								System.out.println("2. Delete enquiry");
 								System.out.println("3. Go back");
@@ -218,10 +223,16 @@ public class StudentUI {
 								break;
 
 							case 2:
-								EnquiryManager.printAllEnquiry();
+								ArrayList<Enquiry> allEnquiries = EnquiryManager.printAllEnquiry();
+
+								if (allEnquiries.size() == 0) {
+									System.out.println("There are no enquiries!\n");
+									break;
+								}
+
 								System.out.println("Select an enquiry: ");
 								int enquiryNum = scan.nextInt();
-								EnquiryManager.setEnquiry(enquiryNum-1);
+								EnquiryManager.setEnquiry(allEnquiries.get(enquiryNum-1));
 
 								System.out.println("1. Reply enquiry");
 								System.out.println("2. Go back");

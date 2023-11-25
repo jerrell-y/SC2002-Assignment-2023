@@ -9,7 +9,7 @@ import java.util.Scanner;
 import database.CampDatabase;
 import login.*;
 import camppackage.Camp;
-
+import camppackage.Enquiry;
 import manager.CampManager;
 import manager.EnquiryManager;
 import manager.SuggestionManager;
@@ -123,11 +123,18 @@ public class StaffUI {
                             break;
                         }
                         case 3: {
-                            EnquiryManager.printAllEnquiry();
+                            ArrayList<Enquiry> allEnquiries = EnquiryManager.printAllEnquiry();
+
+							if (allEnquiries.size() == 0) {
+								System.out.println("There are no enquiries!\n");
+								break;
+							}
+							
                             System.out.println("Select the enquiry you wish to reply to: ");
                             int enquiryNum = sc.nextInt();
                             sc.nextLine();
-                            EnquiryManager.setEnquiry(enquiryNum);
+                            EnquiryManager.setEnquiry(allEnquiries.get(enquiryNum-1));
+                            
                             String reply;
                             System.out.println("Enter reply");
                             reply=sc.nextLine();

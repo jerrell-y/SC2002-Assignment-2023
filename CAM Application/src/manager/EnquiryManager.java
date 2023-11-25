@@ -12,9 +12,8 @@ import user.UserManager;
 public class EnquiryManager {
     private static Enquiry enquiry;
 
-    public static void setEnquiry(int enquiryNum) {
-        Camp c = CampManager.getCamp();
-        EnquiryManager.enquiry = c.getEnquiries().get(enquiryNum);
+    public static void setEnquiry(Enquiry enquiry) {
+        EnquiryManager.enquiry = enquiry;
     }
 
     public static Enquiry getEnquiry() {
@@ -65,45 +64,41 @@ public class EnquiryManager {
     }
 
 
-    public static int printUserEnquiry() { 
+    public static ArrayList<Enquiry> printUserEnquiry() { 
         Camp c = CampManager.getCamp();
         User user = UserManager.getUser();
         ArrayList<Enquiry> eqr = c.getEnquiries();
+        ArrayList<Enquiry> userEnquiries = new ArrayList<Enquiry>();
         int counter=1;
 
-        System.out.println(eqr.size());
-        /*
-        if (eqr.size() == 0) {
-            System.out.print("No enquiries found!");
-            return 0;
-        }
-        */
-
         for (int i=0; i<eqr.size(); i++) {
+            Enquiry enquiry = eqr.get(i);
             //System.out.println("\n\n" + user.getUserID() + "," + eqr.get(i).getUserID());
-            if (user.getUserID().equals(eqr.get(i).getUserID())) {
-                System.out.println(counter + ". Name: " + eqr.get(i).getName() + " Content: " + eqr.get(i).getContent());
-                if (eqr.get(i).isAnswered()){
-                    System.out.println("Reply: " + eqr.get(i).getReply());
+            if (user.getUserID().equals(enquiry.getUserID())) {
+                System.out.println(counter + ". Name: " + enquiry.getName() + " Content: " + enquiry.getContent());
+                if (enquiry.isAnswered()){
+                    System.out.println("Reply: " + enquiry.getReply());
                 }
+                userEnquiries.add(enquiry);
                 counter++;
             }
         }
-        return eqr.size(); 
+        return userEnquiries; 
     }
 
-    public static void printAllEnquiry() { 
+    public static ArrayList<Enquiry> printAllEnquiry() { 
         Camp c = CampManager.getCamp();
         ArrayList<Enquiry> eqr = c.getEnquiries();
         int counter=1;
 
         for (int i=0; i<eqr.size(); i++) {
-            System.out.println(counter + ". Name: " + eqr.get(i).getName() + " Content: " + eqr.get(i).getContent());
-            if (eqr.get(i).isAnswered()){
-                   System.out.println("Reply: " + eqr.get(i).getReply());
+            Enquiry enquiry = eqr.get(i);
+            System.out.println(counter + ". Name: " + enquiry.getName() + " Content: " + enquiry.getContent());
+            if (enquiry.isAnswered()){
+                   System.out.println("Reply: " + enquiry.getReply());
             }
             counter++;
         }
-        return; 
+        return eqr; 
     }
 }
