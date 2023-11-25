@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import camppackage.Camp;
 import camppackage.Enquiry;
 import database.CampDatabase;
-import database.UserDatabase;
 import user.User;
 import user.UserManager;
 
@@ -44,8 +43,12 @@ public class EnquiryManager {
         EnquiryManager.enquiry = null;
         c.removeEnquiry(enquiryNum);
         CampDatabase.getInstance().update();
-        
     }
+
+    public static void replyEnquiry() {    //not yet done
+        return;
+    }
+
 
     public static int printUserEnquiry() { 
         Camp c = CampManager.getCamp();

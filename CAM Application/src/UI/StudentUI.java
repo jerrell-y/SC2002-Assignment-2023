@@ -117,7 +117,6 @@ public class StudentUI {
 
 							case 2:
 								ArrayList<Enquiry> enq = CampManager.getEnquiryByUser();
-								EnquiryManager.setEnquiry(enq);
 								if (enq == null) {
 									System.out.println("1. Add enquiry");
 									System.out.println("2. Go back");
