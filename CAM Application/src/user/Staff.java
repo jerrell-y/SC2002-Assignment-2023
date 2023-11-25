@@ -20,9 +20,8 @@ public class Staff extends User{
     }
     public void EditCamp () {
         int campID;
+        Camp c = CampManager.getCamp();
         Scanner sc= new Scanner(System.in);
-        System.out.println("enter camp ID you wish to edit");
-        campID=sc.nextInt();
         System.out.println("Enter the attribute you wish to edit");
         System.out.println("1. name");
         System.out.println("2. Start Date");
@@ -36,12 +35,14 @@ public class Staff extends User{
         System.out.println("10. Visibility");
         System.out.println("11. Go back");
         int ch=sc.nextInt();
+        sc.nextLine();
         switch(ch){
             case 1:{
                 System.out.println("Enter new name");
                 String name=sc.nextLine();
-                Camp c=CampDatabase.getInstance().getCampByID(CampManager.getCamp().getCampID());
+                
                 c.setCampName(name);
+                CampDatabase.getInstance().update();
                 System.out.println("DONE");
             }
             case 2:{

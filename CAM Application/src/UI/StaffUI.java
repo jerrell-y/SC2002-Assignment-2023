@@ -100,6 +100,7 @@ public class StaffUI {
                     } while (ch > CreatedCamps.size() || ch <= 0);
                     CampManager.setCamp(CreatedCamps.get(ch-1));
                     CampManager.printDetails();
+                    
                     do{
                     System.out.println("Select Function");
                     System.out.println("1. Edit Camp");
