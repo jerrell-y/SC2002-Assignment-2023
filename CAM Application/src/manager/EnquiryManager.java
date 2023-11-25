@@ -68,7 +68,7 @@ public class EnquiryManager {
         int counter=1;
 
         for (int i=0; i<eqr.size(); i++) {
-            System.out.println("\n\n" + user.getUserID() + "," + eqr.get(i).getUserID());
+            //System.out.println("\n\n" + user.getUserID() + "," + eqr.get(i).getUserID());
             if (user.getUserID().equals(eqr.get(i).getUserID())) {
                 System.out.println(counter + ". Name: " + eqr.get(i).getName() + "Content: " + eqr.get(i).getContent());
                 if (eqr.get(i).isAnswered()){

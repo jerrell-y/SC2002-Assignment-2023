@@ -123,7 +123,7 @@ public class StudentUI {
 
 							case 2:
 								System.out.println("Enter your enquiry: ");
-								String enqy = scan.next();
+								String enqy = scan.nextLine();
 								EnquiryManager.addEnquiry(enqy);
 								break;
 					
@@ -139,7 +139,7 @@ public class StudentUI {
 								switch(subsubChoice) {
 									case 1:
 										System.out.println("Enter new enquiry: ");
-										enqy = scan.next();
+										enqy = scan.nextLine();
 										EnquiryManager.editEnquiry(enqy);
 										break;
 									case 2:
