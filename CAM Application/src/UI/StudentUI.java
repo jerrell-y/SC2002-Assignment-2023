@@ -19,14 +19,16 @@ public class StudentUI {
 		int mainChoice, subChoice;
 		do {
 			Scanner scan = new Scanner(System.in);    	
-			System.out.println("Select Function");
+			System.out.println("================================");
+			System.out.println("List of options:");
 			System.out.println("1. View available camps");
 			System.out.println("2. View registered camps");
 			System.out.println("3. Change password");
 			System.out.println("4. Logout");
-			System.out.println();
+			System.out.println("================================");
 
 			System.out.print("Choose an option: ");
+			System.out.println();
 			mainChoice = scan.nextInt();
 			switch (mainChoice) {
 				case 1:
