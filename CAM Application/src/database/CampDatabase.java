@@ -57,9 +57,9 @@ public class CampDatabase implements Database<Camp> {
 
                 // Parsing CampAttendees and Campcommitees
                 ArrayList<String> campAttendees = new ArrayList<>(
-                        Arrays.asList(values[12].replaceAll("\\[|\\]", "").split(",")));
+                        Arrays.asList(values[12].replaceAll("\\[|\\]|\"", "").split(",")));
                 ArrayList<String> campcommitees = new ArrayList<>(
-                        Arrays.asList(values[13].replaceAll("\\[|\\]", "").split(",")));
+                        Arrays.asList(values[13].replaceAll("\\[|\\]|\"", "").split(",")));
 
                 // Parsing Enquiries
                 ArrayList<Enquiry> enquiries = new ArrayList<>();
