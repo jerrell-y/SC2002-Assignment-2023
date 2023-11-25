@@ -190,10 +190,19 @@ public class StaffUI {
                     break;
                 }
                 case 4: {
-                    String newPW;
-                    System.out.println("Enter new password");
-                    newPW = sc.nextLine();
-                    LoginManager.changePassword(s, newPW);
+                    String newPass1, newPass2;
+                    do {
+						System.out.print("Enter your new password: ");
+						newPass1 = sc.next();
+						System.out.print("Enter your new password again: ");
+						newPass2 = sc.next();
+						if (!newPass1.equals(newPass2)) {
+							System.out.println("Please enter the same password!\n");
+						}
+					} while (!newPass1.equals(newPass2));
+                    LoginManager.changePassword(s, newPass1);
+                    System.out.println("Your password has been changed successfully. Please login again");
+                    choice = 5;
                     break;
                 }
                 case 5: {

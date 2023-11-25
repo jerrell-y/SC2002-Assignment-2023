@@ -67,7 +67,9 @@ public class CampFormatter implements iFormatter<Camp>{
 
     public String formatFull(Camp camp) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        return  "Camp Name: " + camp.getCampName() +
+        return  "\n======================================" +
+                "\nCamp Name: " + camp.getCampName() +
+                "\n======================================" +
                 "\nStart Date: " + dateFormat.format(camp.getStartDate().getTime()) +
                 "\nEnd Date: " + dateFormat.format(camp.getEndDate().getTime()) +
                 "\nRegistration End Date: " + dateFormat.format(camp.getRegEndDate().getTime()) +
@@ -78,7 +80,8 @@ public class CampFormatter implements iFormatter<Camp>{
                 "\nTotal Camp Commitee Slots: " + camp.getCampCommiteeSlots() +
                 "\nRemaining Camp Attendee Slots: " + (camp.getCampCommiteeSlots() - camp.getCampCommitees().size()) +
                 "\nDescription: " + camp.getDescription() +
-                "\nStaff in charge: " + camp.getStaffInCharge();
+                "\nStaff in charge: " + camp.getStaffInCharge() + 
+                "\n======================================";
     }
 
 }
