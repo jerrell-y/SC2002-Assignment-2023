@@ -9,14 +9,12 @@ import util.DateHelper;
 import java.text.SimpleDateFormat;
 import database.*;
 public class Staff extends User{
-    private static ArrayList<Camp> createdCampList=new ArrayList<>();
     public Staff(String userID, String password, String name, Faculty faculty) {
         super(userID, password, name, faculty);
     }
 
     public boolean CreateCamp(String campName, Date startDate, Date endDate, Date regEndDate, Faculty faculty, String location, int campAttendeeSlots, int campCommiteeSlots, String description, String staffInCharge, boolean visibility){
         Camp c = new Camp(campName, startDate, endDate, regEndDate, faculty, location, campAttendeeSlots, campCommiteeSlots, description, staffInCharge,visibility);
-        createdCampList.add(c);
         boolean x=CampDatabase.getInstance().addCamp(c);
         return x;
     }
@@ -77,9 +75,6 @@ public class Staff extends User{
     }
 
      */
-    public void ViewCreatedCamps(){
-        System.out.println(createdCampList);
-    }
     public void ViewEnquiries(Camp camp){
         System.out.println(camp.getEnquiries());
     }

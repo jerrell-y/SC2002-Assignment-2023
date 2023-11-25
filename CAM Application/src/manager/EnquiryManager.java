@@ -41,8 +41,32 @@ public class EnquiryManager {
         return; 
     }
 
-    public static void printAllEnquiry() { 
+    public static void printUserEnquiry() { 
+        Camp c = CampManager.getCamp();
+        User user = UserManager.getUser();
+        ArrayList<Enquiry> eqr = c.getEnquiries();
 
+        for (int i=0; i<eqr.size(); i++) {
+            if (user.getUserID() == eqr.get(i).getUserID()) {
+                System.out.println("Name: " + eqr.get(i).getName() + "Content: " + eqr.get(i).getContent());
+                if (eqr.get(i).isAnswered()){
+                    System.out.println("Reply: " + eqr.get(i).getReply());
+                }
+            }
+        }
+        return; 
+    }
+
+        public static void printAllEnquiry() { 
+        Camp c = CampManager.getCamp();
+        ArrayList<Enquiry> eqr = c.getEnquiries();
+
+        for (int i=0; i<eqr.size(); i++) {
+            System.out.println("Name: " + eqr.get(i).getName() + "Content: " + eqr.get(i).getContent());
+            if (eqr.get(i).isAnswered()){
+                   System.out.println("Reply: " + eqr.get(i).getReply());
+            }
+        }
         return; 
     }
 }
