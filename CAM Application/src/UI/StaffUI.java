@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
+
+import database.CampDatabase;
 import login.*;
 import camppackage.Camp;
 
@@ -98,6 +100,7 @@ public class StaffUI {
                     } while (ch > CreatedCamps.size() || ch <= 0);
                     CampManager.setCamp(CreatedCamps.get(ch-1));
                     CampManager.printDetails();
+                    
                     do{
                     System.out.println("Select Function");
                     System.out.println("1. Edit Camp");
@@ -115,7 +118,7 @@ public class StaffUI {
                         case 2: {
                             System.out.println("Enter Camp ID of camp you wish to delete");
                             int ID = sc.nextInt();
-                           // s.DeleteCamp(ID);
+                            CampDatabase.getInstance().deleteCamp(ID);
                             break;
                         }
                         case 3: {

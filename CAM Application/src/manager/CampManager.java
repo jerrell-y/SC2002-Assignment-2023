@@ -1,7 +1,6 @@
 package manager;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 import camppackage.Camp;
 import database.CampDatabase;

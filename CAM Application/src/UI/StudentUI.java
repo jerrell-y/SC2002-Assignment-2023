@@ -66,18 +66,12 @@ public class StudentUI {
 									if (success) {
 										System.out.println("Successfully registered as a commitee member! \n");
 									}
-									else {
-										System.out.println("There are no more slots available! \n");
-									}
 									break;
 										
 								case 2:
 									success = CampManager.registerAttendee();
 									if (success) {
 										System.out.println("Successfully registered as an attendee! \n");
-									}
-									else {
-										System.out.println("There are no more slots available! \n");
 									}
 									break;
 
