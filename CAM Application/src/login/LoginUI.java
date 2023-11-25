@@ -36,9 +36,17 @@ public class LoginUI {
             if(loggedInUser != null) {
                 if (LoginManager.isDefaultPassword(loggedInUser)) {
                     System.out.println("You are using the default password. You must change your password now.");
-                    System.out.print("Enter your new password: ");
-                    String newPassword = sc.nextLine();
-                    LoginManager.changePassword(loggedInUser, newPassword);
+                    String newPass1, newPass2;
+                    do {
+						System.out.print("Enter your new password: ");
+						newPass1 = sc.next();
+						System.out.print("Enter your new password again: ");
+						newPass2 = sc.next();
+						if (!newPass1.equals(newPass2)) {
+							System.out.println("Please enter the same password!\n");
+						}
+					} while (!newPass1.equals(newPass2));
+                    LoginManager.changePassword(loggedInUser, newPass1);
                     System.out.println("Your password has been changed successfully.");
                 }
                 break;

@@ -276,6 +276,7 @@ public class StudentUI {
 					} while (!newPass1.equals(newPass2));
 
 					LoginManager.changePassword(UserManager.getUser(), newPass1);
+					mainChoice = 4;
 					break;
 				
 				case 4:           //logout
