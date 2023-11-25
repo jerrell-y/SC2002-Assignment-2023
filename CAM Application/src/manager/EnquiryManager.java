@@ -45,7 +45,7 @@ public class EnquiryManager {
         CampDatabase.getInstance().update();
     }
 
-    public static void replyEnquiry(String reply) {
+    public static void replyEnquiry(String reply) {          //need to award points
         if (enquiry.isAnswered()) {
             System.out.println("The enquiry has already been answered!\n");
         }
