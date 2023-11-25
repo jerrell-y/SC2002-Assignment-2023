@@ -122,55 +122,38 @@ public class StudentUI {
 								break;
 
 							case 2:
-								ArrayList<Enquiry> enq = CampManager.getEnquiryByUser();
-								if (enq == null) {
-									System.out.println("1. Add enquiry");
-									System.out.println("2. Go back");
-									int subsubChoice = scan.nextInt();
-									switch(subsubChoice) {
-										case 1:
-											System.out.println("Enter your enquiry: ");
-											String enqy = scan.next();
-											EnquiryManager.addEnquiry(enqy);
-											break;
-										case 2:
-											break;
-									}
-
+								System.out.println("Enter your enquiry: ");
+								String enqy = scan.next();
+								EnquiryManager.addEnquiry(enqy);
+								break;
+					
+							case 3:
+								EnquiryManager.printUserEnquiry();
+								System.out.println("Select an enquiry: ");
+								int enquiryNum = scan.nextInt();     //need to check if within eqr.size()
+								EnquiryManager.setEnquiry(enquiryNum);
+								System.out.println("1. Edit enquiry");
+								System.out.println("2. Delete enquiry");
+								System.out.println("3. Go back");
+								int subsubChoice = scan.nextInt();
+								switch(subsubChoice) {
+									case 1:
+										System.out.println("Enter new enquiry: ");
+										enqy = scan.next();
+										EnquiryManager.editEnquiry(enqy);
+										break;
+									case 2:
+										EnquiryManager.deleteEnquiry(enquiryNum);
+										break;
+									case 3:
+										break;
 								}
-								else {
-									EnquiryManager.printUserEnquiry();
-									System.out.println("Select an enquiry: ");
-									int enquiryNum = scan.nextInt();     //need to check if within eqr.size()
-									EnquiryManager.setEnquiry(enquiryNum);
-									System.out.println("1. Add enquiry");
-									System.out.println("2. Edit enquiry");
-									System.out.println("3. Delete enquiry");
-									System.out.println("4. Go back");
-									int subsubChoice = scan.nextInt();
-									switch(subsubChoice) {
-										case 1:
-											System.out.println("Enter your enquiry: ");
-											String enqy = scan.next();
-											EnquiryManager.addEnquiry(enqy);
-											break;
-										case 2:
-											System.out.println("Enter new enquiry: ");
-											enqy = scan.next();
-											EnquiryManager.editEnquiry(enqy);
-											break;
-										case 3:
-											EnquiryManager.deleteEnquiry(enquiryNum);
-											break;
-										case 4:
-											break;
-									}
 
-								}
+								
 								
 								break;
 
-							case 3:   //go back
+							case 4:   //go back
 								break;
 						}
 
