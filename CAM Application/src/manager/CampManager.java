@@ -81,19 +81,22 @@ public class CampManager {
     }
 
     public static boolean registerCommitee() {
-        Student student = (Student) UserManager.getUser();
-        if (student.getCommiteeCampID() != -1) {
-            System.out.println("You are already registered as a camp commitee in another camp!\n");
-            return false;
+        User user = UserManager.getUser();
+        ArrayList<Camp> campList = CampDatabase.getInstance().getCamps();
+        Camp currCamp;
+        int i;
+        for (i = 0; i != campList.size(); i++) {
+            currCamp = campList.get(i);
+            if (isCommitee(currCamp)) {
+                System.out.println("You are already a commitee member in another camp!");
+                return false;
+            }
         }
         if (camp.getCampCommiteeSlots() <= camp.getCampCommitees().size()) {
             System.out.println("There are no more slots available!\n");
             return false;
         }
-        camp.addCampCommitee(student.getUserID());
-        student.setCommiteeCampID(camp.getCampID());
-        UserManager.setUser(student);
-        UserDatabase.getInstance().update();
+        camp.addCampCommitee(user.getUserID());
         CampDatabase.getInstance().update();
         return true;
     }

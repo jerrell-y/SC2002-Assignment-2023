@@ -30,9 +30,10 @@ public class StaffUI {
             System.out.println("4. Change password");
             System.out.println("5. Logout");
             choice = sc.nextInt();
+            sc.nextLine();
             switch (choice) {
                 case 1: {
-                    System.out.println("enter camp name");
+                    System.out.println("enter camp name: ");
                     String campname = sc.nextLine();
                     System.out.println("Enter a start date (format yyyy-MM-dd):");
                     String dateString = sc.nextLine();
@@ -51,6 +52,7 @@ public class StaffUI {
                     int totalSlots = sc.nextInt();
                     System.out.println("Enter total camp committee slots");
                     int campCommitteeSlots = sc.nextInt();
+                    sc.nextLine();
                     System.out.println("Enter description");
                     String description = sc.nextLine();
                     System.out.println("Enter staff in charge");

@@ -120,12 +120,12 @@ public class StudentUI {
 								break;
 
 							case 2:
-								/*ArrayList<Enquiry> enq = CampManager.getEnquiryByUser();
+								ArrayList<Enquiry> enq = CampManager.getEnquiryByUser();
 								if (enq == null) {
 									System.out.println("1. Add enquiry");
 									System.out.println("2. Go back");
-									int subsubChoice = scan.nextInt();
-									switch(subsubChoice) {
+									x = scan.nextInt();
+									switch(x) {
 										case 1:
 											System.out.println("Enter your enquiry: ");
 											String enqy = scan.next();
@@ -137,28 +137,18 @@ public class StudentUI {
 
 								}
 								else {
-									EnquiryManager.printUserEnquiry();
-									int anotherChoice = scan.nextInt();
-									switch (anotherChoice) {
-										case 1:
-										
-											break;
-									}
+									EnquiryManager.printAllEnquiry();
+
 									System.out.println("1. Add enquiry");
 									System.out.println("2. Edit enquiry");
 									System.out.println("3. Delete enquiry");
 									System.out.println("4. Go back");
-									int subsubChoice = scan.nextInt();
-									switch(subsubChoice) {
+									switch(x) {
 										case 1:
-											System.out.println("Enter your enquiry: ");
-											String enqy = scan.next();
-											EnquiryManager.addEnquiry(enqy);
+											EnquiryManager.addEnquiry();
 											break;
 										case 2:
-											System.out.println("Enter new enquiry: ");
-											enqy = scan.next();
-											EnquiryManager.editEnquiry(enqy);
+											EnquiryManager.editEnquiry();
 											break;
 										case 3:
 											EnquiryManager.deleteEnquiry();
@@ -169,7 +159,7 @@ public class StudentUI {
 
 								}
 								
-								break;*/
+								break;
 
 							case 3:   //go back
 								break;
