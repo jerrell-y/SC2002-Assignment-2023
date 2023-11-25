@@ -14,3 +14,5 @@ public class Student extends User{
 		points++;
 	}
 
+}
+
