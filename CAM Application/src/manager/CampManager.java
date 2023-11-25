@@ -56,7 +56,7 @@ public class CampManager {
     public static boolean isInCharge(Camp camp) {
         User user = UserManager.getUser();
         String st = camp.getStaffInCharge();
-        if(st.equals(user.getUserID())){
+        if(Objects.equals(st, user.getName())){
             return true;
         }
         return false;

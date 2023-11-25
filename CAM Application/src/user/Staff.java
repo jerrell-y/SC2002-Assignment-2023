@@ -39,6 +39,10 @@ public class Staff extends User{
         switch(ch){
             case 1:{
                 System.out.println("Enter new name");
+                String name=sc.nextLine();
+                Camp c=CampDatabase.getInstance().getCampByID(CampManager.getCamp().getCampID());
+                c.setCampName(name);
+                System.out.println("DONE");
             }
             case 2:{
                 System.out.println("Enter new start date");
@@ -78,6 +82,9 @@ public class Staff extends User{
     public void ViewEnquiries(Camp camp){
         System.out.println(camp.getEnquiries());
     }
+
+
+
     public void GenerateReport(){}
     //public void GenerateReport(){}
     public void ViewSuggestions(){
