@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import camppackage.Camp;
 import camppackage.Suggestion;
 import database.CampDatabase;
+import user.Student;
 import user.User;
 import user.UserManager;
 
@@ -21,11 +22,13 @@ public class SuggestionManager {
         return suggestion;
     }
 
-    public static void addSuggestion(String sug) {      //need to award points
+    public static void addSuggestion(String sug) { 
         User user = UserManager.getUser();
         Camp c = CampManager.getCamp();
         Suggestion sgn = new Suggestion(sug, user.getName(), user.getUserID());
         c.addSuggestion(sgn);
+        Student user2 = (Student) user;            //dunno if need upcast or not
+        user2.addPoints();
         CampDatabase.getInstance().update();
     }
 
@@ -48,7 +51,8 @@ public class SuggestionManager {
         CampDatabase.getInstance().update();
     }
 
-    public static void approveSuggestion() {           //need to add points, and make one for reject suggestion
+    public static void approveSuggestion() {     //need to implement the addpoints for the student
+
         if (suggestion.getStatus()) {
             System.out.println("The suggestion has already been approved!\n");
             return;

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import camppackage.Camp;
 import camppackage.Enquiry;
 import database.CampDatabase;
+import user.Student;
 import user.User;
 import user.UserManager;
 
@@ -45,12 +46,15 @@ public class EnquiryManager {
         CampDatabase.getInstance().update();
     }
 
-    public static void replyEnquiry(String reply) {          //need to award points
+    public static void replyEnquiry(String reply) {          
+        User user = UserManager.getUser();
+        Student user2 = (Student) user;
         if (enquiry.isAnswered()) {
             System.out.println("The enquiry has already been answered!\n");
         }
         else{
             enquiry.setReply(reply);
+            user2.addPoints();                         //need upcast?
             CampDatabase.getInstance().update();
         }
     }
