@@ -130,7 +130,6 @@ public class Staff extends User{
     }
     public void DeleteCamp (int ID) {
         Camp c= CampManager.getCamp();
-
         CampDatabase.getInstance().deleteCamp(c.getCampID());
 
     }

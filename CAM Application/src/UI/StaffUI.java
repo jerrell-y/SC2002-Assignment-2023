@@ -11,6 +11,8 @@ import login.*;
 import camppackage.Camp;
 
 import manager.CampManager;
+import manager.EnquiryManager;
+import manager.SuggestionManager;
 import user.Faculty;
 import user.Staff;
 import user.User;
@@ -105,7 +107,7 @@ public class StaffUI {
                     System.out.println("Select Function");
                     System.out.println("1. Edit Camp");
                     System.out.println("2. Delete Camp");
-                    System.out.println("3. View enquiries");
+                    System.out.println("3. View and reply enquiries");
                     System.out.println("4. View suggestions");
                     System.out.println("5. Generate report");
                     System.out.println("6. Go back");
@@ -116,18 +118,35 @@ public class StaffUI {
                             break;
                         }
                         case 2: {
-                            System.out.println("Enter Camp ID of camp you wish to delete");
                             int ID = sc.nextInt();
                             CampDatabase.getInstance().deleteCamp(ID);
                             break;
                         }
                         case 3: {
-                            Camp c=null;
-                            s.ViewEnquiries(c);
+                            EnquiryManager.printAllEnquiry();
+                            System.out.println("Select the enquiry you wish to reply to: ");
+                            int enquiryNum = sc.nextInt();
+                            sc.nextLine();
+                            EnquiryManager.setEnquiry(enquiryNum);
+                            String reply;
+                            System.out.println("Enter reply");
+                            reply=sc.nextLine();
+                            EnquiryManager.replyEnquiry(reply);
                             break;
                         }
                         case 4: {
-                            s.ViewSuggestions();
+                            SuggestionManager.printAllSuggestions();
+                            System.out.println("Select the suggestion you wish accept or reject to: ");
+                            int sugg = sc.nextInt();
+                            sc.nextLine();
+                            SuggestionManager.setSuggestion(sugg);
+                            System.out.println("enter 1 to accept");
+                            int x=sc.nextInt();
+                            sc.nextLine();
+                            if(x==1){
+                                SuggestionManager.approveSuggestion();
+                            }
+
                             break;
                         }
                         case 5: {
@@ -154,7 +173,9 @@ public class StaffUI {
                             throw new IllegalStateException("Unexpected value: " + choice);
                     }
                     break;
-                }while(subch<=0 && subch>6);}
+                }while(subch<=0 && subch>6);
+                    break;
+                }
                 case 3: {
                     ViewAllCamps v= new ViewAllCamps();
                     ArrayList<Integer> AllCamps = v.displayCamps();
