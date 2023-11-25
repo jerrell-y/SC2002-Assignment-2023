@@ -28,14 +28,13 @@ public class EnquiryManager {
         CampDatabase.getInstance().update();
     }
 
-    public static boolean editEnquiry(String enq) { 
+    public static void editEnquiry(String enq) { 
         if (enquiry.isAnswered()) {
             System.out.println("The enquiry has already been answered!\n");
-            return false;
+            return;
         }
         enquiry.setContent(enq);
         CampDatabase.getInstance().update();
-        return true; 
     }
 
     public static void deleteEnquiry(int enquiryNum) { 
@@ -45,8 +44,13 @@ public class EnquiryManager {
         CampDatabase.getInstance().update();
     }
 
-    public static void replyEnquiry() {    //not yet done
-        return;
+    public static void replyEnquiry(String reply) {
+        if (enquiry.isAnswered()) {
+            System.out.println("The enquiry has already been answered!\n");
+            return;
+        }
+        enquiry.setReply(reply);
+        CampDatabase.getInstance().update();
     }
 
 

@@ -220,21 +220,24 @@ public class StudentUI {
 								break;
 
 							case 2:
-								/* 
-								ArrayList<Enquiry> e = campManager.getAllEnquiry(c);   //not implemented yet
-
-								e.printAllEnquiries();
+								EnquiryManager.printAllEnquiry();
+								System.out.println("Select an enquiry: ");
+								int enquiryNum = scan.nextInt();
+								EnquiryManager.setEnquiry(enquiryNum);
 
 								System.out.println("1. Reply enquiry");
 								System.out.println("2. Go back");
-								switch(x) {
+								int choicee = scan.nextInt();
+								switch(choicee) {
 									case 1:
-										campManager.replyEnquiry(e);
+										System.out.println("Enter reply: ");
+										String reply = scan.next();
+										EnquiryManager.replyEnquiry(reply);
 										break;
 									case 2:
 										break;
 								}
-								*/
+								
 								break;
 
 							case 3:   //generate report
