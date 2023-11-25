@@ -65,13 +65,11 @@ public class CampManager {
     }
     public static void generateStudentReport(){
         CampFormatter cf= CampFormatter.getInstance();
-        cf.formatReport(camp);
-
+        cf.formatStudentReport(camp);
     }
     public static void generateCommitteeReport(){
         CampFormatter cf= CampFormatter.getInstance();
         cf.formatCommitteeReport(camp);
-
     }
     public static void printDetails() {
         CampFormatter cf = CampFormatter.getInstance();
