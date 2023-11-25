@@ -218,4 +218,8 @@ public class Camp{
     public void addSuggestion(Suggestion suggestion) {
         suggestions.add(suggestion);
     }
+
+    public void removeSuggestion(int index) {
+        suggestions.remove(index);
+    }
 }

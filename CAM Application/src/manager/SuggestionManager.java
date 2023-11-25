@@ -41,10 +41,10 @@ public class SuggestionManager {
        
     }
 
-    public static void deleteEnquiry(int enquiryNum) { 
+    public static void deleteSuggestion(int suggestNum) { 
         Camp c = CampManager.getCamp();
-        EnquiryManager.enquiry = null;
-        c.removeEnquiry(enquiryNum);
+        SuggestionManager.suggestion = null;
+        c.removeSuggestion(suggestNum);
         CampDatabase.getInstance().update();
     }
 
@@ -60,34 +60,28 @@ public class SuggestionManager {
     }
 
 
-    public static int printUserEnquiry() { 
+    public static int printUserSuggestions() { 
         Camp c = CampManager.getCamp();
         User user = UserManager.getUser();
-        ArrayList<Enquiry> eqr = c.getEnquiries();
+        ArrayList<Suggestion> sug = c.getSuggestions();
         int counter=1;
 
-        for (int i=0; i<eqr.size(); i++) {
-            if (user.getUserID() == eqr.get(i).getUserID()) {
-                System.out.println(counter + ". Name: " + eqr.get(i).getName() + "Content: " + eqr.get(i).getContent());
-                if (eqr.get(i).isAnswered()){
-                    System.out.println("Reply: " + eqr.get(i).getReply());
-                }
+        for (int i=0; i<sug.size(); i++) {
+            if (user.getUserID() == sug.get(i).getUserID()) {
+                System.out.println(counter + ". Name: " + sug.get(i).getName() + "Content: " + sug.get(i).getContent());
                 counter++;
             }
         }
-        return eqr.size(); 
+        return sug.size(); 
     }
 
-        public static void printAllEnquiry() { 
+    public static void printAllSuggestions() { 
         Camp c = CampManager.getCamp();
-        ArrayList<Enquiry> eqr = c.getEnquiries();
+        ArrayList<Suggestion> sug = c.getSuggestions();
         int counter=1;
 
-        for (int i=0; i<eqr.size(); i++) {
-            System.out.println(counter + ". Name: " + eqr.get(i).getName() + "Content: " + eqr.get(i).getContent());
-            if (eqr.get(i).isAnswered()){
-                   System.out.println("Reply: " + eqr.get(i).getReply());
-            }
+        for (int i=0; i<sug.size(); i++) {
+            System.out.println(counter + ". Name: " + sug.get(i).getName() + "Content: " + sug.get(i).getContent());
         }
         return; 
     }
