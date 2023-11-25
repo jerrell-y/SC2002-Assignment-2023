@@ -63,7 +63,16 @@ public class CampManager {
         }
         return false;
     }
+    public static void generateStudentReport(){
+        CampFormatter cf= CampFormatter.getInstance();
+        cf.formatReport(camp);
 
+    }
+    public static void generateCommitteeReport(){
+        CampFormatter cf= CampFormatter.getInstance();
+        cf.formatCommitteeReport(camp);
+
+    }
     public static void printDetails() {
         CampFormatter cf = CampFormatter.getInstance();
         System.out.println(cf.formatFull(camp));

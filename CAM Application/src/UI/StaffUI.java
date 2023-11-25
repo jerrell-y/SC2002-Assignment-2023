@@ -9,6 +9,7 @@ import login.*;
 import camppackage.Camp;
 
 import manager.CampManager;
+import manager.SuggestionManager;
 import user.Faculty;
 import user.Staff;
 import user.User;
@@ -32,14 +33,24 @@ public class StaffUI {
             choice = sc.nextInt();
             switch (choice) {
                 case 1: {
+                    Date startdate, enddate;
+                    String dateString = sc.nextLine();
+                    int c=0;
                     System.out.println("enter camp name");
                     String campname = sc.nextLine();
+                    do{
+
+                        if(c>0){
+                            System.out.println("start date cannot be after end date");
+                        }
                     System.out.println("Enter a start date (format yyyy-MM-dd):");
-                    String dateString = sc.nextLine();
-                    Date startdate = util.DateHelper.stringToDate(dateString);
+                    startdate = util.DateHelper.stringToDate(dateString);
                     System.out.println("Enter an end date (format yyyy-MM-dd):");
                     dateString = sc.nextLine();
-                    Date enddate = util.DateHelper.stringToDate(dateString);
+                    enddate = util.DateHelper.stringToDate(dateString);
+                    c++;}
+                    while(startdate.compareTo(enddate)>0); {
+                    }
                     System.out.println("Enter a reg end date (format yyyy-MM-dd):");
                     dateString = sc.nextLine();
                     Date regenddate = DateHelper.stringToDate(dateString);
@@ -113,8 +124,19 @@ public class StaffUI {
                             break;
                         }
                         case 5: {
-                            s.GenerateReport();
+                            int subsubchoice;
+                            do{
+                                System.out.println("Select Function");
+                                System.out.println("1. Generate Student Report");
+                                System.out.println("2. Generate Committee Report");
+                                subsubchoice= sc.nextInt();
+                            }
+                            while(subsubchoice>2 || subsubchoice<1);
+                            if(subsubchoice==1){
+                                CampManager.generateStudentReport();
+                            }
                             break;
+
                         }
                         case 6: {
                             break;

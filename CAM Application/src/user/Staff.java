@@ -78,8 +78,8 @@ public class Staff extends User{
     public void ViewEnquiries(Camp camp){
         System.out.println(camp.getEnquiries());
     }
-    public void GenerateReport(){}
+    //public void GenerateReport(){}
     public void ViewSuggestions(){
-        Camp camp;
+        SuggestionManager.printAllSuggestions();
     }
 }
