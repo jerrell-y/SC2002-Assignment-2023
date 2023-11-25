@@ -11,7 +11,7 @@ public class Staff extends User{
         super(userID, password, name, faculty);
     }
 
-    public void CreateCamp() {
+    /*public void CreateCamp() {
         Scanner sc = new Scanner(System.in);
         System.out.println("enter camp name");
         String campname = sc.nextLine();
@@ -70,5 +70,5 @@ public class Staff extends User{
     public void Answer(Camp camp){
         camp.answerEnquiry();
     }
-    
+    */
 }

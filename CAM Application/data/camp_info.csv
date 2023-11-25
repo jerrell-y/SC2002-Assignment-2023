@@ -1,2 +1,2 @@
-CampID, Camp Name,Start Date,End Date,Registration End Date,Faculty,Location,Total Slots,Camp Commitee Slots,Description,Staff In Charge,Visibility,CampAttendees,CampCommitees,Enquires,Suggestions
-1,FOP 2023,2023-12-05,2023-12-08,2023-12-01,SCSE,LT1A,40,5,Freshman Orientation Program,HUKUMAR,TRUE,"[KOH1,BR015]","[SL22,AKY013]","[[is there vegan food?,CALVIN,CT113,,False],[is there vegetarian food?,DONG,DON48,yes there is,False]]","[[provide vegan food,LIU,SL22,False]]"
+CampID,CampName,StartDate,EndDate,RegEndDate,Faculty,Location,CampAttendeeSlots,CampCommiteeSlots,Description,StaffInCharge,Visibility,CampAttendees,Campcommitees,Enquiries,Suggestions
+1,FOP 2023,2023-12-05,2023-12-08,2023-12-01,SCSE,LT1A,40,5,Freshman Orientation Program,HUKUMAR,True,"["KOH1,BR015",YCHERN,YCHERN]","["SL22,AKY013"]","[["is there vegan food?,CALVIN,CT113,"",False]]","[["provide vegan food,LIU,SL22,False]]"

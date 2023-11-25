@@ -12,7 +12,7 @@ import view.ViewRegisteredCamps;
 public class StudentUI {
 	
     public static void start() {
-		int x;
+		int mainChoice, subChoice;
 		do {
 			Scanner scan = new Scanner(System.in);    	
 			System.out.println("Select Function");
@@ -23,79 +23,82 @@ public class StudentUI {
 			System.out.println();
 
 			System.out.print("Choose an option: ");
-			x = scan.nextInt();
-			switch (x) {
+			mainChoice = scan.nextInt();
+			switch (mainChoice) {
 				case 1:
-					ViewAvailableCamps vac = new ViewAvailableCamps();
-					ArrayList<Integer> availableCamps = vac.displayCamps();
-					System.out.println();
-
 					do {
-						System.out.println("Choose a camp: ");
-						x = scan.nextInt();
-						if (x > availableCamps.size() || x <= 0) {
-							System.out.println("Please enter a valid camp number! \n");
-						}
-					} while (x > availableCamps.size() || x <= 0);
-
-					CampManager.setCamp(availableCamps.get(x-1));
-					CampManager.printDetails();
-
-					do {
-						System.out.println();
-						System.out.println("1. Register as committee");
-						System.out.println("2. Register as attendee");
-						System.out.println("3. Go back");
+						int campChoice;
+						ViewAvailableCamps vac = new ViewAvailableCamps();
+						ArrayList<Integer> availableCamps = vac.displayCamps();
 						System.out.println();
 
-						System.out.print("Choose an option: ");
-						x = scan.nextInt();
-						boolean success;
-						switch (x) {
-							case 1:
-								success = CampManager.registerCommitee();
-								if (success) {
-									System.out.println("Successfully registered as a commitee member! \n");
-								}
-								else {
-									System.out.println("There are no more slots available! \n");
-								}
-								x = 3;
-								break;
-									
-							case 2:
-								success = CampManager.registerAttendee();
-								if (success) {
-									System.out.println("Successfully registered as an attendee! \n");
-								}
-								else {
-									System.out.println("There are no more slots available! \n");
-								}
-								x = 3;
-								break;
+						do {
+							System.out.println("Choose a camp: ");
+							campChoice = scan.nextInt();
+							if (campChoice > availableCamps.size() || campChoice <= 0) {
+								System.out.println("Please enter a valid camp number! \n");
+							}
+						} while (campChoice > availableCamps.size() || campChoice <= 0);
 
-							case 3:   //go back
-								break;
+						CampManager.setCamp(availableCamps.get(campChoice-1));
+						CampManager.printDetails();
 
-							default:
-								System.out.println("Please enter a valid option!");
-						}
-					} while (x != 3);
+						do {
+							System.out.println();
+							System.out.println("1. Register as committee");
+							System.out.println("2. Register as attendee");
+							System.out.println("3. Go back");
+							System.out.println();
+
+							System.out.print("Choose an option: ");
+							subChoice = scan.nextInt();
+							boolean success;
+							switch (subChoice) {
+								case 1:
+									success = CampManager.registerCommitee();
+									if (success) {
+										System.out.println("Successfully registered as a commitee member! \n");
+									}
+									else {
+										System.out.println("There are no more slots available! \n");
+									}
+									break;
+										
+								case 2:
+									success = CampManager.registerAttendee();
+									if (success) {
+										System.out.println("Successfully registered as an attendee! \n");
+									}
+									else {
+										System.out.println("There are no more slots available! \n");
+									}
+									break;
+
+								case 3:   //go back
+									break;
+
+								default:
+									System.out.println("Please enter a valid option!");
+							}
+						} while (subChoice <= 0 && subChoice > 3);
+					} while (subChoice == 3);
 					break;
+
 				case 2:
+					int campChoice;
 					ViewRegisteredCamps vrc = new ViewRegisteredCamps();
 					ArrayList<Integer> registeredCamps = vrc.displayCamps();
 					System.out.println();
 
 					do {
 						System.out.println("Choose a camp: ");
-						x = scan.nextInt();
-						if (x > registeredCamps.size() || x <= 0) {
+						campChoice = scan.nextInt();
+						if (campChoice > registeredCamps.size() || campChoice <= 0) {
 							System.out.println("Please enter a valid camp number! \n");
 						}
-					} while (x > registeredCamps.size() || x <= 0);
+					} while (campChoice > registeredCamps.size() || campChoice <= 0);
 
-					CampManager.setCamp(registeredCamps.get(x-1));
+					CampManager.setCamp(registeredCamps.get(campChoice-1));
 					CampManager.printDetails();
 					
 					if (CampManager.isAttendee()) {
@@ -103,8 +106,8 @@ public class StudentUI {
 						System.out.println("2. View enquiry");
 						System.out.println("3. Go back");
 
-						x = scan.nextInt();
-						switch (x) {
+						subChoice = scan.nextInt();
+						switch (subChoice) {
 							case 1:
 								CampManager.withdraw();
 								System.out.println("Successfully removed from camp");
@@ -163,8 +166,8 @@ public class StudentUI {
 						System.out.println("3. Generate report");
 						System.out.println("4. Go back");
 
-						x = scan.nextInt();
-						switch(x){
+						subChoice = scan.nextInt();
+						switch(subChoice){
 							case 1:
 								/* 
 								ArrayList<Suggestion> s = campManager.getSuggestionByID(c);   //not implemented yet
@@ -257,6 +260,6 @@ public class StudentUI {
 				default:
 					System.out.println("Please enter a valid option!");
 			}
-		} while (x != 4);
+		} while (mainChoice != 4);
     }
 }
