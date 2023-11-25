@@ -199,6 +199,10 @@ public class Camp{
         campAttendees.add(userID);
     }
 
+    public void removeCampAttendee(int index) {
+        campAttendees.remove(index);
+    }
+
     public void addCampCommitee(String userID) {
         campAttendees.add(userID);
     }

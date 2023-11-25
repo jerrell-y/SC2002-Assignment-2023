@@ -9,7 +9,7 @@ import manager.CampManager;
 
 public class ViewRegisteredCamps implements ViewCamps {
     public ArrayList<Integer> displayCamps() {
-        int count = 0;
+        int count = 1;
         CampFormatter cf = new CampFormatter();
         ArrayList<Camp> campList = CampDatabase.getInstance().getCamps(); 
         ArrayList<Integer> registeredCamps = new ArrayList<Integer>();

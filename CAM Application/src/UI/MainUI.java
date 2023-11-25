@@ -19,8 +19,8 @@ public class MainUI {
             user = LoginUI.displayLoginForm();
             UserManager.setUser(user);
             if (user instanceof Student) {
-                //show StudentUI
-                System.out.println("student logged in");
+                System.out.println("Student logged in");
+                StudentUI.start();
             }
             else if (user instanceof Staff) {
                 //show StaffUI
