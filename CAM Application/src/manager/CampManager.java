@@ -11,6 +11,7 @@ import user.Student;
 import user.User;
 import user.UserManager;
 import camppackage.Enquiry;
+import camppackage.Suggestion;
 
 public class CampManager {
     private static Camp camp;
@@ -137,6 +138,23 @@ public class CampManager {
         }
         else{
             return eqr2;
+        }
+    }
+
+    public static ArrayList<Suggestion> getSuggestByUser() {
+        User user = UserManager.getUser();
+        ArrayList<Suggestion> sug = camp.getSuggestions();
+        ArrayList<Suggestion> sug2 = new ArrayList<Suggestion>();
+        for (int i = 0; i != sug.size(); i++) {
+            if (sug.get(i).getUserID() == user.getUserID()) {
+                sug2.add(sug.get(i));
+            }
+        }
+        if (sug2.size() == 0){
+            return null;
+        }
+        else{
+            return sug2;
         }
     }
 }
