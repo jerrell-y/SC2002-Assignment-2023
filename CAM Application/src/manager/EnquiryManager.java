@@ -27,6 +27,7 @@ public class EnquiryManager {
         Enquiry eqr = new Enquiry(enq, user.getName(), user.getUserID());
         c.addEnquiry(eqr);
         CampDatabase.getInstance().update();
+        System.out.println("Successfully added enquiry!");
     }
 
     public static void editEnquiry(String enq) { 
@@ -36,14 +37,16 @@ public class EnquiryManager {
         else {
             enquiry.setContent(enq);
             CampDatabase.getInstance().update();
+            System.out.println("Successfully edited enquiry!");
         }
     }
 
     public static void deleteEnquiry(int enquiryNum) { 
         Camp c = CampManager.getCamp();
-        EnquiryManager.enquiry = null;
         c.removeEnquiry(enquiryNum);
+        EnquiryManager.enquiry = null;
         CampDatabase.getInstance().update();
+        System.out.println("Successfully deleted enquiry!");
     }
 
     public static void replyEnquiry(String reply) {          
@@ -57,6 +60,7 @@ public class EnquiryManager {
        //     user2.addPoints();                         //need upcast?
             enquiry.setAnswered(true);
             CampDatabase.getInstance().update();
+            System.out.println("Successfully replied enquiry!");
         }
     }
 
@@ -66,6 +70,14 @@ public class EnquiryManager {
         User user = UserManager.getUser();
         ArrayList<Enquiry> eqr = c.getEnquiries();
         int counter=1;
+
+        System.out.println(eqr.size());
+        /*
+        if (eqr.size() == 0) {
+            System.out.print("No enquiries found!");
+            return 0;
+        }
+        */
 
         for (int i=0; i<eqr.size(); i++) {
             //System.out.println("\n\n" + user.getUserID() + "," + eqr.get(i).getUserID());

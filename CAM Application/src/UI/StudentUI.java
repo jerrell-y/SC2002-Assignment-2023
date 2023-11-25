@@ -132,7 +132,7 @@ public class StudentUI {
 								EnquiryManager.printUserEnquiry();
 								System.out.println("Select an enquiry: ");
 								int enquiryNum = scan.nextInt();     //need to check if within eqr.size()
-								EnquiryManager.setEnquiry(enquiryNum);
+								EnquiryManager.setEnquiry(enquiryNum-1);
 								System.out.println("1. Edit enquiry");
 								System.out.println("2. Delete enquiry");
 								System.out.println("3. Go back");
@@ -145,7 +145,7 @@ public class StudentUI {
 										EnquiryManager.editEnquiry(enqy);
 										break;
 									case 2:
-										EnquiryManager.deleteEnquiry(enquiryNum);
+										EnquiryManager.deleteEnquiry(enquiryNum-1);
 										break;
 									case 3:
 										break;
