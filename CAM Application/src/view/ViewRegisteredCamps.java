@@ -8,6 +8,14 @@ import format.CampFormatter;
 import manager.CampManager;
 
 public class ViewRegisteredCamps implements ViewCamps {
+    private static ViewRegisteredCamps instance;
+
+    public static synchronized ViewRegisteredCamps getInstance() {
+        if (instance == null) {
+            instance = new ViewRegisteredCamps();
+        }
+        return instance;
+    }
     public ArrayList<Integer> displayCamps() {
         int count = 1;
         CampFormatter cf = CampFormatter.getInstance();
@@ -19,14 +27,14 @@ public class ViewRegisteredCamps implements ViewCamps {
 
             if (CampManager.isAttendee(camp)) {
                 System.out.println(count + ". " + cf.formatShort(camp));
-                System.out.println("Registered as an attendee \n");
+                System.out.println("Registered as an attendee. \n");
                 registeredCamps.add(camp.getCampID());
                 count++;
             }
 
             else if (CampManager.isCommitee(camp)) {
                 System.out.println(count + ". " + cf.formatShort(camp));
-                System.out.println("Registered as an commitee member \n");
+                System.out.println("Registered as an commitee member. \n");
                 registeredCamps.add(camp.getCampID());
                 count++;
             }

@@ -7,6 +7,15 @@ import database.CampDatabase;
 import format.CampFormatter;
 
 public class ViewAllCamps implements ViewCamps {
+    private static ViewAllCamps instance;
+
+    public static synchronized ViewAllCamps getInstance() {
+        if (instance == null) {
+            instance = new ViewAllCamps();
+        }
+        return instance;
+    }
+
 	public ArrayList<Integer> displayCamps() {
         CampFormatter cf = CampFormatter.getInstance();
         ArrayList<Camp> campList = CampDatabase.getInstance().getCamps();

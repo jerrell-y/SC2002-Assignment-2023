@@ -11,6 +11,14 @@ import user.User;
 import user.UserManager;
 
 public class ViewAvailableCamps implements ViewCamps {
+    private static ViewAvailableCamps instance;
+
+    public static synchronized ViewAvailableCamps getInstance() {
+        if (instance == null) {
+            instance = new ViewAvailableCamps();
+        }
+        return instance;
+    }
 
     public ArrayList<Integer> displayCamps() {
         CampFormatter cf = CampFormatter.getInstance();
@@ -22,7 +30,7 @@ public class ViewAvailableCamps implements ViewCamps {
             Camp camp = campList.get(i);
             if (camp.getVisibility() && !CampManager.isAttendee(camp) && !CampManager.isCommitee(camp)) {
                 if (camp.getFaculty() == Faculty.NTU || camp.getFaculty() == user.getFaculty()) {
-                    System.out.println(count + ". " + cf.formatShort(camp) + "\n");
+                    System.out.println(count + ". " + cf.formatShort(camp));
                     availableCamps.add(camp.getCampID());
                     count++;
                 }

@@ -73,59 +73,65 @@ public class CampDatabase implements Database<Camp> {
                 // Parsing Enquiries
                 ArrayList<Enquiry> enquiries = new ArrayList<>();
                 // Remove the outermost brackets
-                String[] enquiryData = values[14].substring(2, values[14].length() - 2).split("\\],\\[");
+                String enquiry = values[14].substring(2, values[14].length() - 2);
+                if (!enquiry.equals("")) {
+                    String[] enquiryData = values[14].substring(2, values[14].length() - 2).split("\\],\\[");
 
-                for (int j = 0; j < enquiryData.length; j++) {
-                    // If it's the first enquiry, remove the leading '['
-                    if (j == 0 && enquiryData[j].startsWith("[")) {
-                        enquiryData[j] = enquiryData[j].substring(1);
+                    for (int j = 0; j < enquiryData.length; j++) {
+                        // If it's the first enquiry, remove the leading '['
+                        if (j == 0 && enquiryData[j].startsWith("[")) {
+                            enquiryData[j] = enquiryData[j].substring(1);
+                        }
+
+                        // Split each enquiry into parts
+                        String[] parts = enquiryData[j].split(",", -1);
+                        // Trim each part to remove any leading or trailing whitespace
+                        for (int i = 0; i < parts.length; i++) {
+                            parts[i] = parts[i].replaceAll("^\"|\"$", "").trim();
+                        }
+
+                        // Assuming the constructor Enquiry(String content, String name, String userID,
+                        // String reply, boolean answered)
+                        String content = parts[0];
+                        String name = parts.length > 1 ? parts[1] : "";
+                        String userID = parts.length > 2 ? parts[2] : "";
+                        String reply = parts.length > 3 ? parts[3] : "";
+                        boolean answered = parts.length > 4 && parts[4].equalsIgnoreCase("true");
+
+                        // Add the new enquiry to the list
+                        enquiries.add(new Enquiry(content, name, userID, reply, answered));
                     }
-
-                    // Split each enquiry into parts
-                    String[] parts = enquiryData[j].split(",", -1);
-                    // Trim each part to remove any leading or trailing whitespace
-                    for (int i = 0; i < parts.length; i++) {
-                        parts[i] = parts[i].replaceAll("^\"|\"$", "").trim();
-                    }
-
-                    // Assuming the constructor Enquiry(String content, String name, String userID,
-                    // String reply, boolean answered)
-                    String content = parts[0];
-                    String name = parts.length > 1 ? parts[1] : "";
-                    String userID = parts.length > 2 ? parts[2] : "";
-                    String reply = parts.length > 3 ? parts[3] : "";
-                    boolean answered = parts.length > 4 && parts[4].equalsIgnoreCase("true");
-
-                    // Add the new enquiry to the list
-                    enquiries.add(new Enquiry(content, name, userID, reply, answered));
                 }
 
                 // Parsing Suggestions
                 ArrayList<Suggestion> suggestions = new ArrayList<>();
                 // Remove the very first '[' and the very last ']' from the string
-                String[] suggestionData = values[15].substring(2, values[15].length() - 2).split("\\],\\[");
+                String suggestion = values[15].substring(2, values[15].length() - 2);
+                if (!suggestion.equals("")) {
+                    String[] suggestionData = values[15].substring(2, values[15].length() - 2).split("\\],\\[");
 
-                for (int j = 0; j < suggestionData.length; j++) {
-                    // If it's the first suggestion, remove the leading '['
-                    if (j == 0 && suggestionData[j].startsWith("[")) {
-                        suggestionData[j] = suggestionData[j].substring(1);
+                    for (int j = 0; j < suggestionData.length; j++) {
+                        // If it's the first suggestion, remove the leading '['
+                        if (j == 0 && suggestionData[j].startsWith("[")) {
+                            suggestionData[j] = suggestionData[j].substring(1);
+                        }
+
+                        // Split each suggestion into parts, accounting for possible empty fields
+                        String[] parts = suggestionData[j].split(",", -1);
+                        // Trim each part to remove any leading or trailing whitespace and remove quotes
+                        for (int i = 0; i < parts.length; i++) {
+                            parts[i] = parts[i].replaceAll("^\"|\"$", "").trim();
+                        }
+                        // Assuming the constructor Suggestion(String content, String name, String
+                        // userID, boolean status)
+                        String content = parts[0];
+                        String name = parts.length > 1 ? parts[1] : "";
+                        String userID = parts.length > 2 ? parts[2] : "";
+                        boolean status = parts.length > 3 && parts[3].equalsIgnoreCase("true");
+
+                        // Add the new suggestion to the list
+                        suggestions.add(new Suggestion(content, name, userID, status));
                     }
-
-                    // Split each suggestion into parts, accounting for possible empty fields
-                    String[] parts = suggestionData[j].split(",", -1);
-                    // Trim each part to remove any leading or trailing whitespace and remove quotes
-                    for (int i = 0; i < parts.length; i++) {
-                        parts[i] = parts[i].replaceAll("^\"|\"$", "").trim();
-                    }
-                    // Assuming the constructor Suggestion(String content, String name, String
-                    // userID, boolean status)
-                    String content = parts[0];
-                    String name = parts.length > 1 ? parts[1] : "";
-                    String userID = parts.length > 2 ? parts[2] : "";
-                    boolean status = parts.length > 3 && parts[3].equalsIgnoreCase("true");
-
-                    // Add the new suggestion to the list
-                    suggestions.add(new Suggestion(content, name, userID, status));
                 }
 
                 if (max < campID) {

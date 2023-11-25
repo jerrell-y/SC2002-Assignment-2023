@@ -46,7 +46,7 @@ public class LoginUI {
                 System.out.println("Invalid userID or password");
             }
         }
-        System.out.println("Login Successful");
+        System.out.print("Login successful, ");
         return loggedInUser;
     }
 }

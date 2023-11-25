@@ -117,38 +117,4 @@ public class CampManager {
             }
         }
     }
-
-    public static ArrayList<Enquiry> getEnquiryByUser() {
-        User user = UserManager.getUser();
-        ArrayList<Enquiry> eqr = camp.getEnquiries();
-        ArrayList<Enquiry> eqr2 = new ArrayList<Enquiry>();
-        for (int i = 0; i != eqr.size(); i++) {
-            if (eqr.get(i).getUserID().equals(user.getUserID())) {
-                eqr2.add(eqr.get(i));
-            }
-        }
-        if (eqr2.size() == 0){
-            return null;
-        }
-        else{
-            return eqr2;
-        }
-    }
-
-    public static ArrayList<Suggestion> getSuggestByUser() {
-        User user = UserManager.getUser();
-        ArrayList<Suggestion> sug = camp.getSuggestions();
-        ArrayList<Suggestion> sug2 = new ArrayList<Suggestion>();
-        for (int i = 0; i != sug.size(); i++) {
-            if (sug.get(i).getUserID() == user.getUserID()) {
-                sug2.add(sug.get(i));
-            }
-        }
-        if (sug2.size() == 0){
-            return null;
-        }
-        else{
-            return sug2;
-        }
-    }
 }

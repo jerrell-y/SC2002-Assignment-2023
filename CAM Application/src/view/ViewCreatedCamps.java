@@ -6,9 +6,16 @@ import camppackage.Camp;
 import database.CampDatabase;
 import format.CampFormatter;
 import manager.CampManager;
-import user.Staff.*;
 
 public class ViewCreatedCamps implements ViewCamps {
+    private static ViewCreatedCamps instance;
+
+    public static synchronized ViewCreatedCamps getInstance() {
+        if (instance == null) {
+            instance = new ViewCreatedCamps();
+        }
+        return instance;
+    }
     public ArrayList<Integer> displayCamps() {
         int count = 1;
         CampFormatter cf = CampFormatter.getInstance();

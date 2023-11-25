@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import camppackage.Camp;
 import camppackage.Enquiry;
 import database.CampDatabase;
+import database.UserDatabase;
 import user.Student;
 import user.User;
 import user.UserManager;
@@ -12,8 +13,8 @@ import user.UserManager;
 public class EnquiryManager {
     private static Enquiry enquiry;
 
-    public static void setEnquiry(Enquiry enquiry) {
-        EnquiryManager.enquiry = enquiry;
+    public static void setEnquiry(int index) {
+        EnquiryManager.enquiry = CampManager.getCamp().getEnquiries().get(index);
     }
 
     public static Enquiry getEnquiry() {
@@ -26,49 +27,59 @@ public class EnquiryManager {
         Enquiry eqr = new Enquiry(enq, user.getName(), user.getUserID());
         c.addEnquiry(eqr);
         CampDatabase.getInstance().update();
-        System.out.println("Successfully added enquiry!");
     }
 
-    public static void editEnquiry(String enq) { 
+    public static boolean editEnquiry(String enq) { 
         if (enquiry.isAnswered()) {
             System.out.println("The enquiry has already been answered!\n");
+            return false;
         }
         else {
             enquiry.setContent(enq);
             CampDatabase.getInstance().update();
-            System.out.println("Successfully edited enquiry!");
+            return true;
         }
     }
 
-    public static void deleteEnquiry(int enquiryNum) { 
-        Camp c = CampManager.getCamp();
-        c.removeEnquiry(enquiryNum);
-        EnquiryManager.enquiry = null;
-        CampDatabase.getInstance().update();
-        System.out.println("Successfully deleted enquiry!");
-    }
-
-    public static void replyEnquiry(String reply) {          
-     //   User user = UserManager.getUser();
-    //    Student user2 = (Student) user;
+    public static boolean deleteEnquiry(int enquiryNum) { 
         if (enquiry.isAnswered()) {
             System.out.println("The enquiry has already been answered!\n");
+            return false;
+        }
+
+        Camp c = CampManager.getCamp();
+        EnquiryManager.enquiry = null;
+        c.removeEnquiry(enquiryNum);
+        CampDatabase.getInstance().update();
+        return true;
+    }
+
+    public static boolean replyEnquiry(String reply) {          
+        User user = UserManager.getUser();
+        if (enquiry.isAnswered()) {
+            System.out.println("The enquiry has already been answered!\n");
+            return false;
         }
         else{
             enquiry.setReply(reply);
-       //     user2.addPoints();                         //need upcast?
             enquiry.setAnswered(true);
+            if (user instanceof Student) {
+                Student student = (Student) user;
+                student.addPoints();
+                UserDatabase.getInstance().update();  //Update the database of the points.
+                UserManager.setUser(student);
+            }
             CampDatabase.getInstance().update();
-            System.out.println("Successfully replied enquiry!");
+            return true;
         }
     }
 
 
-    public static ArrayList<Enquiry> printUserEnquiry() { 
+    public static ArrayList<Integer> printUserEnquiry() { 
         Camp c = CampManager.getCamp();
         User user = UserManager.getUser();
         ArrayList<Enquiry> eqr = c.getEnquiries();
-        ArrayList<Enquiry> userEnquiries = new ArrayList<Enquiry>();
+        ArrayList<Integer> userEnquiries = new ArrayList<Integer>();
         int counter=1;
 
         for (int i=0; i<eqr.size(); i++) {
@@ -79,16 +90,18 @@ public class EnquiryManager {
                 if (enquiry.isAnswered()){
                     System.out.println("Reply: " + enquiry.getReply());
                 }
-                userEnquiries.add(enquiry);
+                userEnquiries.add(i);
                 counter++;
             }
         }
         return userEnquiries; 
     }
 
-    public static ArrayList<Enquiry> printAllEnquiry() { 
+    //returns an ArrarList<Integer> of all the indexes of the current list being looked at, to be used later 
+    public static ArrayList<Integer> printAllEnquiry() { 
         Camp c = CampManager.getCamp();
         ArrayList<Enquiry> eqr = c.getEnquiries();
+        ArrayList<Integer> allEnquiries = new ArrayList<Integer>();
         int counter=1;
 
         for (int i=0; i<eqr.size(); i++) {
@@ -97,8 +110,9 @@ public class EnquiryManager {
             if (enquiry.isAnswered()){
                    System.out.println("Reply: " + enquiry.getReply());
             }
+            allEnquiries.add(i);
             counter++;
         }
-        return eqr; 
+        return allEnquiries; 
     }
 }

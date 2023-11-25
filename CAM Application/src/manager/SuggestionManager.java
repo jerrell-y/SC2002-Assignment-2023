@@ -32,23 +32,29 @@ public class SuggestionManager {
         CampDatabase.getInstance().update();
     }
 
-    public static void editSuggestion(String sug) { 
+    public static boolean editSuggestion(String sug) { 
         if (suggestion.getStatus()) {      
             System.out.println("The suggestion has already been answered!\n");
-            return;
+            return false;
         }
         else{
             suggestion.setContent(sug);
             CampDatabase.getInstance().update();
+            return true;
         }
        
     }
 
-    public static void deleteSuggestion(int suggestNum) { 
+    public static boolean deleteSuggestion(int suggestNum) { 
+        if (suggestion.getStatus()) {      
+            System.out.println("The suggestion has already been answered!\n");
+            return false;
+        }
         Camp c = CampManager.getCamp();
         SuggestionManager.suggestion = null;
         c.removeSuggestion(suggestNum);
         CampDatabase.getInstance().update();
+        return true;
     }
 
     public static void approveSuggestion() {     //need to implement the addpoints for the student
@@ -64,29 +70,34 @@ public class SuggestionManager {
     }
 
 
-    public static int printUserSuggestions() { 
+    public static ArrayList<Integer> printUserSuggestions() { 
         Camp c = CampManager.getCamp();
         User user = UserManager.getUser();
         ArrayList<Suggestion> sug = c.getSuggestions();
+        ArrayList<Integer> userSuggestions = new ArrayList<Integer>();
         int counter=1;
 
         for (int i=0; i<sug.size(); i++) {
             if (user.getUserID() == sug.get(i).getUserID()) {
                 System.out.println(counter + ". Name: " + sug.get(i).getName() + "Content: " + sug.get(i).getContent());
+                userSuggestions.add(i);
                 counter++;
             }
         }
-        return sug.size(); 
+        return userSuggestions; 
     }
 
-    public static void printAllSuggestions() { 
+    public static ArrayList<Integer> printAllSuggestions() { 
         Camp c = CampManager.getCamp();
         ArrayList<Suggestion> sug = c.getSuggestions();
+        ArrayList<Integer> allSuggestions = new ArrayList<Integer>();
         int counter=1;
 
         for (int i=0; i<sug.size(); i++) {
             System.out.println(counter + ". Name: " + sug.get(i).getName() + "Content: " + sug.get(i).getContent());
+            allSuggestions.add(i);
+            counter++;
         }
-        return; 
+        return allSuggestions; 
     }
 }
