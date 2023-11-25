@@ -30,17 +30,25 @@ public class StaffUI {
             System.out.println("4. Change password");
             System.out.println("5. Logout");
             choice = sc.nextInt();
-            sc.nextLine();
             switch (choice) {
                 case 1: {
-                    System.out.println("enter camp name: ");
+                    String dateString;
+                    System.out.println("enter camp name");
                     String campname = sc.nextLine();
-                    System.out.println("Enter a start date (format yyyy-MM-dd):");
-                    String dateString = sc.nextLine();
-                    Date startdate = util.DateHelper.stringToDate(dateString);
-                    System.out.println("Enter an end date (format yyyy-MM-dd):");
-                    dateString = sc.nextLine();
-                    Date enddate = util.DateHelper.stringToDate(dateString);
+                    int c=0;
+                    Date startdate, enddate;
+                    do {
+                        if(c>0){
+                            System.out.println("start date cannot be after end date");
+                        }
+                        System.out.println("Enter a start date (format yyyy-MM-dd):");
+                        dateString = sc.nextLine();
+                        startdate = util.DateHelper.stringToDate(dateString);
+                        System.out.println("Enter an end date (format yyyy-MM-dd):");
+                        dateString = sc.nextLine();
+                        enddate = util.DateHelper.stringToDate(dateString);
+                        c++;
+                    }while(startdate.compareTo(enddate)>0);
                     System.out.println("Enter a reg end date (format yyyy-MM-dd):");
                     dateString = sc.nextLine();
                     Date regenddate = DateHelper.stringToDate(dateString);
@@ -52,7 +60,6 @@ public class StaffUI {
                     int totalSlots = sc.nextInt();
                     System.out.println("Enter total camp committee slots");
                     int campCommitteeSlots = sc.nextInt();
-                    sc.nextLine();
                     System.out.println("Enter description");
                     String description = sc.nextLine();
                     System.out.println("Enter staff in charge");
@@ -115,7 +122,20 @@ public class StaffUI {
                             break;
                         }
                         case 5: {
-                            s.GenerateReport();
+                            int a;
+                            do{
+                                System.out.println("1. Generate student report");
+                                System.out.println("2. Generate committee report");
+                                a=sc.nextInt();
+                            }
+                            while(a<0 || a>2);
+                            if(a==1){
+                                CampManager.generateStudentReport();
+                            }
+                            else{
+                                CampManager.generateCommitteeReport();
+
+                            }
                             break;
                         }
                         case 6: {

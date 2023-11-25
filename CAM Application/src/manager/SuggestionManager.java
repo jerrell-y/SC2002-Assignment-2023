@@ -21,7 +21,7 @@ public class SuggestionManager {
         return suggestion;
     }
 
-    public static void addSuggestion(String sug) { 
+    public static void addSuggestion(String sug) {      //need to award points
         User user = UserManager.getUser();
         Camp c = CampManager.getCamp();
         Suggestion sgn = new Suggestion(sug, user.getName(), user.getUserID());
@@ -30,7 +30,7 @@ public class SuggestionManager {
     }
 
     public static void editSuggestion(String sug) { 
-        if (suggestion.getStatus()) {          //need implement this
+        if (suggestion.getStatus()) {      
             System.out.println("The suggestion has already been answered!\n");
             return;
         }
@@ -48,7 +48,7 @@ public class SuggestionManager {
         CampDatabase.getInstance().update();
     }
 
-    public static void approveSuggestion() {
+    public static void approveSuggestion() {           //need to add points, and make one for reject suggestion
         if (suggestion.getStatus()) {
             System.out.println("The suggestion has already been approved!\n");
             return;

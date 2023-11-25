@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import camppackage.Enquiry;
+import camppackage.Suggestion;
 import login.LoginManager;
 import manager.CampManager;
 import manager.EnquiryManager;
+import manager.SuggestionManager;
 import user.UserManager;
 import view.ViewAvailableCamps;
 import view.ViewRegisteredCamps;
@@ -122,8 +124,8 @@ public class StudentUI {
 								if (enq == null) {
 									System.out.println("1. Add enquiry");
 									System.out.println("2. Go back");
-									x = scan.nextInt();
-									switch(x) {
+									int subsubChoice = scan.nextInt();
+									switch(subsubChoice) {
 										case 1:
 											System.out.println("Enter your enquiry: ");
 											String enqy = scan.next();
@@ -143,12 +145,17 @@ public class StudentUI {
 									System.out.println("2. Edit enquiry");
 									System.out.println("3. Delete enquiry");
 									System.out.println("4. Go back");
-									switch(x) {
+									int subsubChoice = scan.nextInt();
+									switch(subsubChoice) {
 										case 1:
-											EnquiryManager.addEnquiry();
+											System.out.println("Enter your enquiry: ");
+											String enqy = scan.next();
+											EnquiryManager.addEnquiry(enqy);
 											break;
 										case 2:
-											EnquiryManager.editEnquiry();
+											System.out.println("Enter new enquiry: ");
+											enqy = scan.next();
+											EnquiryManager.editEnquiry(enqy);
 											break;
 										case 3:
 											EnquiryManager.deleteEnquiry(enquiryNum);
@@ -178,15 +185,16 @@ public class StudentUI {
 						subChoice = scan.nextInt();
 						switch(subChoice){
 							case 1:
-								/* 
-								ArrayList<Suggestion> s = campManager.getSuggestionByID(c);   //not implemented yet
+								ArrayList<Suggestion> s = CampManager.getSuggestByUser();   //not implemented yet
 								if (s == null) {
 									System.out.println("1. Add suggestion");
 									System.out.println("2. Go back");
-									x = scan.nextInt();
+									int x = scan.nextInt();
 									switch(x) {
 										case 1:
-											campManager.addSuggestion(s);
+											System.out.println("Enter suggestion: ");
+											String sgn = scan.next();
+											SuggestionManager.addSuggestion(sgn);
 											break;
 										case 2:
 											break;
@@ -194,27 +202,33 @@ public class StudentUI {
 
 								}
 								else {
-									s.printAllSuggestions();
-
+									SuggestionManager.printUserSuggestions();
+									System.out.println("Select an option: ");
+									int sugChooser = scan.nextInt();
 									System.out.println("1. Add suggestion");
 									System.out.println("2. Edit suggestion");
 									System.out.println("3. Delete suggestion");
 									System.out.println("4. Go back");
-									switch(x) {
+									int choicer = scan.nextInt();
+									switch(choicer) {
 										case 1:
-											campManager.addSuggestion(s);
+											System.out.println("Enter suggestion: ");
+											String sgn = scan.next();
+											SuggestionManager.addSuggestion(sgn);
 											break;
 										case 2:
-											campManager.editSuggestion(s);
+											System.out.println("Enter new suggestion: ");
+											sgn = scan.next();
+											SuggestionManager.editSuggestion(sgn);
 											break;
 										case 3:
-											campManager.deleteSuggestion(s);
+											SuggestionManager.deleteSuggestion(sugChooser);
 											break;
 										case 4:
 											break;
 									}
 								}
-								*/
+								
 								break;
 
 							case 2:
