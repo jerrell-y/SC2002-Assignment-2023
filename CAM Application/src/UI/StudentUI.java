@@ -33,6 +33,9 @@ public class StudentUI {
 						ViewAvailableCamps vac = new ViewAvailableCamps();
 						ArrayList<Integer> availableCamps = vac.displayCamps();
 						System.out.println();
+						if (availableCamps.size() == 0) {
+							break;
+						}
 
 						do {
 							System.out.println("Choose a camp: ");
@@ -91,6 +94,10 @@ public class StudentUI {
 					ViewRegisteredCamps vrc = new ViewRegisteredCamps();
 					ArrayList<Integer> registeredCamps = vrc.displayCamps();
 					System.out.println();
+
+					if (registeredCamps.size() == 0) {
+						break;
+					}
 
 					do {
 						System.out.println("Choose a camp: ");

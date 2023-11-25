@@ -25,6 +25,20 @@ public class Camp{
 
     private static int totalCamps;
 
+    /**
+     * 
+     * @param campName
+     * @param startDate
+     * @param endDate
+     * @param regEndDate
+     * @param faculty
+     * @param location
+     * @param campAttendeeSlots
+     * @param campCommiteeSlots
+     * @param description
+     * @param staffInCharge
+     * @param visibility
+     */
     public Camp (String campName, Date startDate, Date endDate, Date regEndDate, Faculty faculty, String location, int campAttendeeSlots, int campCommiteeSlots, String description, String staffInCharge, boolean visibility) {
         this.campID = ++totalCamps;
         this.campName = campName;
