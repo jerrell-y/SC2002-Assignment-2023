@@ -10,11 +10,12 @@ import manager.OldCampManager;
 import user.Faculty;
 import user.Staff;
 import user.User;
+import user.UserManager;
 import view.*;
 
 public class StaffUI {
-    Staff s;
-    public void start(){
+    public static void start(){
+        Staff s = (Staff) UserManager.getUser();
         int choice;
         Scanner sc = new Scanner(System.in);
         System.out.println("Select Function");

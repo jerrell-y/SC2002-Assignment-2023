@@ -9,12 +9,12 @@ import view.*;
 import java.text.SimpleDateFormat;
 import database.*;
 public class Staff extends User{
-    static ArrayList<Camp> createdCampList=new ArrayList<>();
+    private static ArrayList<Camp> createdCampList=new ArrayList<>();
     public Staff(String userID, String password, String name, Faculty faculty) {
         super(userID, password, name, faculty);
     }
-    Staff s;
-    public static void CreateCamp() {
+
+    public void CreateCamp() {
         Scanner sc = new Scanner(System.in);
         System.out.println("enter camp name");
         String campname = sc.nextLine();
@@ -47,7 +47,6 @@ public class Staff extends User{
         }
         else visibility=false;
         Camp c = new Camp(campname, startdate, enddate, regenddate, Faculty.valueOf(faculty.toUpperCase()), location, totalSlots, campCommitteeSlots, description, staffInCharge,visibility);
-        OldCampManager.addCamp(c);
         createdCampList.add(c);
         CampDatabase.getInstance().addCamp(c);
 
@@ -107,11 +106,7 @@ public class Staff extends User{
     public void DeleteCamp (Camp c) {
         CampDatabase.getInstance().deleteCamp(c);
     }
-    public void ViewCreateCamps (){
-        view.ViewCreatedCamps();
-        Scanner sc= new Scanner(System.in);
-        int ch= sc.nextInt();
-    }
+
     public void ViewEnquiries(Camp camp){
         System.out.println(camp.getEnquiries());
     }
