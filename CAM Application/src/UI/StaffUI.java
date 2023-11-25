@@ -29,7 +29,13 @@ public class StaffUI {
             System.out.println("3. View all camps");
             System.out.println("4. Change password");
             System.out.println("5. Logout");
-            choice = sc.nextInt();
+            try {
+                choice = sc.nextInt();
+            } 
+            catch (Exception e) {
+                choice = -1;
+            }
+            sc.nextLine();
             switch (choice) {
                 case 1: {
                     String dateString;
@@ -60,16 +66,16 @@ public class StaffUI {
                     int totalSlots = sc.nextInt();
                     System.out.println("Enter total camp committee slots");
                     int campCommitteeSlots = sc.nextInt();
+                    sc.nextLine();
                     System.out.println("Enter description");
                     String description = sc.nextLine();
-                    System.out.println("Enter staff in charge");
-                    String staffInCharge = sc.nextLine();
                     boolean visibility;
                     System.out.println("Enter 1 if you want the camp to be visible");
                     int v = sc.nextInt();
                     if (v == 1) {
                         visibility = true;
                     } else visibility = false;
+                    String staffInCharge = s.getUserID();
                     boolean x = s.CreateCamp(campname, startdate, enddate, regenddate, Faculty.valueOf(faculty.toUpperCase()), location, totalSlots, campCommitteeSlots, description, staffInCharge, visibility);
                     if (x) {
                         System.out.println("Added successfully");
@@ -163,8 +169,8 @@ public class StaffUI {
                     break;
                 }
                 default:
-                    throw new IllegalStateException("Unexpected value: " + choice);
+                    System.out.println("Please enter a valid option!");
             }
-        }while(choice!=4);
+        }while(choice!=5);
     }
 }

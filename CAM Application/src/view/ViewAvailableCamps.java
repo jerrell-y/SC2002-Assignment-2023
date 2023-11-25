@@ -6,6 +6,7 @@ import camppackage.Camp;
 import database.CampDatabase;
 import format.CampFormatter;
 import manager.CampManager;
+import user.Faculty;
 import user.User;
 import user.UserManager;
 
@@ -19,10 +20,12 @@ public class ViewAvailableCamps implements ViewCamps {
         int i, count = 1;
         for (i = 0; i != campList.size(); i++) {
             Camp camp = campList.get(i);
-            if (camp.getVisibility() && camp.getFaculty() == user.getFaculty() && !CampManager.isAttendee(camp) && !CampManager.isCommitee(camp)) {
-                System.out.println(count + ". " + cf.formatShort(camp) + "\n");
-                availableCamps.add(camp.getCampID());
-                count++;
+            if (camp.getVisibility() && !CampManager.isAttendee(camp) && !CampManager.isCommitee(camp)) {
+                if (camp.getFaculty() == Faculty.NTU || camp.getFaculty() == user.getFaculty()) {
+                    System.out.println(count + ". " + cf.formatShort(camp) + "\n");
+                    availableCamps.add(camp.getCampID());
+                    count++;
+                }
             }
         }
         return availableCamps;

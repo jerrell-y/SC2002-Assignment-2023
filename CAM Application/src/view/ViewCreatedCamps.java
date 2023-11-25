@@ -12,18 +12,18 @@ public class ViewCreatedCamps implements ViewCamps {
     public ArrayList<Integer> displayCamps() {
         int count = 1;
         CampFormatter cf = CampFormatter.getInstance();
-        ArrayList<Integer> CreatedCamps = new ArrayList<Integer>();
+        ArrayList<Integer> createdCamps = new ArrayList<Integer>();
         ArrayList<Camp> campList = CampDatabase.getInstance().getCamps();
         int i;
         for (i = 0; i != campList.size(); i++) {
             Camp camp = campList.get(i);
 
             if (CampManager.isInCharge(camp)) {
-                System.out.println( cf.formatShort(camp));
-                campList.add(camp);
+                System.out.println(count + ". " + cf.formatShort(camp));
+                createdCamps.add(camp.getCampID());
                 count++;
             }
         }
-        return CreatedCamps;
+        return createdCamps;
     }
 }
