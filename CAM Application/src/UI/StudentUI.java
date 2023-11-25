@@ -30,6 +30,11 @@ public class StudentUI {
 						int campChoice;
 						ViewAvailableCamps vac = new ViewAvailableCamps();
 						ArrayList<Integer> availableCamps = vac.displayCamps();
+
+						if (availableCamps.isEmpty()) {
+							System.out.println("There are currently no available camps.\n");
+							break;
+						}
 						System.out.println();
 
 						do {
@@ -59,18 +64,12 @@ public class StudentUI {
 									if (success) {
 										System.out.println("Successfully registered as a commitee member! \n");
 									}
-									else {
-										System.out.println("There are no more slots available! \n");
-									}
 									break;
 										
 								case 2:
 									success = CampManager.registerAttendee();
 									if (success) {
 										System.out.println("Successfully registered as an attendee! \n");
-									}
-									else {
-										System.out.println("There are no more slots available! \n");
 									}
 									break;
 
@@ -89,6 +88,11 @@ public class StudentUI {
 					ViewRegisteredCamps vrc = new ViewRegisteredCamps();
 					ArrayList<Integer> registeredCamps = vrc.displayCamps();
 					System.out.println();
+
+					if (registeredCamps.isEmpty()) {
+						System.out.println("You are currently not registered in any camps.\n");
+						break;
+					}
 
 					do {
 						System.out.println("Choose a camp: ");

@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import camppackage.Camp;
 import database.CampDatabase;
+import database.UserDatabase;
 import format.CampFormatter;
+import user.Student;
 import user.User;
 import user.UserManager;
 
@@ -55,6 +57,7 @@ public class CampManager {
     public static boolean registerAttendee() {
         User user = UserManager.getUser();
         if (camp.getCampAttendeeSlots() <= camp.getCampAttendees().size()) {
+            System.out.println("There are no more slots available!\n");
             return false;
         }
         camp.addCampAttendee(user.getUserID());
@@ -63,11 +66,19 @@ public class CampManager {
     }
 
     public static boolean registerCommitee() {
-        User user = UserManager.getUser();
-        if (camp.getCampCommiteeSlots() <= camp.getCampCommitees().size()) {
+        Student student = (Student) UserManager.getUser();
+        if (student.getCommiteeCampID() != -1) {
+            System.out.println("You are already registered as a camp commitee in another camp!\n");
             return false;
         }
-        camp.addCampCommitee(user.getUserID());
+        if (camp.getCampCommiteeSlots() <= camp.getCampCommitees().size()) {
+            System.out.println("There are no more slots available!\n");
+            return false;
+        }
+        camp.addCampCommitee(student.getUserID());
+        student.setCommiteeCampID(camp.getCampID());
+        UserManager.setUser(student);
+        UserDatabase.getInstance().update();
         CampDatabase.getInstance().update();
         return true;
     }
