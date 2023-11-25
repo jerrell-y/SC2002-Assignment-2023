@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.Scanner;
 import login.*;
 import camppackage.Camp;
-import manager.OldCampManager;
 import user.Faculty;
 import user.Staff;
 import user.User;
@@ -88,7 +87,7 @@ public class StaffUI {
                         case 2: {
                             System.out.println("Enter Camp ID of camp you wish to delete");
                             int ID = sc.nextInt();
-                            s.DeleteCamp(ID);
+                            //s.DeleteCamp(ID);
                             break;
                         }
                         case 3: {

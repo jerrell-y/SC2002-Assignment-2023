@@ -120,7 +120,7 @@ public class StudentUI {
 								break;
 
 							case 2:
-								ArrayList<Enquiry> enq = CampManager.getEnquiryByUser();
+								/*ArrayList<Enquiry> enq = CampManager.getEnquiryByUser();
 								if (enq == null) {
 									System.out.println("1. Add enquiry");
 									System.out.println("2. Go back");
@@ -159,7 +159,7 @@ public class StudentUI {
 
 								}
 								
-								break;
+								break;*/
 
 							case 3:   //go back
 								break;
