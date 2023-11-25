@@ -12,8 +12,7 @@ import user.Staff;
 import user.User;
 
 public class StaffUI {
-
-    public static void main(String[] args) {
+    public void start(){
         int choice;
         Scanner sc = new Scanner(System.in);
         System.out.println("Select Function");
