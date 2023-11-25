@@ -5,6 +5,16 @@ import java.text.SimpleDateFormat;
 import camppackage.Camp;
 
 public class CampFormatter implements iFormatter<Camp>{
+    private static CampFormatter instance;
+
+    public static synchronized CampFormatter getInstance() {
+        if (instance == null) {
+            instance = new CampFormatter();
+        }
+        return instance;
+    }
+
+    
 
     public String formatShort(Camp camp) {
         return "Camp Name: " + camp.getCampName();

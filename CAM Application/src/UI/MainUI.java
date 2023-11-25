@@ -25,6 +25,7 @@ public class MainUI {
             else if (user instanceof Staff) {
                 //show StaffUI
                 System.out.println("staff logged in");
+                StaffUI.start();
             }
         }
     }

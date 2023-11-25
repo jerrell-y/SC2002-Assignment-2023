@@ -53,7 +53,7 @@ public class CampManager {
     }
 
     public static void printDetails() {
-        CampFormatter cf = new CampFormatter();
+        CampFormatter cf = CampFormatter.getInstance();
         System.out.println(cf.formatFull(camp));
     }
 
@@ -63,6 +63,7 @@ public class CampManager {
             return false;
         }
         camp.addCampAttendee(user.getUserID());
+        CampDatabase.getInstance().update();
         return true;
     }
 
@@ -72,7 +73,7 @@ public class CampManager {
             return false;
         }
         camp.addCampCommitee(user.getUserID());
-        
+        CampDatabase.getInstance().update();
         return true;
     }
 
@@ -83,6 +84,7 @@ public class CampManager {
         for (i = 0; i != campAttendees.size(); i++) {
             if (campAttendees.get(i).equals(user.getUserID())) {
                 camp.removeCampAttendee(i);
+                CampDatabase.getInstance().update();
                 break;
             }
         }
