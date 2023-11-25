@@ -1,6 +1,7 @@
 package manager;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import camppackage.Camp;
 import database.CampDatabase;
@@ -50,6 +51,15 @@ public class CampManager {
             if (campCommitees.get(i).equals(user.getUserID())) {
                 return true;
             }
+        }
+        return false;
+    }
+    public static boolean isInCharge(Camp camp) {
+        int i;
+        User user = UserManager.getUser();
+        String st = camp.getStaffInCharge();
+        if(Objects.equals(st, user.getName())){
+            return true;
         }
         return false;
     }
