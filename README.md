@@ -1,4 +1,26 @@
 # SC2002-Assignment-2023
 
-## Compile commands
-Enter `CAM Application/src` and run this command in your terminal to compile the program: `javac user/User.java user/Staff.java user/Student.java database/Database.java database/UserDatabase.java login/LoginUI.java login/LoginManager.java login/PasswordManager.java UI/MainUI.java view/ViewAvailableCamps.java view/ViewRegisteredCamps.java view/ViewCreatedCamps.java`. Afterwards, run `java UI.MainUI` to start the application
+## Team Members
+Kenneth
+Zhuo Quan
+Jerrell
+Mokshit
+Darrell
+
+## Build
+---
+Clone the repository
+```
+    https://github.com/jerrell-y/SC2002-Assignment-2023.git
+    cd SC2002-Assignment-2023/CAM\ Application/src
+```
+
+## Compile
+```
+    javac UI/MainUI.java
+```
+
+## Run
+```
+    java UI.MainUI
+```
