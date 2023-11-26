@@ -66,8 +66,8 @@ public class EnquiryManager {
             if (user instanceof Student) {
                 Student student = (Student) user;
                 student.addPoints();
-                UserDatabase.getInstance().update();  //Update the database of the points.
                 UserManager.setUser(student);
+                UserDatabase.getInstance().update();  //Update the database of the points.
             }
             CampDatabase.getInstance().update();
             return true;
