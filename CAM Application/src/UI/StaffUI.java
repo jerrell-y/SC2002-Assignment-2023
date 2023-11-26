@@ -61,24 +61,31 @@ public class StaffUI {
                         }
                     } while (campName.isEmpty());
 
-                    int c=0;
                     Date startdate, enddate;
                     do {
-                        if(c>0){
-                            System.out.println("Start date cannot be after End date!");
-                        }
                         System.out.print("Enter a start date (format yyyy-MM-dd): ");
                         dateString = sc.nextLine();
                         startdate = util.DateHelper.stringToDate(dateString);
                         System.out.print("Enter an end date (format yyyy-MM-dd): ");
                         dateString = sc.nextLine();
                         enddate = util.DateHelper.stringToDate(dateString);
-                        c++;
-                    } while (startdate.compareTo(enddate) > 0);
+                        if (startdate.compareTo(enddate) > 0) {
+                            System.out.println("Start date cannot be later than end date! \n");
+                        }
+                        else if (enddate.compareTo(new Date()) < 0) {
+                            System.out.println("End date cannot be earlier than today! \n");
+                        }
+                    } while (startdate.compareTo(enddate) > 0 || enddate.compareTo(new Date()) < 0);
 
-                    System.out.print("Enter a reg end date (format yyyy-MM-dd): ");
-                    dateString = sc.nextLine();
-                    Date regenddate = DateHelper.stringToDate(dateString);
+                    Date regenddate;
+                    do {
+                        System.out.print("Enter a registration end date (format yyyy-MM-dd): ");
+                        dateString = sc.nextLine();
+                        regenddate = DateHelper.stringToDate(dateString);
+                        if (regenddate.compareTo(new Date()) < 0) {
+                            System.out.println("Registration end date cannot be earlier than today! \n");
+                        }
+                    } while (regenddate.compareTo(new Date()) < 0);
 
                     String facultyString = "";
                     Faculty faculty = Faculty.NTU;

@@ -84,16 +84,28 @@ public class Staff extends User{
                         if (c.getStartDate().compareTo(endDate) > 0) {
                             System.out.println("End date cannot be before start date! \n");
                         }
-                    } while (c.getStartDate().compareTo(endDate) > 0);
+                        else if (endDate.compareTo(new Date()) < 0) {
+                            System.out.println("End date cannot be earlier than today! \n");
+                        }
+                    } while (c.getStartDate().compareTo(endDate) > 0 || endDate.compareTo(new Date()) < 0);
+
                     c.setEndDate(endDate);
                     CampDatabase.getInstance().update();
                     System.out.println("Successfully changed end date to \"" + endDateStr + "\".");
                     break;
                 
                 case 4:
-                    System.out.print("Enter new registration end date: ");
-                    String date = sc.nextLine();
-                    Date regEndDate = util.DateHelper.stringToDate(date);
+                    String date;
+                    Date regEndDate;
+                    do {    
+                        System.out.print("Enter new registration end date: ");
+                        date = sc.nextLine();
+                        regEndDate = util.DateHelper.stringToDate(date);
+                        if (regEndDate.compareTo(new Date()) < 0) {
+                            System.out.println("Registration end date cannot be earlier than today! \n");
+                        }
+                    } while (regEndDate.compareTo(new Date()) < 0);
+
                     c.setRegEndDate(regEndDate);
                     CampDatabase.getInstance().update();
                     System.out.println("Successfully changed registration end date to \"" + date + "\".");
