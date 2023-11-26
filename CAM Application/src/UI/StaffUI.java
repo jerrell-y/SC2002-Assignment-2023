@@ -66,11 +66,20 @@ public class StaffUI {
                     String faculty = sc.nextLine();
                     System.out.println("Enter location");
                     String location = sc.nextLine();
-                    System.out.println("Enter total slots");
+                    System.out.println("Enter total attendee slots");
                     int totalSlots = sc.nextInt();
-                    System.out.println("Enter total camp committee slots");
-                    int campCommitteeSlots = sc.nextInt();
-                    sc.nextLine();
+                    int campCommitteeSlots;
+                    int a=0;
+                    do {
+                        if (a > 0) {
+                            System.out.println("Max 10 slots allowed");
+                        }
+                        System.out.println("Enter total camp committee slots");
+                        campCommitteeSlots = sc.nextInt();
+                        sc.nextLine();
+                        a++;
+                    }
+                    while(campCommitteeSlots>11);
                     System.out.println("Enter description");
                     String description = sc.nextLine();
                     boolean visibility;
@@ -169,7 +178,6 @@ public class StaffUI {
                             }
                             else{
                                 CampManager.generateCommitteeReport();
-
                             }
                             break;
                         }
