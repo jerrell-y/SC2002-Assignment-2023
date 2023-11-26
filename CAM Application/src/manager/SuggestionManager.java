@@ -28,10 +28,8 @@ public class SuggestionManager {
         Camp c = CampManager.getCamp();
         Suggestion sgn = new Suggestion(sug, user.getName(), user.getUserID());
         c.addSuggestion(sgn);
-        Student student = (Student) user;
-        student.addPoints();
-        UserManager.setUser(user);
-
+        Student user2 = (Student) user; 
+        user2.addPoints();
         UserDatabase.getInstance().update();
         CampDatabase.getInstance().update();
     }
