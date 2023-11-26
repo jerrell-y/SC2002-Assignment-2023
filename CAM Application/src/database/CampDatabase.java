@@ -21,7 +21,7 @@ import java.util.Arrays;
 public class CampDatabase implements Database<Camp> {
 
     /**
-     * Singleton instance of the database
+     * Instance of the database
      */
     private static CampDatabase instance;
 
@@ -31,15 +31,15 @@ public class CampDatabase implements Database<Camp> {
     private ArrayList<Camp> camps;
 
     /**
-     * Private constructor to prevent instantiation from outside, ensuring a Singleton pattern.
+     * Private constructor to prevent instantiation from outside
+     * Initializes the list of camps.
      */
     private CampDatabase() {
         camps = new ArrayList<>();
     }
 
     /**
-     * Synchronized method to get the single instance of the CampDatabase class.
-     * If the instance is null, it initializes a new instance.
+     * Provides access to the single instance of the CampDatabase class, creating it if it does not exist.
      *
      * @return The single instance of CampDatabase.
      */
