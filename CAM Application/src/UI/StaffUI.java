@@ -275,7 +275,6 @@ public class StaffUI {
                                 else {
                                     System.out.println("The suggestion was not approved. \n");
                                 }
-
                                 break;
                             
                             case 5: 
@@ -304,8 +303,9 @@ public class StaffUI {
                                 break;
 
                             case 6:
-                                ArrayList<String> attendees=CampDatabase.getInstance().getCampByID(ch-1).getCampAttendees();
-                                System.out.println(attendees);
+                                CampManager.printStudents();
+                                break;
+
                             case 7:
                                 break;
                             

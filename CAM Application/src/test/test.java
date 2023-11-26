@@ -5,7 +5,7 @@ import java.util.Date;
 
 import camppackage.Camp;
 import format.CampFormatter;
-import format.StudentFormatter;
+import format.UserFormatter;
 import user.Faculty;
 import user.Student;
 
@@ -17,7 +17,7 @@ public class test {
         Date z = new Date(2023, 11,27);
         Camp c = new Camp("Camp 1", x, y, z, Faculty.SCSE, "NTU", 10, 5, "Please join!", "John Adams", false);
 
-        StudentFormatter sf = new StudentFormatter();
+        UserFormatter sf = new UserFormatter();
         CampFormatter cf = new CampFormatter();
         
         System.out.println(sf.formatFull(s));

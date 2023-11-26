@@ -5,7 +5,9 @@ import java.util.Date;
 
 import camppackage.Camp;
 import database.CampDatabase;
+import database.UserDatabase;
 import format.CampFormatter;
+import format.UserFormatter;
 import user.User;
 import user.UserManager;
 
@@ -148,6 +150,29 @@ public class CampManager {
                 camp.addBlacklist(user.getUserID());
                 CampDatabase.getInstance().update();
                 break;
+            }
+        }
+    }
+
+    public static void printStudents() {
+        int i;
+        ArrayList<String> campAttendees = camp.getCampAttendees();
+        ArrayList<String> campCommittees = camp.getCampCommittees();
+        if (campAttendees.size() == 0 && campCommittees.size() == 0) {
+            System.out.println("There are currently no registered members! \n");
+        }
+        if (campAttendees.size() != 0) {
+            System.out.println("List of camp attendees:\n");
+            for (i = 0; i != campAttendees.size(); i++) {
+                User user = UserDatabase.getInstance().getUserByID(campAttendees.get(i));
+                System.out.println(i+1 + ".\n" + UserFormatter.getInstance().formatFull(user) + "\n");
+            }
+        }
+        if (campCommittees.size() != 0) {
+            System.out.println("List of camp committees:");
+            for (i = 0; i != campCommittees.size(); i++) {
+                User user = UserDatabase.getInstance().getUserByID(campCommittees.get(i));
+                System.out.println(i+1 + ".\n" + UserFormatter.getInstance().formatFull(user) + "\n");
             }
         }
     }
