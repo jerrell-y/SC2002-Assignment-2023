@@ -256,6 +256,11 @@ public class StaffUI {
                             case 4: 
                                 ArrayList<Integer> allSuggestions = SuggestionManager.printAllSuggestions();
 
+                                if (allSuggestions.size() == 0) {
+                                    System.out.println("There are currently no suggestions! \n");
+                                    break;
+                                }
+                                
                                 int sugg;
                                 do {
                                     System.out.print("Select the suggestion you to wish accept or reject: ");
