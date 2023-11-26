@@ -460,6 +460,7 @@ public class StudentUI {
 										break;
 
 									case 4:   //generate report
+										CampManager.generateStudentReport();
 										break;
 
 
