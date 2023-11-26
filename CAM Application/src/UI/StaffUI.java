@@ -273,7 +273,6 @@ public class StaffUI {
                             }
                             else{
                                 CampManager.generateCommitteeReport();
-
                             }
                             break;
                         }

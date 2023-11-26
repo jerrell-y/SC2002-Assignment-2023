@@ -15,7 +15,6 @@ public class Staff extends User{
         return x;
     }
     public void EditCamp () {
-        int campID;
         Camp c = CampManager.getCamp();
         Scanner sc= new Scanner(System.in);
         System.out.println("Enter the attribute you wish to edit");
@@ -51,9 +50,18 @@ public class Staff extends User{
                 break;
             }
             case 3:{
-                System.out.println("Enter new end date");
-                String date=sc.nextLine();
-                Date d=util.DateHelper.stringToDate(date);
+                String date;
+                Date d;
+                int a=0;
+                do {
+                    if(a>0){
+                        System.out.println("start date cannot be after end date");
+                    }
+                    System.out.println("Enter an end date (format yyyy-MM-dd):");
+                   date= sc.nextLine();
+                    d = util.DateHelper.stringToDate(date);
+                    a++;
+                }while(c.getStartDate().compareTo(d)>0);
                 c.setEndDate(d);
                 CampDatabase.getInstance().update();
                 System.out.println("DONE");
@@ -124,11 +132,13 @@ public class Staff extends User{
             }
         }
     }
-    public void DeleteCamp (int ID) {
+   /* public void DeleteCamp (int ID) {
         Camp c= CampManager.getCamp();
         CampDatabase.getInstance().deleteCamp(c.getCampID());
 
     }
+
+    */
 
     public void ViewEnquiries(Camp camp){
         System.out.println(camp.getEnquiries());

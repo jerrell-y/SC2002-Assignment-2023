@@ -1,5 +1,9 @@
 package user;
 
+/*
+ * faculty enum that contains all the different faculties in NTU
+ */
+
 public enum Faculty {
     CCEB,
     CEE,
