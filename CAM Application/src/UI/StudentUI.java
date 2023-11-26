@@ -341,6 +341,7 @@ public class StudentUI {
 
 										SuggestionManager.setSuggestion(userSuggestions.get(suggestionNum-1));
 
+										int subC;
 										do {
 											System.out.println("================================");
 											System.out.println("1. Edit suggestion");
@@ -350,9 +351,9 @@ public class StudentUI {
 
 
 											System.out.print("Choose an option: ");
-											subChoice = checkValidInput(scan);
+											subC = checkValidInput(scan);
 											System.out.println();
-											switch (subsubChoice) {
+											switch (subC) {
 												case 1:
 													String sgn;
 													do {
@@ -385,7 +386,7 @@ public class StudentUI {
 												default:
 													System.out.println("Please enter a valid option! \n");
 											}
-										} while (subsubChoice != 3);
+										} while (subC != 3);
 										break;
 
 									case 2:
