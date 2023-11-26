@@ -15,6 +15,7 @@ import java.io.PrintWriter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 import camppackage.Camp;
@@ -40,7 +41,7 @@ public class CampFormatter implements iFormatter<Camp>{
         ArrayList<String> attendees ;
         ArrayList<String> committee ;
         attendees=camp.getCampAttendees();
-        committee=camp.getCampCommittees();
+        committee=camp.getCampCommitees();
         String csvFile = "Student.csv";
         // Additional column values (including header)
         String[] additionalColumn = {"Attendee", "Committee"};
@@ -71,27 +72,37 @@ public class CampFormatter implements iFormatter<Camp>{
     }
     public void formatCommitteeReport(Camp camp){
         ArrayList<String> committee ;
-        committee=camp.getCampCommittees();
+        committee=camp.getCampCommitees();
+        String inputPath = "../data/student_list.csv";
+        String outputPath = "CommitteeReport.csv";
+        ArrayList<String> test= new ArrayList<>();
+        try (FileWriter fw = new FileWriter(outputPath, false)) {
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         for(int i=0;i<committee.size();i++) {
-                    String inputPath = "../data/camp_info.csv";
-                    String outputPath = "CommitteeReport.csv";
-                    int checkColumnIndex = 0; // index of the column to check
+
+            int checkColumnIndex = 1; // index of the column to check
                     int valueColumnIndex = 4; // index of the value column
 
                     try (BufferedReader br = new BufferedReader(new FileReader(inputPath));
-                         PrintWriter pw = new PrintWriter(new FileWriter(outputPath))) {
+                         PrintWriter pw = new PrintWriter(new FileWriter(outputPath,true))) {
                         String line;
                         while ((line = br.readLine()) != null) {
                             String[] values = line.split(","); // adjust delimiter if necessary
+                            System.out.println(Arrays.toString(values));
+                            System.out.println(values[checkColumnIndex]+committee.get(i));
 
-                            if (values.length > valueColumnIndex && values[checkColumnIndex].equals(committee.get(i))) {
-                                pw.println(values[checkColumnIndex] + "," + values[valueColumnIndex]);
+                            if (values[checkColumnIndex].contains(committee.get(i))) {
+                                pw.println(committee.get(i) + "," + values[valueColumnIndex]);
                             }
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
+        System.out.println("SUCCESS");
             }
 
 
@@ -106,7 +117,7 @@ public class CampFormatter implements iFormatter<Camp>{
                 "\nFaculty: " + camp.getFaculty() +
                 "\nLocation: " + camp.getLocation() +
                 "\nCamp Attendee Slots: " + camp.getCampAttendeeSlots() +
-                "\nCamp Committee Slots: " + camp.getCampCommitteeSlots() +
+                "\nCamp Commitee Slots: " + camp.getCampCommiteeSlots() +
                 "\nDescription: " + camp.getDescription() +
                 "\nStaff in charge: " + camp.getStaffInCharge() + 
                 "\n======================================";

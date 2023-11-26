@@ -17,7 +17,12 @@ import view.*;
 
 
 public class StaffUI {
+
     public static int checkValidInput(Scanner scan) {
+		/*
+		 * @param scan takes in the input from the scanner
+		 * @return returnValue will check if the input is an integer or not
+		 */
 		int returnValue;
 		try {
 			returnValue = Integer.parseInt(scan.nextLine());
@@ -27,26 +32,26 @@ public class StaffUI {
 		}
 		return returnValue;
 	}
-
     public static void start(){
         int choice;
         do {
             Staff s = (Staff) UserManager.getUser();
             Scanner sc = new Scanner(System.in);
-            System.out.println("================================");
-            System.out.println("List of options:");
+            System.out.println("Select Function");
             System.out.println("1. Create camp");
             System.out.println("2. View Created camps");
             System.out.println("3. View all camps");
             System.out.println("4. Change password");
             System.out.println("5. Logout");
-            System.out.println("================================");
-           
-            System.out.print("Choose an option: ");
-			choice = checkValidInput(sc);
-			System.out.println();
+            try {
+                choice = sc.nextInt();
+            } 
+            catch (Exception e) {
+                choice = -1;
+            }
+            sc.nextLine();
             switch (choice) {
-                case 1: {
+                case 1: 
                     String dateString, campName;
                     do {
                         System.out.print("Enter camp name: ");
@@ -71,7 +76,7 @@ public class StaffUI {
                         c++;
                     } while (startdate.compareTo(enddate) > 0);
 
-                    System.out.print("Enter a reg end date (format yyyy-MM-dd): ");
+                    System.out.println("Enter a reg end date (format yyyy-MM-dd):");
                     dateString = sc.nextLine();
                     Date regenddate = DateHelper.stringToDate(dateString);
 
@@ -131,7 +136,6 @@ public class StaffUI {
                             System.out.println("Description cannot be empty! \n");
                         }
                     } while (description.isEmpty());
-
                     String visiString;
                     boolean visibility = true;
                     do {
@@ -156,7 +160,7 @@ public class StaffUI {
                         System.out.println("There was an error.");
                     }
                     break;
-                }
+                
                 case 2: 
                     ViewCreatedCamps v= new ViewCreatedCamps();
                     ArrayList<Integer> CreatedCamps = v.displayCamps();
@@ -207,7 +211,7 @@ public class StaffUI {
                                 }
                                 break;
 
-                            case 3: {
+                            case 3: 
                                 ArrayList<Integer> allEnquiries = EnquiryManager.printAllEnquiry();
 
                                 if (allEnquiries.size() == 0) {
@@ -238,21 +242,21 @@ public class StaffUI {
 
                                 EnquiryManager.replyEnquiry(reply);
                                 break;
-                            }
-                            case 4: {
+                            
+                            case 4: 
                                 SuggestionManager.printAllSuggestions();
                                 System.out.print("Select the suggestion you to wish accept or reject: ");
                                 int sugg = sc.nextInt();
                                 SuggestionManager.setSuggestion(sugg-1);
                                 System.out.println("enter 1 to accept");
-                                int x=sc.nextInt();
-                                if(x==1){
+                                int y=sc.nextInt();
+                                if(y==1){
                                     SuggestionManager.approveSuggestion();
                                 }
 
                                 break;
-                            }
-                            case 5: {
+                            
+                            case 5: 
                                 int a;
                                 do {
                                     System.out.println("================================");
@@ -276,25 +280,26 @@ public class StaffUI {
                                     CampManager.generateCommitteeReport();
                                 }
                                 break;
-                            }
-                            case 6: {
+                            
+                            case 6: 
                                 break;
-                            }
+                            
                             default:
                                 System.out.println("Please enter a valid option! \n");
+
                         }
                     } while(subch != 6);
                     break;
                 
 
-                case 3: {
+                case 3: 
                     ViewAllCamps vac = new ViewAllCamps();
                     ArrayList<Integer> AllCamps = vac.displayCamps();
                     int campChoice;
 
                     do {
                         System.out.print("Choose a camp (Enter 0 to go back): ");
-                        campChoice = checkValidInput(sc);
+                        campChoice = sc.nextInt();
                         if (campChoice == 0) {
                             break;
                         }
@@ -312,14 +317,14 @@ public class StaffUI {
                     CampManager.printDetails();
                     System.out.println();
                     break;
-                }
-                case 4: {
+                
+                case 4: 
                     String newPass1, newPass2;
                     do {
 						System.out.print("Enter your new password: ");
-						newPass1 = sc.nextLine();
+						newPass1 = sc.next();
 						System.out.print("Enter your new password again: ");
-						newPass2 = sc.nextLine();
+						newPass2 = sc.next();
 						if (!newPass1.equals(newPass2)) {
 							System.out.println("Please enter the same password!\n");
 						}
@@ -328,13 +333,13 @@ public class StaffUI {
                     System.out.println("Your password has been changed successfully. Please login again");
                     choice = 5;
                     break;
-                }
-                case 5: {
+                
+                case 5: 
                     break;
-                }
+                
                 default:
                     System.out.println("Please enter a valid option!");
             }
-        }while(choice!=5);
+        } while(choice != 5);
     }
 }
