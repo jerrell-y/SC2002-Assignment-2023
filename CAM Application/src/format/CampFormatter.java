@@ -78,7 +78,7 @@ public class CampFormatter implements iFormatter<Camp>{
                 "\nTotal Camp Attendee Slots: " + camp.getCampAttendeeSlots() +
                 "\nRemaining Camp Attendee Slots: " + (camp.getCampAttendeeSlots() - camp.getCampAttendees().size()) +
                 "\nTotal Camp Commitee Slots: " + camp.getCampCommiteeSlots() +
-                "\nRemaining Camp Attendee Slots: " + (camp.getCampCommiteeSlots() - camp.getCampCommitees().size()) +
+                "\nRemaining Camp Commitee Slots: " + (camp.getCampCommiteeSlots() - camp.getCampCommitees().size()) +
                 "\nDescription: " + camp.getDescription() +
                 "\nStaff in charge: " + camp.getStaffInCharge() + 
                 "\n======================================";
