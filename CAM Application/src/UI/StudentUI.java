@@ -372,7 +372,7 @@ public class StudentUI {
 													if (confirmString.equals("CONFIRM")) {
 														if (SuggestionManager.deleteSuggestion(userSuggestions.get(suggestionNum-1))) {
 															System.out.println("Your suggestion was successfully deleted! \n");
-															subsubChoice = 3;
+															subC = 3;
 														}
 													}
 													else {
