@@ -6,23 +6,40 @@ import java.util.*;
 
 import UI.StaffUI;
 
-/**
+/*
  * class containing the staff information, as well as the methods that a staff is able of using. It is the child class of user
  */
 
+/**
+ * Represents a staff member in the system. This class extends the User class,
+ * enabling functionalities specific to staff members such as creating and editing camps.
+ */
 public class Staff extends User{
     /**
      * constructor that creates the staff object
      * @param userID is the current userID
      * @param password is the password of the staff
      * @param name is the real name of the staff
-     * @faculty is the faculty the staff belongs to
+     * @param faculty is the faculty the staff belongs to
      */
     public Staff(String userID, String password, String name, Faculty faculty) {
         super(userID, password, name, faculty);
     }
     /**
-     * function creates camps by taking in the camp information as the parameters
+     * Creates a new camp with the given details and adds it to the camp database.
+     *
+     * @param campName The name of the camp.
+     * @param startDate The start date of the camp.
+     * @param endDate The end date of the camp.
+     * @param regEndDate The registration end date for the camp.
+     * @param faculty The faculty associated with the camp.
+     * @param location The location where the camp will be held.
+     * @param campAttendeeSlots The number of available slots for camp attendees.
+     * @param campCommiteeSlots The number of available slots for camp committee members.
+     * @param description A description of the camp.
+     * @param staffInCharge The staff member in charge of the camp.
+     * @param visibility The visibility status of the camp (public/private).
+     * @return A boolean value indicating whether the camp was successfully created.
      */
     public boolean CreateCamp(String campName, Date startDate, Date endDate, Date regEndDate, Faculty faculty, String location, int campAttendeeSlots, int campCommiteeSlots, String description, String staffInCharge, boolean visibility){
         Camp c = new Camp(campName, startDate, endDate, regEndDate, faculty, location, campAttendeeSlots, campCommiteeSlots, description, staffInCharge,visibility);
@@ -30,7 +47,10 @@ public class Staff extends User{
         return x;
     }
     /**
-     * function for editing camps
+     * Provides an interface for editing the details of an existing camp.
+     * The method ensures that camps with attendees or committee members
+     * cannot be edited. It offers a variety of options for editing different
+     * attributes of a camp.
      */
     public void EditCamp () {
         Camp c = CampManager.getCamp();
