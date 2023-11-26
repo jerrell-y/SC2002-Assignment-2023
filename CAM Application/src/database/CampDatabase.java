@@ -20,13 +20,29 @@ import java.util.Arrays;
  */
 public class CampDatabase implements Database<Camp> {
 
+    /**
+     * Singleton instance of the database
+     */
     private static CampDatabase instance;
+
+    /**
+     * List holding all the camps
+     */
     private ArrayList<Camp> camps;
 
+    /**
+     * Private constructor to prevent instantiation from outside, ensuring a Singleton pattern.
+     */
     private CampDatabase() {
         camps = new ArrayList<>();
     }
 
+    /**
+     * Synchronized method to get the single instance of the CampDatabase class.
+     * If the instance is null, it initializes a new instance.
+     *
+     * @return The single instance of CampDatabase.
+     */
     public static synchronized CampDatabase getInstance() {
         if (instance == null) {
             instance = new CampDatabase();
@@ -34,6 +50,12 @@ public class CampDatabase implements Database<Camp> {
         return instance;
     }
 
+    /**
+     * Loads camp data from a CSV file into the application.
+     * Parses each line of the file into a Camp object and adds it to the list of camps.
+     *
+     * @return An ArrayList of Camp objects representing all camps loaded from the CSV file.
+     */
     public ArrayList<Camp> load() {
 
         // Import CampInfo
@@ -160,6 +182,10 @@ public class CampDatabase implements Database<Camp> {
 
     }
 
+    /**
+     * Updates the CSV file with current camp data.
+     * Serializes each camp object into a comma-separated string and writes it to the file.
+     */
     public void update() {
         String campInfo = "../data/camp_info.csv";
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(campInfo))) {
@@ -237,10 +263,21 @@ public class CampDatabase implements Database<Camp> {
         }
     }
 
+    /**
+     * Retrieves the list of all camps.
+     *
+     * @return An ArrayList of Camp objects.
+     */
     public ArrayList<Camp> getCamps() {
         return camps;
     }
 
+    /**
+     * Searches for a camp by its ID and returns the corresponding Camp object.
+     *
+     * @param campID The ID of the camp to be retrieved.
+     * @return The Camp object with the specified ID, or null if not found.
+     */
     public Camp getCampByID(int campID) {
         for (Camp camp : camps) {
             if (camp.getCampID() == campID) {
@@ -250,12 +287,25 @@ public class CampDatabase implements Database<Camp> {
         return null;
     }
 
+    /**
+     * Adds a new Camp object to the list and updates the CSV file.
+     *
+     * @param camp The Camp object to be added.
+     * @return true if the camp was added successfully, false otherwise.
+     */
     public boolean addCamp(Camp camp) {
         camps.add(camp);
         CampDatabase.getInstance().update();
         return true;
     }
 
+    /**
+     * Deletes a camp from the list based on its ID and updates the CSV file.
+     * Ensures that the camp does not have any attendees or committee members before deletion.
+     *
+     * @param campID The ID of the camp to be deleted.
+     * @return true if the camp was deleted successfully, false otherwise.
+     */
     public boolean deleteCamp(int campID) {
         for (Camp camp : camps) {
             if (camp.getCampID() == campID) {
