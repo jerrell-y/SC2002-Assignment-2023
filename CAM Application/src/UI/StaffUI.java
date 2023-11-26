@@ -244,15 +244,27 @@ public class StaffUI {
                                 break;
                             
                             case 4: 
-                                SuggestionManager.printAllSuggestions();
-                                System.out.print("Select the suggestion you to wish accept or reject: ");
-                                int sugg = sc.nextInt();
-                                SuggestionManager.setSuggestion(sugg-1);
-                                System.out.println("enter 1 to accept");
-                                int y=sc.nextInt();
-                                if(y==1){
+                                ArrayList<Integer> allSuggestions = SuggestionManager.printAllSuggestions();
+
+                                int sugg;
+                                do {
+                                    System.out.print("Select the suggestion you to wish accept or reject: ");
+                                    sugg = checkValidInput(sc);
+                                    if (sugg > allSuggestions.size() || sugg <= 0) {
+                                        System.out.println("Please enter a valid suggestion number! \n");
+                                    }
+                                } while (sugg > allSuggestions.size() || sugg <= 0);
+
+                                SuggestionManager.setSuggestion(allSuggestions.get(sugg-1));
+
+                                System.out.print("Do you approve this suggestion? (Y/N): ");
+                                String approval = sc.nextLine();
+                                if (approval.equals("Y")) {
                                     SuggestionManager.approveSuggestion();
                                 }
+                                else {
+                                    System.out.println("The suggestion was not approved. \n");
+                                }   
 
                                 break;
                             
