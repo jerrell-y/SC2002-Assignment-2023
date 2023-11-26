@@ -5,22 +5,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.PrintWriter;
 
 
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Objects;
-
 import camppackage.Camp;
-import manager.CampManager;
-import user.*;
 
 public class CampFormatter implements iFormatter<Camp>{
     private static CampFormatter instance;
