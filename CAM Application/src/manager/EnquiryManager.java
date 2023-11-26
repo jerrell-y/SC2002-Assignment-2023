@@ -9,34 +9,35 @@ import database.UserDatabase;
 import user.Student;
 import user.User;
 import user.UserManager;
+
 /**
- * The manager that handles the methods regarding enquiries.
+ * Handles the logic regarding the current enquiry. Only one enquiry can be active at any time. Holds the reference to the current enquiry object.
  */
 public class EnquiryManager {
     /**
-     * a variable that stores a specific enquiry into the manager
+     * The current enquiry selected.
      */
     private static Enquiry enquiry;
 
     /**
-     * method that sets a specific enquiry into the manager
-     * @param index gives us the index to store that specific enquiry within the camp
+     * Sets the new enquiry to be selected.
+     * @param index The index of the enquiry.
      */
     public static void setEnquiry(int index) {
         EnquiryManager.enquiry = CampManager.getCamp().getEnquiries().get(index);
     }
 
     /**
-     * method that returns the specific enquiry stored in the manager
-     * @return the enquiry stored inside
+     * Gets the current enquiry object selected.
+     * @return the current enquiry.
      */
     public static Enquiry getEnquiry() {
         return enquiry;
     }
 
     /**
-     * method to add enquiry into a camp
-     * @param enq the string that will be added into the content of the camp
+     * Adds an enquiry into the current camp.
+     * @param enq The contents of the enquiry.
      */
     public static void addEnquiry(String enq) { 
         User user = UserManager.getUser();
@@ -47,9 +48,9 @@ public class EnquiryManager {
     }
 
     /**
-     * method to edit the enquiry from the camp
-     * @param enq is the string that is used to overwrite the current content in that specific enquiry
-     * @return false if the enquiry has already been answered, and true if it has not yet been answered
+     * Edits the content of the current enquiry.
+     * @param enq The new content of the enquiry.
+     * @return False if the enquiry has already been answered, true if not.
      */
     public static boolean editEnquiry(String enq) { 
         if (enquiry.isAnswered()) {
@@ -64,9 +65,9 @@ public class EnquiryManager {
     }
 
     /**
-     * method to delete enquiry from the camp
-     * @param enquiryNum gives us the index to remove the enquiry from the camp
-     * @return false if the enquiry has already been answered, and true if it has not
+     * Deletes the selected enquiry from the camp.
+     * @param enquiryNum Index of the enquiry.
+     * @return False if the enquiry has already been answered, true if not.
      * 
      */
     public static boolean deleteEnquiry(int enquiryNum) { 
@@ -83,9 +84,9 @@ public class EnquiryManager {
     }
 
     /**
-     * method to reply the enquiry as a staff or a committee. If a committee replies, then they will recieve points
-     * @param reply is the string that is entered to reply to that enquiry
-     * @return false if the enquiry has already been answered, and true if it has not
+     * Adds a reply to the current enquiry as a staff or a committee. If a committee replies, they wiil receive one point.
+     * @param reply The reply to the enquiry.
+     * @return False if the enquiry has already been answered, true if not.
      * 
      */
     public static boolean replyEnquiry(String reply) {          
@@ -110,8 +111,8 @@ public class EnquiryManager {
 
 
     /**
-     * the method to print out all the current user's enquiries in that camp
-     * @return an ArrarList<Integer> of all the indexes of the current list being looked at, to be used later 
+     * Prints all the enquiries in the camp made by the current user in the current camp.
+     * @return a list of indexes of the enquiries.
      * 
      */
     public static ArrayList<Integer> printUserEnquiry() { 
@@ -137,8 +138,8 @@ public class EnquiryManager {
     }
 
     /**
-     * method to print out all the enquiries in that camp
-     * @return an ArrarList<Integer> of all the indexes of the current list being looked at, to be used later 
+     * Prints all the enquiries in the current camp.
+     * @return a list of indexes of the enquiries.
      * 
      */
     public static ArrayList<Integer> printAllEnquiry() { 
