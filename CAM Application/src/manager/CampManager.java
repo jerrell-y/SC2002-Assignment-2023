@@ -75,7 +75,7 @@ public class CampManager {
 
     public static boolean registerAttendee() {
         User user = UserManager.getUser();
-        if (camp.getCampAttendeeSlots() <= camp.getCampAttendees().size()) {
+        if (camp.getCampAttendeeSlots() == 0) {
             System.out.println("There are no more slots available!\n");
             return false;
         }
@@ -96,7 +96,7 @@ public class CampManager {
                 return false;
             }
         }
-        if (camp.getCampCommiteeSlots() <= camp.getCampCommitees().size()) {
+        if (camp.getCampCommiteeSlots() == 0) {
             System.out.println("There are no more slots available!\n");
             return false;
         }
