@@ -186,6 +186,26 @@ public class StaffUI {
                 case 3: {
                     ViewAllCamps v= new ViewAllCamps();
                     ArrayList<Integer> AllCamps = v.displayCamps();
+                    int campChoice;
+
+                    do {
+                        System.out.print("Choose a camp (Enter 0 to go back): ");
+                        campChoice = sc.nextInt();
+                        if (campChoice == 0) {
+                            break;
+                        }
+                        if (campChoice > AllCamps.size() || campChoice <= 0) {
+                            System.out.println("Please enter a valid camp number! \n");
+                        }
+                    } while (campChoice > AllCamps.size() || campChoice <= 0);
+
+                    System.out.println();
+                    if (campChoice == 0) {
+                        break;
+                    }
+
+                    CampManager.setCamp(AllCamps.get(campChoice-1));
+                    CampManager.printDetails();
                     System.out.println();
                     break;
                 }
