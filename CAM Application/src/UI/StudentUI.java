@@ -203,7 +203,6 @@ public class StudentUI {
 
 										System.out.println();
 										if (enquiryNum == 0) {
-											subsubChoice = 4;
 											break;
 										}
 
@@ -256,6 +255,7 @@ public class StudentUI {
 
 									case 4:   //go back
 										subsubChoice = 4;
+										subChoice = 4;
 										break;
 
 									default:

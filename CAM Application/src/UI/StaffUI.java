@@ -123,7 +123,7 @@ public class StaffUI {
                             break;
                         }
                         case 3: {
-                            ArrayList<Enquiry> allEnquiries = EnquiryManager.printAllEnquiry();
+                            ArrayList<Integer> allEnquiries = EnquiryManager.printAllEnquiry();
 
 							if (allEnquiries.size() == 0) {
 								System.out.println("There are no enquiries!\n");

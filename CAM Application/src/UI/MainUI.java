@@ -22,11 +22,11 @@ public class MainUI {
             if (!LoginUI.getChangedDefaultPassword()) {
                 UserManager.setUser(user);
                 if (user instanceof Student) {
-                    System.out.println("student logged in successfully. \nWelcome back, " + user.getUserID() + ".\n");
+                    System.out.println("Student logged in successfully. \nWelcome back, " + user.getUserID() + ".\n");
                     StudentUI.start();
                 } else if (user instanceof Staff) {
                     // show StaffUI
-                    System.out.println("staff logged in successfully. \nWelcome back, " + user.getUserID() + ".\n");
+                    System.out.println("Staff logged in successfully. \nWelcome back, " + user.getUserID() + ".\n");
                     StaffUI.start();
                 }
             } else {
