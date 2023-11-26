@@ -1,29 +1,35 @@
 package user;
 
 /**
- * user class which stores the information of the current user. It is the parent class for student and staff.
+ * User class which stores the information of the current user. It is the parent class for student and staff.
  */
-
 public class User {
     /**
-     * strings containing the userID and name of the user
+     * Unique ID of the user.
      */
-    private final String userID, name;
+    private final String userID;
+
     /**
-     * stores the faculty of the user
+     * Name of the user.
+     */
+    private final String name;
+
+    /**
+     * Faculty of the user.
      */
     private final Faculty faculty;
+
     /**
-     * stores password of the user
+     * Password of the user.
      */
     private String password;
 
     /**
-     * constructor that creates the user class
-     * @param userID is the userID of the user
-     * @param password is the password of the user
-     * @param name is the name of the user
-     * @param faculty is the faculty of the user
+     * Creates a new user with userID, password in SHA-256, name and faculty of the user.
+     * @param userID The user's userID.
+     * @param password The user's hashed password.
+     * @param name The user's name.
+     * @param faculty The user's faculty.
      */
     public User(String userID, String password, String name, Faculty faculty) {
         this.userID = userID;
@@ -33,16 +39,33 @@ public class User {
     }
 
     /**
-     * getter methods to obtain the information from the user class
+     * Gets the unique ID of the user.
+     * @return the user's unique ID.
      */
-
     public String getUserID() { return userID; }
-    public String getPassword() { return password; }
-    public String getName() { return name; }
-    public Faculty getFaculty() { return faculty; }
 
     /**
-     * setter method to set the password of the student
+     * Gets the hashed password of the user.
+     * @return the user's hashed password.
+     */
+    public String getPassword() { return password; }
+
+    /**
+     * Gets the name of the user.
+     * @return the user's name.
+     */
+    public String getName() { return name; }
+
+    /**
+     * Gets the faculty of the user.
+     * @return the user's faculty.
+     */
+    public Faculty getFaculty() { return faculty; }
+
+
+    /**
+     * Sets the new hashed password of the user.
+     * @param password The new hashed password.
      */
     public void setPassword(String password){
         this.password = password;
