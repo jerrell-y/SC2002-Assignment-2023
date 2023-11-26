@@ -143,10 +143,10 @@ public class StaffUI {
                         }
                         case 4: {
                             SuggestionManager.printAllSuggestions();
-                            System.out.println("Select the suggestion you wish accept or reject to: ");
+                            System.out.println("Select the suggestion you to wish accept or reject: ");
                             int sugg = sc.nextInt();
                             sc.nextLine();
-                            SuggestionManager.setSuggestion(sugg);
+                            SuggestionManager.setSuggestion(sugg-1);
                             System.out.println("enter 1 to accept");
                             int x=sc.nextInt();
                             sc.nextLine();
