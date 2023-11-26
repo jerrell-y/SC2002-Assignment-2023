@@ -2,7 +2,6 @@ package UI;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import login.LoginManager;
 import manager.CampManager;
 import manager.EnquiryManager;
@@ -11,9 +10,20 @@ import user.UserManager;
 import view.ViewAvailableCamps;
 import view.ViewRegisteredCamps;
 
+/*
+ * The UI that handles the printing of the interface that the student user sees.
+ */
+
 public class StudentUI {
+	/*
+	 * Method that checks if the input coming in from the scanner is valid or not
+	 */
 
 	public static int checkValidInput(Scanner scan) {
+		/*
+		 * @param scan takes in the input from the scanner
+		 * @return returnValue will check if the input is an integer or not
+		 */
 		int returnValue;
 		try {
 			returnValue = Integer.parseInt(scan.nextLine());
@@ -23,11 +33,25 @@ public class StudentUI {
 		}
 		return returnValue;
 	}
-	
+	/*
+	* The static method that can be called by mainUI to run the UI interface for the student
+	*/
     public static void start() {
+		/*
+		 * input variables for storing data coming in from the scanner
+		 */
 		int mainChoice, subChoice = 1;
+		/*
+		 * scan gets the input from scanner
+		 */
 		Scanner scan = new Scanner(System.in);
+		/*
+		 * confirmString is used to confirm if a user wants to execute a function
+		 */
 		String confirmString;
+		/*
+		 * main loop body
+		 */
 		do {  	
 			System.out.println("================================");
 			System.out.println("List of options:");
@@ -74,7 +98,7 @@ public class StudentUI {
 						do {
 							System.out.println("================================");
 							System.out.println("1. Register as attendee");
-							System.out.println("2. Register as commitee");
+							System.out.println("2. Register as committee");
 							System.out.println("3. Go back");
 							System.out.println("================================");
 
@@ -91,9 +115,9 @@ public class StudentUI {
 									break;
 										
 								case 2:
-									success = CampManager.registerCommitee();
+									success = CampManager.registerCommittee();
 									if (success) {
-										System.out.println("Successfully registered as a commitee member! \n");
+										System.out.println("Successfully registered as a committee member! \n");
 									}
 									break;
 
@@ -260,7 +284,7 @@ public class StudentUI {
 							} while (subsubChoice != 4);
 						}
 
-						else if (CampManager.isCommitee()) {
+						else if (CampManager.isCommittee()) {
 							int subsubChoice = 2;
 							do {
 								System.out.println("================================");

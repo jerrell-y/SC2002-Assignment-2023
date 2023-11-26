@@ -35,16 +35,16 @@ public class CampManager {
         return false;
     }
 
-    public static boolean isCommitee() {
-        return isCommitee(CampManager.camp);
+    public static boolean isCommittee() {
+        return isCommittee(CampManager.camp);
     }
 
-    public static boolean isCommitee(Camp camp) {
+    public static boolean isCommittee(Camp camp) {
         int i;
         User user = UserManager.getUser();
-        ArrayList<String> campCommitees = camp.getCampCommitees();
-        for (i = 0; i != campCommitees.size(); i++) {
-            if (campCommitees.get(i).equals(user.getUserID())) {
+        ArrayList<String> campCommittees = camp.getCampCommittees();
+        for (i = 0; i != campCommittees.size(); i++) {
+            if (campCommittees.get(i).equals(user.getUserID())) {
                 return true;
             }
         }
@@ -82,23 +82,23 @@ public class CampManager {
         return true;
     }
 
-    public static boolean registerCommitee() {
+    public static boolean registerCommittee() {
         User user = UserManager.getUser();
         ArrayList<Camp> campList = CampDatabase.getInstance().getCamps();
         Camp currCamp;
         int i;
         for (i = 0; i != campList.size(); i++) {
             currCamp = campList.get(i);
-            if (isCommitee(currCamp)) {
-                System.out.println("You are already a commitee member in another camp!");
+            if (isCommittee(currCamp)) {
+                System.out.println("You are already a committee member in another camp!");
                 return false;
             }
         }
-        if (camp.getCampCommiteeSlots() == 0) {
+        if (camp.getCampCommitteeSlots() == 0) {
             System.out.println("There are no more slots available!\n");
             return false;
         }
-        camp.addCampCommitee(user.getUserID());
+        camp.addCampCommittee(user.getUserID());
         CampDatabase.getInstance().update();
         return true;
     }

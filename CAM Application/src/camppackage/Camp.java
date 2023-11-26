@@ -14,12 +14,12 @@ public class Camp{
     private Faculty faculty;
     private String location;
     private int campAttendeeSlots;
-    private int campCommiteeSlots;
+    private int campCommitteeSlots;
     private String description;
     private String staffInCharge;
     private boolean visibility;
     private ArrayList<String> campAttendees;
-    private ArrayList<String> campCommitees;
+    private ArrayList<String> campCommittees;
     private ArrayList<Enquiry> enquiries;
     private ArrayList<Suggestion> suggestions;
 
@@ -34,12 +34,12 @@ public class Camp{
      * @param faculty
      * @param location
      * @param campAttendeeSlots
-     * @param campCommiteeSlots
+     * @param campCommitteeSlots
      * @param description
      * @param staffInCharge
      * @param visibility
      */
-    public Camp (String campName, Date startDate, Date endDate, Date regEndDate, Faculty faculty, String location, int campAttendeeSlots, int campCommiteeSlots, String description, String staffInCharge, boolean visibility) {
+    public Camp (String campName, Date startDate, Date endDate, Date regEndDate, Faculty faculty, String location, int campAttendeeSlots, int campCommitteeSlots, String description, String staffInCharge, boolean visibility) {
         this.campID = ++totalCamps;
         this.campName = campName;
         this.startDate = startDate;
@@ -48,17 +48,17 @@ public class Camp{
         this.faculty = faculty;
         this.location = location;
         this.campAttendeeSlots = campAttendeeSlots;
-        this.campCommiteeSlots = campCommiteeSlots;
+        this.campCommitteeSlots = campCommitteeSlots;
         this.description = description;
         this.staffInCharge = staffInCharge;
         this.visibility = visibility;
         campAttendees = new ArrayList<String>();
-        campCommitees = new ArrayList<String>();
+        campCommittees = new ArrayList<String>();
         enquiries = new ArrayList<Enquiry>();
         suggestions = new ArrayList<Suggestion>();
     }
 
-    public Camp (int campID, String campName, Date startDate, Date endDate, Date regEndDate, Faculty faculty, String location, int campAttendeeSlots, int campCommiteeSlots, String description, String staffInCharge, boolean visibility, ArrayList<String> campAttendees, ArrayList<String> campCommitees, ArrayList<Enquiry> enquiries, ArrayList<Suggestion> suggestions) {
+    public Camp (int campID, String campName, Date startDate, Date endDate, Date regEndDate, Faculty faculty, String location, int campAttendeeSlots, int campCommitteeSlots, String description, String staffInCharge, boolean visibility, ArrayList<String> campAttendees, ArrayList<String> campCommittees, ArrayList<Enquiry> enquiries, ArrayList<Suggestion> suggestions) {
         this.campID = campID;
         this.campName = campName;
         this.startDate = startDate;
@@ -67,12 +67,12 @@ public class Camp{
         this.faculty = faculty;
         this.location = location;
         this.campAttendeeSlots = campAttendeeSlots;
-        this.campCommiteeSlots = campCommiteeSlots;
+        this.campCommitteeSlots = campCommitteeSlots;
         this.description = description;
         this.staffInCharge = staffInCharge;
         this.visibility = visibility;
         this.campAttendees = campAttendees;
-        this.campCommitees = campCommitees;
+        this.campCommittees = campCommittees;
         this.enquiries = enquiries;
         this.suggestions = suggestions;
     }
@@ -145,12 +145,12 @@ public class Camp{
         return campAttendeeSlots;
     }
 
-    public void setCampCommiteeSlots(int campCommiteeSlots) {
-        this.campCommiteeSlots = campCommiteeSlots;
+    public void setCampCommitteeSlots(int campCommitteeSlots) {
+        this.campCommitteeSlots = campCommitteeSlots;
     }
 
-    public int getCampCommiteeSlots() {
-        return campCommiteeSlots;
+    public int getCampCommitteeSlots() {
+        return campCommitteeSlots;
     }
 
     public void setDescription(String description) {
@@ -185,12 +185,12 @@ public class Camp{
         this.campAttendees = campAttendees;
     }
 
-    public ArrayList<String> getCampCommitees() {
-        return campCommitees;
+    public ArrayList<String> getCampCommittees() {
+        return campCommittees;
     }
 
-    public void setCampCommitees(ArrayList<String> campCommitees) {
-        this.campCommitees = campCommitees;
+    public void setCampCommittees(ArrayList<String> campCommittees) {
+        this.campCommittees = campCommittees;
     }
 
     public ArrayList<Enquiry> getEnquiries() {
@@ -219,9 +219,9 @@ public class Camp{
         campAttendeeSlots++;
     }
 
-    public void addCampCommitee(String userID) {
-        campCommitees.add(userID);
-        campCommiteeSlots--;
+    public void addCampCommittee(String userID) {
+        campCommittees.add(userID);
+        campCommitteeSlots--;
     }
 
     public void addEnquiry(Enquiry enquiry) {

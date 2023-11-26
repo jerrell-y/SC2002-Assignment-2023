@@ -50,12 +50,12 @@ public class CampDatabase implements Database<Camp> {
                 Faculty faculty = Faculty.valueOf(values[5]);
                 String location = values[6];
                 int campAttendeeSlots = Integer.parseInt(values[7]);
-                int campCommiteeSlots = Integer.parseInt(values[8]);
+                int campCommitteeSlots = Integer.parseInt(values[8]);
                 String description = values[9];
                 String staffInCharge = values[10];
                 boolean visibility = "True".equalsIgnoreCase(values[11]);
 
-                // Parsing CampAttendees and Campcommitees
+                // Parsing CampAttendees and Campcommittees
                 String attendees = values[12].replaceAll("\\[|\\]|\"", "");
                 ArrayList<String> campAttendees = new ArrayList<String>();
                 if (!attendees.equals("")) {
@@ -63,10 +63,10 @@ public class CampDatabase implements Database<Camp> {
                         Arrays.asList(values[12].replaceAll("\\[|\\]|\"", "").split(",")));
                 }
 
-                String commitees = values[12].replaceAll("\\[|\\]|\"", "");
-                ArrayList<String> campCommitees = new ArrayList<String>();
-                if (!commitees.equals("")) {
-                    campCommitees = new ArrayList<>(
+                String committees = values[12].replaceAll("\\[|\\]|\"", "");
+                ArrayList<String> campCommittees = new ArrayList<String>();
+                if (!committees.equals("")) {
+                    campCommittees = new ArrayList<>(
                         Arrays.asList(values[13].replaceAll("\\[|\\]|\"", "").split(",")));
                 }
 
@@ -139,8 +139,8 @@ public class CampDatabase implements Database<Camp> {
                 }
                 camps.add(
                         new Camp(campID, campName, startDate, endDate, regEndDate, faculty, location, campAttendeeSlots,
-                                campCommiteeSlots, description, staffInCharge, visibility, campAttendees,
-                                campCommitees, enquiries, suggestions));
+                                campCommitteeSlots, description, staffInCharge, visibility, campAttendees,
+                                campCommittees, enquiries, suggestions));
             }
             Camp.setTotalCamps(max);
         } catch (IOException e) {
@@ -155,7 +155,7 @@ public class CampDatabase implements Database<Camp> {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(campInfo))) {
             // Write the header
             bw.write(
-                    "CampID,CampName,StartDate,EndDate,RegEndDate,Faculty,Location,CampAttendeeSlots,CampCommiteeSlots,Description,StaffInCharge,Visibility,CampAttendees,Campcommitees,Enquiries,Suggestions\n");
+                    "CampID,CampName,StartDate,EndDate,RegEndDate,Faculty,Location,CampAttendeeSlots,CampCommitteeSlots,Description,StaffInCharge,Visibility,CampAttendees,Campcommittees,Enquiries,Suggestions\n");
             for (Camp camp : camps) {
                 StringBuilder sb = new StringBuilder();
                 sb.append(camp.getCampID()).append(",");
@@ -166,7 +166,7 @@ public class CampDatabase implements Database<Camp> {
                 sb.append(camp.getFaculty().name()).append(",");
                 sb.append(camp.getLocation()).append(",");
                 sb.append(camp.getCampAttendeeSlots()).append(",");
-                sb.append(camp.getCampCommiteeSlots()).append(",");
+                sb.append(camp.getCampCommitteeSlots()).append(",");
                 sb.append(camp.getDescription()).append(",");
                 sb.append(camp.getStaffInCharge()).append(",");
                 sb.append(camp.getVisibility() ? "True" : "False").append(",");
@@ -176,9 +176,9 @@ public class CampDatabase implements Database<Camp> {
                 sb.append(String.join(",", camp.getCampAttendees()));
                 sb.append("]").append("\",");
 
-                // Serialize CampCommitees and enclose outer brackets in quotes
+                // Serialize CampCommittees and enclose outer brackets in quotes
                 sb.append("\"").append("[");
-                sb.append(String.join(",", camp.getCampCommitees()));
+                sb.append(String.join(",", camp.getCampCommittees()));
                 sb.append("]").append("\",");
 
                 // Serialize Enquiries and enclose outer brackets in quotes
@@ -241,12 +241,18 @@ public class CampDatabase implements Database<Camp> {
         return true;
     }
 
-    public void deleteCamp(int campID) {
+    public boolean deleteCamp(int campID) {
         for (Camp camp : camps) {
             if (camp.getCampID() == campID) {
+                if (camp.getCampAttendees().size() != 0 || camp.getCampCommittees().size() != 0) {
+                    System.out.println("You cannot delete this camp because there are existing attendees/committee members! \n");
+                    return false;
+                }
                 camps.remove(camp);
                 CampDatabase.getInstance().update();
+                break;
             }
         }
+        return true;
     }
 }

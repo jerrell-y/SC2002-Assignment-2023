@@ -15,7 +15,6 @@ public class Staff extends User{
         return x;
     }
     public void EditCamp () {
-        int campID;
         Camp c = CampManager.getCamp();
         Scanner sc= new Scanner(System.in);
         System.out.println("Enter the attribute you wish to edit");
@@ -106,7 +105,7 @@ public class Staff extends User{
                 System.out.println("Enter new camp committee slots");
                 int i=sc.nextInt();
                 sc.nextLine();
-                c.setCampCommiteeSlots(i);
+                c.setCampCommitteeSlots(i);
                 CampDatabase.getInstance().update();
                 System.out.println("DONE");
                 break;

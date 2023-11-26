@@ -10,6 +10,10 @@ import user.Faculty;
 import user.User;
 import user.UserManager;
 
+/*
+ * function to view all the available camps to the student and display it in the UI
+ */
+
 public class ViewAvailableCamps implements ViewCamps {
     private static ViewAvailableCamps instance;
 
@@ -28,7 +32,7 @@ public class ViewAvailableCamps implements ViewCamps {
         int i, count = 1;
         for (i = 0; i != campList.size(); i++) {
             Camp camp = campList.get(i);
-            if (camp.getVisibility() && !CampManager.isAttendee(camp) && !CampManager.isCommitee(camp)) {
+            if (camp.getVisibility() && !CampManager.isAttendee(camp) && !CampManager.isCommittee(camp)) {
                 if (camp.getFaculty() == Faculty.NTU || camp.getFaculty() == user.getFaculty()) {
                     System.out.println(count + ". " + cf.formatShort(camp));
                     availableCamps.add(camp.getCampID());
