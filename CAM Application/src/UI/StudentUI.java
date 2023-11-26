@@ -357,7 +357,11 @@ public class StudentUI {
 										break;
 
 									case 2:
-										//help me add the add function here
+										System.out.print("Enter your suggestion: ");
+										String sug = scan.nextLine();
+										System.out.println();
+										SuggestionManager.addSuggestion(sug);
+										System.out.println("Suggestion successfully added.\n");
 										break;
 
 									case 3:

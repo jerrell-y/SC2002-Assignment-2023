@@ -30,7 +30,6 @@ public class SuggestionManager {
         Student user2 = (Student) user;            //dunno if need upcast or not
         user2.addPoints();
         CampDatabase.getInstance().update();
-        System.out.println("Successfully added suggestion!\n");
     }
 
     public static boolean editSuggestion(String sug) { 
@@ -41,7 +40,6 @@ public class SuggestionManager {
         else{
             suggestion.setContent(sug);
             CampDatabase.getInstance().update();
-            System.out.println("Successfully edited suggestion!\n");
             return true;
         }
        
@@ -56,7 +54,6 @@ public class SuggestionManager {
         SuggestionManager.suggestion = null;
         c.removeSuggestion(suggestNum);
         CampDatabase.getInstance().update();
-        System.out.println("Successfully deleted suggestion!\n");
         return true;
     }
 
@@ -69,7 +66,6 @@ public class SuggestionManager {
         else{
             suggestion.setStatus(true);
             CampDatabase.getInstance().update();
-            System.out.println("Successfully approved suggestion!\n");
         }
     }
 
