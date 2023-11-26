@@ -12,14 +12,27 @@ import manager.CampManager;
  */
 
 public class ViewRegisteredCamps implements ViewCamps {
+    /**
+     * variable to store the object of ViewRegisteredCamps
+     */
     private static ViewRegisteredCamps instance;
 
+    /**
+     * method to veiw all the registered camps of the user
+     * @return ViewRegisteredCamps object
+     * 
+     */
     public static synchronized ViewRegisteredCamps getInstance() {
         if (instance == null) {
             instance = new ViewRegisteredCamps();
         }
         return instance;
     }
+
+    /**
+     * displays all the registered camps
+     * @return an ArrarList<Integer> of all the indexes of registered camps being looked at, to be used later 
+     */
     public ArrayList<Integer> displayCamps() {
         int count = 1;
         CampFormatter cf = CampFormatter.getInstance();

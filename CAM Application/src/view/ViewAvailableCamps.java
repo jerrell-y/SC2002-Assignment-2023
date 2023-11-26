@@ -15,8 +15,17 @@ import user.UserManager;
  */
 
 public class ViewAvailableCamps implements ViewCamps {
+
+    /**
+     * variable to store the object of ViewAvailableCamps
+     */
     private static ViewAvailableCamps instance;
 
+    /**
+     * method to veiw all the available camps
+     * @return ViewAvailableCamps object
+     * 
+     */
     public static synchronized ViewAvailableCamps getInstance() {
         if (instance == null) {
             instance = new ViewAvailableCamps();
@@ -24,6 +33,10 @@ public class ViewAvailableCamps implements ViewCamps {
         return instance;
     }
 
+    /**
+     * displays all the available camps
+     * @return an ArrarList<Integer> of all the indexes of available camps being looked at, to be used later 
+     */
     public ArrayList<Integer> displayCamps() {
         CampFormatter cf = CampFormatter.getInstance();
         ArrayList<Camp> campList = CampDatabase.getInstance().getCamps();
