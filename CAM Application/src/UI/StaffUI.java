@@ -76,7 +76,7 @@ public class StaffUI {
                         c++;
                     } while (startdate.compareTo(enddate) > 0);
 
-                    System.out.println("Enter a reg end date (format yyyy-MM-dd):");
+                    System.out.print("Enter a reg end date (format yyyy-MM-dd): ");
                     dateString = sc.nextLine();
                     Date regenddate = DateHelper.stringToDate(dateString);
 
@@ -183,7 +183,8 @@ public class StaffUI {
                         System.out.println("3. View and reply enquiries");
                         System.out.println("4. View suggestions");
                         System.out.println("5. Generate report");
-                        System.out.println("6. Go back");
+                        System.out.println("6. View Registered Students");
+                        System.out.println("7. Go back");
                         System.out.println("================================");
 
                         System.out.print("Choose an option: ");
@@ -244,7 +245,11 @@ public class StaffUI {
                                 break;
                             
                             case 4: 
-                                SuggestionManager.printAllSuggestions();
+                                ArrayList<Integer> suggest=SuggestionManager.printAllSuggestions();
+                                if(suggest.size()==0){
+                                    System.out.println("NO SUGGESTIONS");
+                                    break;
+                                }
                                 System.out.print("Select the suggestion you to wish accept or reject: ");
                                 int sugg = sc.nextInt();
                                 SuggestionManager.setSuggestion(sugg-1);
@@ -280,15 +285,18 @@ public class StaffUI {
                                     CampManager.generateCommitteeReport();
                                 }
                                 break;
-                            
-                            case 6: 
+
+                            case 6:
+                                ArrayList<String> attendees=CampDatabase.getInstance().getCampByID(ch-1).getCampAttendees();
+                                System.out.println(attendees);
+                            case 7:
                                 break;
                             
                             default:
                                 System.out.println("Please enter a valid option! \n");
 
                         }
-                    } while(subch != 6);
+                    } while(subch != 7);
                     break;
                 
 

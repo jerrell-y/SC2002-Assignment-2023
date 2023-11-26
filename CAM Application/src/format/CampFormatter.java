@@ -41,7 +41,7 @@ public class CampFormatter implements iFormatter<Camp>{
         ArrayList<String> attendees ;
         ArrayList<String> committee ;
         attendees=camp.getCampAttendees();
-        committee=camp.getCampCommitees();
+        committee=camp.getCampCommittees();
         String csvFile = "Student.csv";
         // Additional column values (including header)
         String[] additionalColumn = {"Attendee", "Committee"};
@@ -72,7 +72,7 @@ public class CampFormatter implements iFormatter<Camp>{
     }
     public void formatCommitteeReport(Camp camp){
         ArrayList<String> committee ;
-        committee=camp.getCampCommitees();
+        committee=camp.getCampCommittees();
         String inputPath = "../data/student_list.csv";
         String outputPath = "CommitteeReport.csv";
         ArrayList<String> test= new ArrayList<>();
@@ -91,8 +91,6 @@ public class CampFormatter implements iFormatter<Camp>{
                         String line;
                         while ((line = br.readLine()) != null) {
                             String[] values = line.split(","); // adjust delimiter if necessary
-                            System.out.println(Arrays.toString(values));
-                            System.out.println(values[checkColumnIndex]+committee.get(i));
 
                             if (values[checkColumnIndex].contains(committee.get(i))) {
                                 pw.println(committee.get(i) + "," + values[valueColumnIndex]);
@@ -117,7 +115,7 @@ public class CampFormatter implements iFormatter<Camp>{
                 "\nFaculty: " + camp.getFaculty() +
                 "\nLocation: " + camp.getLocation() +
                 "\nCamp Attendee Slots: " + camp.getCampAttendeeSlots() +
-                "\nCamp Commitee Slots: " + camp.getCampCommiteeSlots() +
+                "\nCamp Commitee Slots: " + camp.getCampCommitteeSlots() +
                 "\nDescription: " + camp.getDescription() +
                 "\nStaff in charge: " + camp.getStaffInCharge() + 
                 "\n======================================";
