@@ -77,7 +77,7 @@ public class CampManager {
         int i;
         for (i = 0; i != blacklist.size(); i++) {
             if (user.getUserID().equals(blacklist.get(i))) {
-                System.out.println("You cannot join a camp that you withdraw! \n");
+                System.out.println("You cannot join a camp that you withdraw from! \n");
                 return false;
             }
         }
@@ -100,7 +100,7 @@ public class CampManager {
         ArrayList<String> blacklist = camp.getBlacklist();
         for (i = 0; i != blacklist.size(); i++) {
             if (user.getUserID().equals(blacklist.get(i))) {
-                System.out.println("You cannot join a camp that you withdraw! \n");
+                System.out.println("You cannot join a camp that you withdraw from! \n");
                 return false;
             }
         }
