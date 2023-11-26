@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import camppackage.Camp;
 import camppackage.Suggestion;
 import database.CampDatabase;
+import database.UserDatabase;
 import user.Student;
 import user.User;
 import user.UserManager;
@@ -27,8 +28,11 @@ public class SuggestionManager {
         Camp c = CampManager.getCamp();
         Suggestion sgn = new Suggestion(sug, user.getName(), user.getUserID());
         c.addSuggestion(sgn);
-        Student user2 = (Student) user;            //dunno if need upcast or not
-        user2.addPoints();
+        Student student = (Student) user;
+        student.addPoints();
+        UserManager.setUser(user);
+
+        UserDatabase.getInstance().update();
         CampDatabase.getInstance().update();
     }
 
