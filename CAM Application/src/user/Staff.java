@@ -7,7 +7,7 @@ import java.util.*;
 import UI.StaffUI;
 
 /*
- * class containing the staff information, as well as the methods that a staff is able of using. It is the child class of user
+ * Class containing the staff information, as well as the methods that a staff is able of using. It is the child class of user.
  */
 
 /**
@@ -16,11 +16,11 @@ import UI.StaffUI;
  */
 public class Staff extends User{
     /**
-     * constructor that creates the staff object
-     * @param userID is the current userID
-     * @param password is the password of the staff
-     * @param name is the real name of the staff
-     * @param faculty is the faculty the staff belongs to
+     * Constructor that creates the staff object.
+     * @param userID is the current userID.
+     * @param password is the password of the staff.
+     * @param name is the real name of the staff.
+     * @param faculty is the faculty the staff belongs to.
      */
     public Staff(String userID, String password, String name, Faculty faculty) {
         super(userID, password, name, faculty);
