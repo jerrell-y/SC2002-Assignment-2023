@@ -90,7 +90,9 @@ public class CampManager {
 
         if (camp.getRegEndDate().compareTo(new Date()) < 0) {
             System.out.println("The registration dateline has passed and you cannot register anymore! \n");
+            return false;
         }
+
         camp.addCampAttendee(user.getUserID());
         CampDatabase.getInstance().update();
         return true;
@@ -124,7 +126,9 @@ public class CampManager {
 
         if (camp.getRegEndDate().compareTo(new Date()) < 0) {
             System.out.println("The registration dateline has passed and you cannot register anymore! \n");
+            return false;
         }
+
         camp.addCampCommittee(user.getUserID());
         CampDatabase.getInstance().update();
         return true;

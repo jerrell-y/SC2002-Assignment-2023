@@ -76,7 +76,7 @@ public class StaffUI {
                         c++;
                     } while (startdate.compareTo(enddate) > 0);
 
-                    System.out.println("Enter a reg end date (format yyyy-MM-dd):");
+                    System.out.print("Enter a reg end date (format yyyy-MM-dd): ");
                     dateString = sc.nextLine();
                     Date regenddate = DateHelper.stringToDate(dateString);
 
