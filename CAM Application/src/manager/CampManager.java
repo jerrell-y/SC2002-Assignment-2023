@@ -12,24 +12,44 @@ import user.User;
 import user.UserManager;
 
 
-/*
- * The manager that handles the methods regarding camps.
+/**
+ * Handles the logic regarding the current particular camp. Only one camp can be active at any time. Holds the reference to the current camp object.
  */
 public class CampManager {
+    /**
+     * The current camp selected.
+     */
     private static Camp camp;
 
+    /**
+     * Sets the new camp to be selected. Calls the database for the camp object given the unique campID.
+     * @param campID The unique ID of the camp.
+     */
     public static void setCamp(int campID) {
         CampManager.camp = CampDatabase.getInstance().getCampByID(campID);
     }
 
+    /**
+     * Gets the current camp selected.
+     * @return the current camp object.
+     */
     public static Camp getCamp() {
         return camp;
     }
     
+    /**
+     * Checks if the current user is an attendee of the current camp.
+     * @return true if attendee, false if not.
+     */
     public static boolean isAttendee() {
         return isAttendee(CampManager.camp);
     }
 
+    /**
+     * Check if the current user is an attendee of the specific camp.
+     * @param camp The specific camp object.
+     * @return true if attendee, false if not.
+     */
     public static boolean isAttendee(Camp camp) {
         int i;
         User user = UserManager.getUser();
@@ -42,10 +62,19 @@ public class CampManager {
         return false;
     }
 
+    /**
+     * Checks if the current student is an committee of the current camp.
+     * @return true if committee, false if not.
+     */
     public static boolean isCommittee() {
         return isCommittee(CampManager.camp);
     }
 
+    /**
+     * Checks if the current student is an committee of the specific camp.
+     * @param camp The specific camp object.
+     * @return true if committee, false if not.
+     */
     public static boolean isCommittee(Camp camp) {
         int i;
         User user = UserManager.getUser();
@@ -57,6 +86,12 @@ public class CampManager {
         }
         return false;
     }
+
+    /**
+     * Checks if the current staff is in charge of the specific camp.
+     * @param camp The specific camp object.
+     * @return true if in charge, false if not.
+     */
     public static boolean isInCharge(Camp camp) {
         User user = UserManager.getUser();
         String st = camp.getStaffInCharge();
@@ -65,19 +100,36 @@ public class CampManager {
         }
         return false;
     }
+
+    /**
+     * Generates a student report based on the current camp.
+     */
     public static void generateStudentReport(){
         CampFormatter cf= CampFormatter.getInstance();
         cf.formatStudentReport(camp);
     }
+
+    /**
+     * Generates a committee report based on the current camp.
+     */
     public static void generateCommitteeReport(){
         CampFormatter cf= CampFormatter.getInstance();
         cf.formatCommitteeReport(camp);
     }
+
+    /**
+     * Prints the details of the current camp.
+     */
     public static void printDetails() {
         CampFormatter cf = CampFormatter.getInstance();
         System.out.println(cf.formatFull(camp));
     }
 
+    /**
+     * Registers the current student as an attendee of the current camp.
+     * The student is not able to register as an attendee if he or she has blacklisted, the registration deadline has passed or there are no more attendee slots available.
+     * @return true if successful, false if not.
+     */
     public static boolean registerAttendee() {
         User user = UserManager.getUser();
         ArrayList<String> blacklist = camp.getBlacklist();
@@ -104,6 +156,11 @@ public class CampManager {
         return true;
     }
 
+    /**
+     * Registers the current student as a committee of the current camp.
+     * The student is not able to register as a committee if he or she has blacklisted or is a committee of another camp, the registration deadline has passed or there are no more committee slots available.
+     * @return true if successful, false if not.
+     */
     public static boolean registerCommittee() {
         User user = UserManager.getUser();
         ArrayList<Camp> campList = CampDatabase.getInstance().getCamps();
@@ -140,6 +197,10 @@ public class CampManager {
         return true;
     }
 
+    /**
+     * Withdraws the current student from the current camp.
+     * He or she is then added into the blacklist.
+     */
     public static void withdraw() {
         User user = UserManager.getUser();
         int i;
@@ -154,6 +215,9 @@ public class CampManager {
         }
     }
 
+    /**
+     * Prints the details of the attendees and committees of the current camp. Prints no registered members if there are no members currently registered.
+     */
     public static void printStudents() {
         int i;
         ArrayList<String> campAttendees = camp.getCampAttendees();
