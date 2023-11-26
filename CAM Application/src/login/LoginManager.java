@@ -3,13 +3,7 @@ package login;
 import user.User;
 import database.CampDatabase;
 import database.UserDatabase;
-import format.CampFormatter;
-
 import java.util.ArrayList;
-
-import camppackage.Camp;
-import camppackage.Enquiry;
-import camppackage.Suggestion;
 
 /**
  * The LoginManager class handles authentication and password management for users.
