@@ -26,7 +26,7 @@ public class ViewCreatedCamps implements ViewCamps {
         ArrayList<Integer> createdCamps = new ArrayList<Integer>();
         ArrayList<Camp> campList = CampDatabase.getInstance().getCamps();
         int i;
-        for (i = 0; i != campList.size(); i++) {
+        for (i = 0; i <campList.size(); i++) {
             Camp camp = campList.get(i);
 
             if (CampManager.isInCharge(camp)) {
