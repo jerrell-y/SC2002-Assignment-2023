@@ -1,5 +1,9 @@
 package user;
 
+/*
+ * user class which stores the information of the current user. It is the parent class for student and staff.
+ */
+
 public class User {
     private final String userID, name;
     private final Faculty faculty;

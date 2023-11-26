@@ -15,7 +15,6 @@ public class Staff extends User{
         return x;
     }
     public void EditCamp () {
-        int campID;
         Camp c = CampManager.getCamp();
         Scanner sc= new Scanner(System.in);
         System.out.println("Enter the attribute you wish to edit");
