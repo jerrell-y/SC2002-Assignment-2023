@@ -11,6 +11,10 @@ import user.Student;
 import user.User;
 import user.UserManager;
 
+/*
+ * The manager that handles the methods regarding suggestions.
+ */
+
 public class SuggestionManager {
     private static Suggestion suggestion;
 

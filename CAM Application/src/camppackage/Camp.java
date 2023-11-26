@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import user.Faculty;
-
+/*
+ * The camp class containing camp information for 1 camp
+ */
 public class Camp{
     private int campID;
     private String campName;

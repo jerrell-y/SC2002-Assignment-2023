@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+/*
+ * The database containing all the user data from .csv.
+ */
 public class UserDatabase implements Database<User> {
 
     private static UserDatabase instance;

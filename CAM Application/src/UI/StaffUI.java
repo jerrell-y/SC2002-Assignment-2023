@@ -15,7 +15,9 @@ import user.UserManager;
 import util.DateHelper;
 import view.*;
 
-
+/*
+ * The UI that handles the printing of the interface that the staff user sees.
+ */
 public class StaffUI {
 
     public static int checkValidInput(Scanner scan) {

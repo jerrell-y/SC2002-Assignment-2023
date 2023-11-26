@@ -15,6 +15,9 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/*
+ * The database containing all the camp data from .csv.
+ */
 public class CampDatabase implements Database<Camp> {
 
     private static CampDatabase instance;

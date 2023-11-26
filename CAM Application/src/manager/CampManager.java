@@ -9,6 +9,10 @@ import format.CampFormatter;
 import user.User;
 import user.UserManager;
 
+
+/*
+ * The manager that handles the methods regarding camps.
+ */
 public class CampManager {
     private static Camp camp;
 

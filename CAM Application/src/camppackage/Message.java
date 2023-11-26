@@ -1,5 +1,8 @@
 package camppackage;
 
+/*
+ * The super class of suggestions and enquiries
+ */
 public abstract class Message {
     private String content, name, userID;
 
