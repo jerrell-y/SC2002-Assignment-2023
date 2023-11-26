@@ -11,8 +11,16 @@ import format.CampFormatter;
  */
 
 public class ViewAllCamps implements ViewCamps {
+    /**
+     * variable to store the object of ViewAllCamps
+     */
     private static ViewAllCamps instance;
 
+    /**
+     * method to veiw all the camps
+     * @return ViewAllCamps object
+     * 
+     */
     public static synchronized ViewAllCamps getInstance() {
         if (instance == null) {
             instance = new ViewAllCamps();
@@ -20,6 +28,10 @@ public class ViewAllCamps implements ViewCamps {
         return instance;
     }
 
+    /**
+     * displays all the camps
+     * @return an ArrarList<Integer> of all the indexes of camps being looked at, to be used later 
+     */
 	public ArrayList<Integer> displayCamps() {
         CampFormatter cf = CampFormatter.getInstance();
         ArrayList<Camp> campList = CampDatabase.getInstance().getCamps();

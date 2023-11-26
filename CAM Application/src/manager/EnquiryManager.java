@@ -20,7 +20,7 @@ public class EnquiryManager {
 
     /**
      * method that sets a specific enquiry into the manager
-     * @param index
+     * @param index gives us the index to store that specific enquiry within the camp
      */
     public static void setEnquiry(int index) {
         EnquiryManager.enquiry = CampManager.getCamp().getEnquiries().get(index);
