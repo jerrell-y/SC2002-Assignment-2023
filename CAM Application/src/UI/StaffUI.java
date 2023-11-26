@@ -1,21 +1,16 @@
 package UI;
 import java.lang.String;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
 import database.CampDatabase;
 import login.*;
-import camppackage.Camp;
-import camppackage.Enquiry;
 import manager.CampManager;
 import manager.EnquiryManager;
 import manager.SuggestionManager;
 import user.Faculty;
 import user.Staff;
-import user.User;
 import user.UserManager;
 import util.DateHelper;
 import view.*;

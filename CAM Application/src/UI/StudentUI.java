@@ -3,10 +3,6 @@ package UI;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.swing.text.View;
-
-import camppackage.Enquiry;
-import camppackage.Suggestion;
 import login.LoginManager;
 import manager.CampManager;
 import manager.EnquiryManager;

@@ -5,11 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 
 import camppackage.Camp;
-import manager.CampManager;
-import user.*;
 
 public class CampFormatter implements iFormatter<Camp>{
     private static CampFormatter instance;
