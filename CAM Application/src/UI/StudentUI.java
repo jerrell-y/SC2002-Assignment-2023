@@ -234,7 +234,7 @@ public class StudentUI {
 													System.out.println();
 
 													if (confirmString.equals("CONFIRM")) {
-														if (EnquiryManager.deleteEnquiry(enquiryNum-1)) {
+														if (EnquiryManager.deleteEnquiry(userEnquiries.get(enquiryNum-1))) {
 															System.out.println("Your enquiry was successfully deleted! \n");
 															subsubChoice = 3;
 														}
@@ -337,7 +337,7 @@ public class StudentUI {
 													System.out.println();
 
 													if (confirmString.equals("CONFIRM")) {
-														if (SuggestionManager.deleteSuggestion(suggestionNum-1)) {
+														if (SuggestionManager.deleteSuggestion(userSuggestions.get(suggestionNum-1))) {
 															System.out.println("Your suggestion was successfully deleted! \n");
 															subsubChoice = 3;
 														}
@@ -357,11 +357,7 @@ public class StudentUI {
 										break;
 
 									case 2:
-										System.out.print("Enter your suggestion: ");
-										String sug = scan.nextLine();
-										System.out.println();
-										SuggestionManager.addSuggestion(sug);
-										System.out.println("Suggestion successfully added!\n");
+										//help me add the add function here
 										break;
 
 									case 3:
