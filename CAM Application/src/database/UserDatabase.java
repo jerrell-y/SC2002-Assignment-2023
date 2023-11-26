@@ -17,13 +17,29 @@ import java.util.ArrayList;
  */
 public class UserDatabase implements Database<User> {
 
+    /**
+     * Instance of the database
+     */
     private static UserDatabase instance;
+
+    /**
+     * List holding all the users
+     */
     private ArrayList<User> users;
 
+    /**
+     * Private constructor to prevent instantiation from outside the class.
+     * Initializes the list of users.
+     */
     private UserDatabase() {
         users = new ArrayList<>();
     }
 
+    /**
+     * Provides access to the single instance of the UserDatabase class, creating it if it does not exist.
+     *
+     * @return The single instance of UserDatabase.
+     */
     public static synchronized UserDatabase getInstance() {
         if (instance == null) {
             instance = new UserDatabase();
@@ -31,6 +47,12 @@ public class UserDatabase implements Database<User> {
         return instance;
     }
 
+    /**
+     * Loads camp data from a CSV file into the application.
+     * Parses each line of the file into a Student or Staff object and adds it to the list of users.
+     *
+     * @return An ArrayList of User objects representing all users loaded from the CSV files.
+     */
     public ArrayList<User> load() {
 
         // Import Students
@@ -73,6 +95,10 @@ public class UserDatabase implements Database<User> {
         return users;
     }
 
+    /**
+     * Updates the CSV files with the current user data.
+     * Serializes each user object back to the respective CSV file, separating students and staff.
+     */
     public void update() {
         String studentFile = "../data/student_list.csv";
         String staffFile = "../data/staff_list.csv";
@@ -109,10 +135,21 @@ public class UserDatabase implements Database<User> {
         }
     };
 
+    /**
+     * Gets the list of all users.
+     *
+     * @return An ArrayList of User objects.
+     */
     public ArrayList<User> getUsers() {
         return users;
     }
     
+    /**
+     * Finds a user by their unique ID.
+     *
+     * @param userID The unique identifier for the user.
+     * @return The User object with the corresponding userID, or null if not found.
+     */
     public User getUserByID(String userID) {
         for (User user : users) {
             if (user.getUserID().equals(userID)) {
