@@ -11,20 +11,18 @@ import user.User;
 import user.UserManager;
 
 /**
- * function to view all the available camps to the student and display it in the UI
+ * A helper function to get and print all available camps to the current user in the database.
  */
-
 public class ViewAvailableCamps implements ViewCamps {
 
     /**
-     * variable to store the object of ViewAvailableCamps
+     * The instance of this class.
      */
     private static ViewAvailableCamps instance;
 
     /**
-     * method to veiw all the available camps
-     * @return ViewAvailableCamps object
-     * 
+     * Gets the instance of this class. If not created yet, create a new instance.
+     * @return this class' instance.
      */
     public static synchronized ViewAvailableCamps getInstance() {
         if (instance == null) {
@@ -34,8 +32,8 @@ public class ViewAvailableCamps implements ViewCamps {
     }
 
     /**
-     * displays all the available camps
-     * @return an ArrarList<Integer> of all the indexes of available camps being looked at, to be used later 
+     * Prints the name of all available camps in the current database for the current student.
+     * @return an list of indexes for the available camps.
      */
     public ArrayList<Integer> displayCamps() {
         CampFormatter cf = CampFormatter.getInstance();

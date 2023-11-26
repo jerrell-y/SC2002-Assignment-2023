@@ -7,19 +7,17 @@ import database.CampDatabase;
 import format.CampFormatter;
 
 /**
- * function to view all the camps and display it in the UI
+ * A helper function to get and print all camps in the database.
  */
-
 public class ViewAllCamps implements ViewCamps {
     /**
-     * variable to store the object of ViewAllCamps
+     * The instance of this class.
      */
     private static ViewAllCamps instance;
 
     /**
-     * method to veiw all the camps
-     * @return ViewAllCamps object
-     * 
+     * Gets the instance of this class. If not created yet, create a new instance.
+     * @return this class' instance.
      */
     public static synchronized ViewAllCamps getInstance() {
         if (instance == null) {
@@ -29,8 +27,8 @@ public class ViewAllCamps implements ViewCamps {
     }
 
     /**
-     * displays all the camps
-     * @return an ArrarList<Integer> of all the indexes of camps being looked at, to be used later 
+     * Prints the name of all camps in the current database.
+     * @return an list of indexes for the camps in the database.
      */
 	public ArrayList<Integer> displayCamps() {
         CampFormatter cf = CampFormatter.getInstance();

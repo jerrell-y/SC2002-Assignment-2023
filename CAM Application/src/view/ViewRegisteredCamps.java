@@ -8,19 +8,17 @@ import format.CampFormatter;
 import manager.CampManager;
 
 /**
- * function to view all the camps and display it in the UI
+ * A helper function to get and print all camps in the database that the student registered for.
  */
-
 public class ViewRegisteredCamps implements ViewCamps {
     /**
-     * variable to store the object of ViewRegisteredCamps
+     * The instance of this class.
      */
     private static ViewRegisteredCamps instance;
 
     /**
-     * method to veiw all the registered camps of the user
-     * @return ViewRegisteredCamps object
-     * 
+     * Gets the instance of this class. If not created yet, create a new instance.
+     * @return this class' instance.
      */
     public static synchronized ViewRegisteredCamps getInstance() {
         if (instance == null) {
@@ -30,8 +28,8 @@ public class ViewRegisteredCamps implements ViewCamps {
     }
 
     /**
-     * displays all the registered camps
-     * @return an ArrarList<Integer> of all the indexes of registered camps being looked at, to be used later 
+     * Prints the name of all camps in the database that the student registered for.
+     * @return an list of indexes for the registered camps.
      */
     public ArrayList<Integer> displayCamps() {
         int count = 1;

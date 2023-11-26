@@ -7,20 +7,18 @@ import database.CampDatabase;
 import format.CampFormatter;
 import manager.CampManager;
 
-/*
- ** function to view all the created camps and display it in the UI
+/**
+ * A helper function to get and print all camps in the database that the current staff created.
  */
-
 public class ViewCreatedCamps implements ViewCamps {
     /**
-     * variable to store the object of ViewCreatedCamps
+     * The instance of this class.
      */
     private static ViewCreatedCamps instance;
 
     /**
-     * method to veiw all the created camps
-     * @return ViewCreatedCamps object
-     * 
+     * Gets the instance of this class. If not created yet, create a new instance.
+     * @return this class' instance.
      */
     public static synchronized ViewCreatedCamps getInstance() {
         if (instance == null) {
@@ -30,8 +28,8 @@ public class ViewCreatedCamps implements ViewCamps {
     }
 
     /**
-     * displays all the created camps
-     * @return an ArrarList<Integer> of all the indexes of created camps being looked at, to be used later 
+     * Prints the name of all camps in the current database that the current staff created.
+     * @return an list of indexes for the created camps.
      */
     public ArrayList<Integer> displayCamps() {
         int count = 1;
