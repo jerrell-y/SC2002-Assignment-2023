@@ -7,8 +7,6 @@ import database.CampDatabase;
 import format.CampFormatter;
 import user.User;
 import user.UserManager;
-import camppackage.Enquiry;
-import camppackage.Suggestion;
 
 public class CampManager {
     private static Camp camp;

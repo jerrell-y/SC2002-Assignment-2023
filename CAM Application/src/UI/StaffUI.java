@@ -1,21 +1,16 @@
 package UI;
 import java.lang.String;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
 import database.CampDatabase;
 import login.*;
-import camppackage.Camp;
-import camppackage.Enquiry;
 import manager.CampManager;
 import manager.EnquiryManager;
 import manager.SuggestionManager;
 import user.Faculty;
 import user.Staff;
-import user.User;
 import user.UserManager;
 import util.DateHelper;
 import view.*;
@@ -152,10 +147,10 @@ public class StaffUI {
                         }
                         case 4: {
                             SuggestionManager.printAllSuggestions();
-                            System.out.println("Select the suggestion you wish accept or reject to: ");
+                            System.out.println("Select the suggestion you to wish accept or reject: ");
                             int sugg = sc.nextInt();
                             sc.nextLine();
-                            SuggestionManager.setSuggestion(sugg);
+                            SuggestionManager.setSuggestion(sugg-1);
                             System.out.println("enter 1 to accept");
                             int x=sc.nextInt();
                             sc.nextLine();
@@ -194,6 +189,26 @@ public class StaffUI {
                 case 3: {
                     ViewAllCamps v= new ViewAllCamps();
                     ArrayList<Integer> AllCamps = v.displayCamps();
+                    int campChoice;
+
+                    do {
+                        System.out.print("Choose a camp (Enter 0 to go back): ");
+                        campChoice = sc.nextInt();
+                        if (campChoice == 0) {
+                            break;
+                        }
+                        if (campChoice > AllCamps.size() || campChoice <= 0) {
+                            System.out.println("Please enter a valid camp number! \n");
+                        }
+                    } while (campChoice > AllCamps.size() || campChoice <= 0);
+
+                    System.out.println();
+                    if (campChoice == 0) {
+                        break;
+                    }
+
+                    CampManager.setCamp(AllCamps.get(campChoice-1));
+                    CampManager.printDetails();
                     System.out.println();
                     break;
                 }

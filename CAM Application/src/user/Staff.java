@@ -3,11 +3,7 @@ import database.CampDatabase;
 import manager.*;
 import camppackage.*;
 import java.util.*;
-import login.*;
-import util.DateHelper;
 
-import java.text.SimpleDateFormat;
-import database.*;
 public class Staff extends User{
     public Staff(String userID, String password, String name, Faculty faculty) {
         super(userID, password, name, faculty);

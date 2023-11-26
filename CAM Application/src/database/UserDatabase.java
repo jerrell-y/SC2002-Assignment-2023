@@ -112,7 +112,7 @@ public class UserDatabase implements Database<User> {
     
     public User getUserByID(String userID) {
         for (User user : users) {
-            if (user.getUserID() == userID) {
+            if (user.getUserID().equals(userID)) {
                 return user;
             }
         }
