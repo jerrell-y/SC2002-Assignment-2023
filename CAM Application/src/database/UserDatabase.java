@@ -109,4 +109,13 @@ public class UserDatabase implements Database<User> {
     public ArrayList<User> getUsers() {
         return users;
     }
+
+    public User getUserByID(String userID) {
+        for (User user : users) {
+            if (user.getUserID() == userID) {
+                return user;
+            }
+        }
+        return null;
+    }
 }
