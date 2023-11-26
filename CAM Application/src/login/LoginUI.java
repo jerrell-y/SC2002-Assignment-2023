@@ -4,9 +4,20 @@ import java.util.Scanner;
 
 import user.User;
 
+/**
+ * The LoginUI class handles the user interface for login operations.
+ * It prompts the user for login credentials and communicates with the LoginManager
+ * to authenticate users. It also enforces password change if the default password is detected.
+ */
 public class LoginUI {
     private static boolean changedDefaultPassword = false;
 
+    /**
+     * Displays a login form to the user, prompts for user ID and password, and performs the login operation.
+     * If the user is logged in with a default password, it forces a password change before proceeding.
+     *
+     * @return The authenticated User object if login is successful, null otherwise.
+     */
     public static User displayLoginForm() {
         Scanner sc = new Scanner(System.in);
         String userID, password;
@@ -42,10 +53,20 @@ public class LoginUI {
         return loggedInUser;
     }
 
+    /**
+     * Retrieves the status of whether the default password has been changed during the current session.
+     *
+     * @return true if the default password was changed, false otherwise.
+     */
     public static boolean getChangedDefaultPassword() {
         return changedDefaultPassword;
     }
 
+    /**
+     * Sets the status of whether the default password has been changed during the current session.
+     *
+     * @param changedDefaultPassword The new status to set.
+     */
     public static void setChangedDefaultPassword(boolean changedDefaultPassword) {
         LoginUI.changedDefaultPassword = changedDefaultPassword;
     }
