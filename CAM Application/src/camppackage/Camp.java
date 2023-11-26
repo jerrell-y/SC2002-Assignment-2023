@@ -20,6 +20,7 @@ public class Camp{
     private boolean visibility;
     private ArrayList<String> campAttendees;
     private ArrayList<String> campCommittees;
+    private ArrayList<String> blacklist;
     private ArrayList<Enquiry> enquiries;
     private ArrayList<Suggestion> suggestions;
 
@@ -54,11 +55,12 @@ public class Camp{
         this.visibility = visibility;
         campAttendees = new ArrayList<String>();
         campCommittees = new ArrayList<String>();
+        blacklist = new ArrayList<String>();
         enquiries = new ArrayList<Enquiry>();
         suggestions = new ArrayList<Suggestion>();
     }
 
-    public Camp (int campID, String campName, Date startDate, Date endDate, Date regEndDate, Faculty faculty, String location, int campAttendeeSlots, int campCommitteeSlots, String description, String staffInCharge, boolean visibility, ArrayList<String> campAttendees, ArrayList<String> campCommittees, ArrayList<Enquiry> enquiries, ArrayList<Suggestion> suggestions) {
+    public Camp (int campID, String campName, Date startDate, Date endDate, Date regEndDate, Faculty faculty, String location, int campAttendeeSlots, int campCommitteeSlots, String description, String staffInCharge, boolean visibility, ArrayList<String> campAttendees, ArrayList<String> campCommittees, ArrayList<String> blacklist, ArrayList<Enquiry> enquiries, ArrayList<Suggestion> suggestions) {
         this.campID = campID;
         this.campName = campName;
         this.startDate = startDate;
@@ -73,6 +75,7 @@ public class Camp{
         this.visibility = visibility;
         this.campAttendees = campAttendees;
         this.campCommittees = campCommittees;
+        this.blacklist = blacklist;
         this.enquiries = enquiries;
         this.suggestions = suggestions;
     }
@@ -193,6 +196,14 @@ public class Camp{
         this.campCommittees = campCommittees;
     }
 
+    public ArrayList<String> getBlacklist() {
+        return blacklist;
+    }
+
+    public void setBlacklist(ArrayList<String> blacklist) {
+        this.blacklist = blacklist;
+    }
+
     public ArrayList<Enquiry> getEnquiries() {
         return enquiries;
     }
@@ -224,6 +235,10 @@ public class Camp{
         campCommitteeSlots--;
     }
 
+    public void addBlacklist(String userID) {
+        blacklist.add(userID);
+    }
+    
     public void addEnquiry(Enquiry enquiry) {
         enquiries.add(enquiry);
     }

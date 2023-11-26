@@ -73,6 +73,15 @@ public class CampManager {
 
     public static boolean registerAttendee() {
         User user = UserManager.getUser();
+        ArrayList<String> blacklist = camp.getBlacklist();
+        int i;
+        for (i = 0; i != blacklist.size(); i++) {
+            if (user.getUserID().equals(blacklist.get(i))) {
+                System.out.println("You cannot join a camp that you withdraw! \n");
+                return false;
+            }
+        }
+
         if (camp.getCampAttendeeSlots() == 0) {
             System.out.println("There are no more slots available!\n");
             return false;
@@ -87,6 +96,15 @@ public class CampManager {
         ArrayList<Camp> campList = CampDatabase.getInstance().getCamps();
         Camp currCamp;
         int i;
+
+        ArrayList<String> blacklist = camp.getBlacklist();
+        for (i = 0; i != blacklist.size(); i++) {
+            if (user.getUserID().equals(blacklist.get(i))) {
+                System.out.println("You cannot join a camp that you withdraw! \n");
+                return false;
+            }
+        }
+
         for (i = 0; i != campList.size(); i++) {
             currCamp = campList.get(i);
             if (isCommittee(currCamp)) {
@@ -110,6 +128,7 @@ public class CampManager {
         for (i = 0; i != campAttendees.size(); i++) {
             if (campAttendees.get(i).equals(user.getUserID())) {
                 camp.removeCampAttendee(i);
+                camp.addBlacklist(user.getUserID());
                 CampDatabase.getInstance().update();
                 break;
             }
