@@ -1,5 +1,3 @@
 CampID,CampName,StartDate,EndDate,RegEndDate,Faculty,Location,CampAttendeeSlots,CampCommitteeSlots,Description,StaffInCharge,Visibility,CampAttendees,Campcommittees,Enquiries,Suggestions
 1,FOP 2023,2023-12-05,2023-12-08,2023-12-01,NTU,LT1A,40,5,Freshman Orientation Program,HUKUMAR,True,"[KOH1,BR015,DON84]","[SL22,AKY013,YCHERN]","[]","[[is there vegan food?,CALVIN,CT113,YES THERE IS,True],[is there vegetarian food?,DONG,DON84,Good,False]]","[[provide vegan food,LIU,SL22,True]]"
 2,NTUCamp,2023-12-23,2023-12-30,2023-12-22,SCSE,NTU,20,1,Hi join pls,Koh,True,"[]","[]","[YCHERN]","[]","[]"
-3,test3,2024-10-20,2024-10-25,2024-10-10,NTU,Jurong,21,10,Please join my camp!,OURIN,True,"[KOH1]","[]","[YCHERN]","[[HELLO darknes,CHERN,YCHERN,"",False],[Hello tom,KOH,KOH1,"",False],[x,CHERN,YCHERN,"",False]]","[]"
-4,test4,2023-11-26,2023-11-29,2023-11-27,NTU,Jurong,50,10,Join,OURIN,True,"[]","[]","[YCHERN]","[]","[]"
