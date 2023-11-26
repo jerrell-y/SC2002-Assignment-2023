@@ -3,10 +3,23 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
+
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Objects;
 
 import camppackage.Camp;
+import manager.CampManager;
+import user.*;
 
 public class CampFormatter implements iFormatter<Camp>{
     private static CampFormatter instance;
@@ -59,7 +72,27 @@ public class CampFormatter implements iFormatter<Camp>{
     public void formatCommitteeReport(Camp camp){
         ArrayList<String> committee ;
         committee=camp.getCampCommitees();
-    }
+        for(int i=0;i<committee.size();i++) {
+                    String inputPath = "../data/camp_info.csv";
+                    String outputPath = "CommitteeReport.csv";
+                    int checkColumnIndex = 0; // index of the column to check
+                    int valueColumnIndex = 4; // index of the value column
+
+                    try (BufferedReader br = new BufferedReader(new FileReader(inputPath));
+                         PrintWriter pw = new PrintWriter(new FileWriter(outputPath))) {
+                        String line;
+                        while ((line = br.readLine()) != null) {
+                            String[] values = line.split(","); // adjust delimiter if necessary
+
+                            if (values.length > valueColumnIndex && values[checkColumnIndex].equals(committee.get(i))) {
+                                pw.println(values[checkColumnIndex] + "," + values[valueColumnIndex]);
+                            }
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
 
 
     public String formatFull(Camp camp) {
