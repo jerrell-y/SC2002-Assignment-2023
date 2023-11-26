@@ -241,6 +241,10 @@ public class StaffUI {
                                 EnquiryManager.setEnquiry(allEnquiries.get(enquiryNum-1));
                                 
                                 String reply;
+                                if(EnquiryManager.getEnquiry().isAnswered()){
+                                    System.out.println("YOU HAVE ALREADY ANSWERED THIS QUERY");
+                                        break;
+                                }
                                 
                                 do {
                                     System.out.print("Enter reply: ");
@@ -271,6 +275,10 @@ public class StaffUI {
                                 } while (sugg > allSuggestions.size() || sugg <= 0);
 
                                 SuggestionManager.setSuggestion(allSuggestions.get(sugg-1));
+                                if(SuggestionManager.getSuggestion().getStatus()){
+                                    System.out.println("THE SUGGESTION HAS ALREADY BEEN ACCEPTED");
+                                    break;
+                                }
 
                                 System.out.print("Do you approve this suggestion? (Y/N): ");
                                 String approval = sc.nextLine();
