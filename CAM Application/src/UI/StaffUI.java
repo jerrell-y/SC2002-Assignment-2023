@@ -71,7 +71,7 @@ public class StaffUI {
                         c++;
                     } while (startdate.compareTo(enddate) > 0);
 
-                    System.out.println("Enter a reg end date (format yyyy-MM-dd):");
+                    System.out.print("Enter a reg end date (format yyyy-MM-dd): ");
                     dateString = sc.nextLine();
                     Date regenddate = DateHelper.stringToDate(dateString);
 
@@ -79,7 +79,7 @@ public class StaffUI {
                     Faculty faculty = Faculty.NTU;
                     do {
                         try {
-                            System.out.print("Enter Faculty: ");
+                            System.out.print("Enter faculty: ");
                             facultyString = sc.nextLine();
                             if (facultyString.isEmpty()) {
                                 System.out.println("Faculty cannot be empty! \n");
@@ -89,6 +89,7 @@ public class StaffUI {
                             }
                         } catch (IllegalArgumentException e) {
                             System.out.println("Please enter a valid faculty! \n");
+                            facultyString = "";
                         }
                     } while (facultyString.isEmpty());
 
@@ -156,13 +157,13 @@ public class StaffUI {
                     }
                     break;
                 }
-                case 2: {
+                case 2: 
                     ViewCreatedCamps v= new ViewCreatedCamps();
                     ArrayList<Integer> CreatedCamps = v.displayCamps();
                     System.out.println();
                     int ch,subch;
                     do {
-                        System.out.println("Choose a camp: ");
+                        System.out.print("Choose a camp: ");
                         ch = checkValidInput(sc);
                         if (ch > CreatedCamps.size() || ch <= 0) {
                             System.out.println("Please enter a valid camp number! \n");
@@ -171,124 +172,124 @@ public class StaffUI {
                     CampManager.setCamp(CreatedCamps.get(ch-1));
                     CampManager.printDetails();
                     
-                    do{
-                    System.out.println("================================");
-                    System.out.println("1. Edit Camp");
-                    System.out.println("2. Delete Camp");
-                    System.out.println("3. View and reply enquiries");
-                    System.out.println("4. View suggestions");
-                    System.out.println("5. Generate report");
-                    System.out.println("6. Go back");
-                    System.out.println("================================");
+                    do {
+                        System.out.println("================================");
+                        System.out.println("1. Edit Camp");
+                        System.out.println("2. Delete Camp");
+                        System.out.println("3. View and reply enquiries");
+                        System.out.println("4. View suggestions");
+                        System.out.println("5. Generate report");
+                        System.out.println("6. Go back");
+                        System.out.println("================================");
 
-                    System.out.print("Choose an option: ");
-                    subch = checkValidInput(sc);
-                    System.out.println();
-                    switch (subch) {
-                        case 1: {
-                            s.EditCamp();
-                            break;
-                        }
-                        case 2: {
-                            String confirmString;
-                            System.out.print("Are you sure you want to delete this camp? (Enter CONFIRM to continue): ");
-                            confirmString = sc.nextLine();
-                            System.out.println();
-
-                            if (confirmString.equals("CONFIRM")) {
-                                if (CampDatabase.getInstance().deleteCamp(CreatedCamps.get(ch-1))) {
-                                    System.out.println("Your camp was successfully deleted! \n");
-                                }
-                            }
-                            else {
-                                System.out.println("Aborted the deletion process.\n");
-                            }
-                            break;
-
-                        }
-                        case 3: {
-                            ArrayList<Integer> allEnquiries = EnquiryManager.printAllEnquiry();
-
-							if (allEnquiries.size() == 0) {
-								System.out.println("There are no enquiries!\n");
-								break;
-							}
-							
-                            int enquiryNum;
-                            do {
-                                System.out.print("Select the enquiry you wish to reply to: ");
-                                enquiryNum = checkValidInput(sc);
-                                if (enquiryNum > allEnquiries.size() || enquiryNum <= 0) {
-                                    System.out.println("Please enter a valid enquiry number! \n");
-                                }
-                            } while (enquiryNum > allEnquiries.size() || enquiryNum <= 0);
-
-                            EnquiryManager.setEnquiry(allEnquiries.get(enquiryNum-1));
+                        System.out.print("Choose an option: ");
+                        subch = checkValidInput(sc);
+                        System.out.println();
+                        switch (subch) {
+                            case 1: 
+                                s.EditCamp();
+                                break;
                             
-                            String reply;
-                            
-                            do {
-                                System.out.print("Enter reply: ");
-                                reply = sc.nextLine();
-                                if (reply.isEmpty()) {
-                                    System.out.println("Reply cannot be empty! \n");
-                                }
-                            } while (reply.isEmpty());
-
-                            EnquiryManager.replyEnquiry(reply);
-                            break;
-                        }
-                        case 4: {
-                            SuggestionManager.printAllSuggestions();
-                            System.out.print("Select the suggestion you to wish accept or reject: ");
-                            int sugg = sc.nextInt();
-                            SuggestionManager.setSuggestion(sugg-1);
-                            System.out.println("enter 1 to accept");
-                            int x=sc.nextInt();
-                            if(x==1){
-                                SuggestionManager.approveSuggestion();
-                            }
-
-                            break;
-                        }
-                        case 5: {
-                            int a;
-                            do {
-                                System.out.println("================================");
-                                System.out.println("1. Generate student report");
-                                System.out.println("2. Generate committee report");
-                                System.out.println("================================");
-
-                                System.out.print("Choose an option: ");
-                                a = checkValidInput(sc);
+                            case 2: 
+                                String confirmString;
+                                System.out.print("Are you sure you want to delete this camp? (Enter CONFIRM to continue): ");
+                                confirmString = sc.nextLine();
                                 System.out.println();
 
-                                if (a<0 || a>2) {
-                                    System.out.println("Please enter a valid option!");
+                                if (confirmString.equals("CONFIRM")) {
+                                    if (CampDatabase.getInstance().deleteCamp(CreatedCamps.get(ch-1))) {
+                                        System.out.println("Your camp was successfully deleted! \n");
+                                        subch = 6;
+                                    }
                                 }
-                            } while(a<0 || a>2);
+                                else {
+                                    System.out.println("Aborted the deletion process.\n");
+                                }
+                                break;
 
-                            if(a==1){
-                                CampManager.generateStudentReport();
+                            case 3: {
+                                ArrayList<Integer> allEnquiries = EnquiryManager.printAllEnquiry();
+
+                                if (allEnquiries.size() == 0) {
+                                    System.out.println("There are no enquiries!\n");
+                                    break;
+                                }
+                                
+                                int enquiryNum;
+                                do {
+                                    System.out.print("Select the enquiry you wish to reply to: ");
+                                    enquiryNum = checkValidInput(sc);
+                                    if (enquiryNum > allEnquiries.size() || enquiryNum <= 0) {
+                                        System.out.println("Please enter a valid enquiry number! \n");
+                                    }
+                                } while (enquiryNum > allEnquiries.size() || enquiryNum <= 0);
+
+                                EnquiryManager.setEnquiry(allEnquiries.get(enquiryNum-1));
+                                
+                                String reply;
+                                
+                                do {
+                                    System.out.print("Enter reply: ");
+                                    reply = sc.nextLine();
+                                    if (reply.isEmpty()) {
+                                        System.out.println("Reply cannot be empty! \n");
+                                    }
+                                } while (reply.isEmpty());
+
+                                EnquiryManager.replyEnquiry(reply);
+                                break;
                             }
-                            else{
-                                CampManager.generateCommitteeReport();
+                            case 4: {
+                                SuggestionManager.printAllSuggestions();
+                                System.out.print("Select the suggestion you to wish accept or reject: ");
+                                int sugg = sc.nextInt();
+                                SuggestionManager.setSuggestion(sugg-1);
+                                System.out.println("enter 1 to accept");
+                                int x=sc.nextInt();
+                                if(x==1){
+                                    SuggestionManager.approveSuggestion();
+                                }
+
+                                break;
                             }
-                            break;
+                            case 5: {
+                                int a;
+                                do {
+                                    System.out.println("================================");
+                                    System.out.println("1. Generate student report");
+                                    System.out.println("2. Generate committee report");
+                                    System.out.println("================================");
+
+                                    System.out.print("Choose an option: ");
+                                    a = checkValidInput(sc);
+                                    System.out.println();
+
+                                    if (a<0 || a>2) {
+                                        System.out.println("Please enter a valid option!");
+                                    }
+                                } while(a<0 || a>2);
+
+                                if(a==1){
+                                    CampManager.generateStudentReport();
+                                }
+                                else{
+                                    CampManager.generateCommitteeReport();
+                                }
+                                break;
+                            }
+                            case 6: {
+                                break;
+                            }
+                            default:
+                                System.out.println("Please enter a valid option! \n");
                         }
-                        case 6: {
-                            break;
-                        }
-                        default:
-                            System.out.println("Please enter a valid option! \n");
-                    }
+                    } while(subch != 6);
                     break;
-                } while(subch<=0 && subch>6);
-                    break;
-                }
+                
+
                 case 3: {
-                    ViewAllCamps v= new ViewAllCamps();
-                    ArrayList<Integer> AllCamps = v.displayCamps();
+                    ViewAllCamps vac = new ViewAllCamps();
+                    ArrayList<Integer> AllCamps = vac.displayCamps();
                     int campChoice;
 
                     do {
