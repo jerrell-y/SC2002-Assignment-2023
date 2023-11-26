@@ -6,14 +6,21 @@ import user.User;
 import user.UserManager;
 import login.LoginUI;
 
+/**
+ * The Main program and UI that handles the printing of the interface that the user sees.
+ */
 public class MainUI {
+
+    /**
+     * The current user of the program.
+     */
     private static User user;
 
+    /**
+     * The main program. Called at the start of excution.
+     * @param args The argument entered.
+     */
     public static void main(String[] args) {
-        /**
-         * Keeps running as once you exit StudentUI/StaffUI you come back to the main
-         * menu screen.
-         */
         while (true) {
             System.out.println("-----------------------------");
             System.out.println("       WELCOME TO CAMS");

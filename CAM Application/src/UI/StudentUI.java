@@ -13,14 +13,12 @@ import view.ViewRegisteredCamps;
 /**
  * The UI that handles the printing of the interface that the student user sees.
  */
-
 public class StudentUI {
 	/**
-	 * Method that checks if the input coming in from the scanner is valid or not
-	 * @param scan takes in the input from the scanner
-	 * @return returnValue will check if the input is an integer or not
-	 */
-
+     * Checks if the input entered by the user is a valid integer.
+     * @param scan The scanner object.
+     * @return the input if valid integer, -1 if not.
+     */
 	public static int checkValidInput(Scanner scan) {
 		int returnValue;
 		try {
@@ -31,8 +29,9 @@ public class StudentUI {
 		}
 		return returnValue;
 	}
+
 	/**
-	* The static method that can be called by mainUI to run the UI interface for the student
+	* The main UI printing for Student. Called by MainUI.
 	*/
     public static void start() {
 		int mainChoice, subChoice = 1;

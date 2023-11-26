@@ -20,11 +20,12 @@ import view.*;
  */
 public class StaffUI {
 
+    /**
+     * Checks if the input entered by the user is a valid integer.
+     * @param scan The scanner object.
+     * @return the input if valid integer, -1 if not.
+     */
     public static int checkValidInput(Scanner scan) {
-		/**
-		 * @param scan takes in the input from the scanner
-		 * @return returnValue will check if the input is an integer or not
-		 */
 		int returnValue;
 		try {
 			returnValue = Integer.parseInt(scan.nextLine());
@@ -34,6 +35,10 @@ public class StaffUI {
 		}
 		return returnValue;
 	}
+
+    /**
+     * The main UI printing for Staff. Called by MainUI.
+     */
     public static void start(){
         int choice;
         do {
