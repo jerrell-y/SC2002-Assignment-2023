@@ -9,7 +9,7 @@ import database.UserDatabase;
 import user.Student;
 import user.User;
 import user.UserManager;
-/*
+/**
  * The manager that handles the methods regarding enquiries.
  */
 public class EnquiryManager {

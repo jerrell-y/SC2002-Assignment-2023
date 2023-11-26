@@ -11,17 +11,17 @@ import user.Student;
 import user.User;
 import user.UserManager;
 
-/*
+/**
  * The manager that handles the methods regarding suggestions.
  */
 
 public class SuggestionManager {
-    /*
+    /**
      * variable to store a private suggestion within the manager
      */
     private static Suggestion suggestion;
 
-    /*
+    /**
      * method to set the suggestion inside of the manager
      * @param suggestion to be set
      */
@@ -30,14 +30,14 @@ public class SuggestionManager {
         SuggestionManager.suggestion = c.getSuggestions().get(suggestNum);
     }
 
-    /*
+    /**
      * method to retrieve the suggestion from the manager
      */
     public static Suggestion getSuggestion() {
         return suggestion;
     }
-
-    /*
+    
+    /**
      * method to add in a suggestion to the list of suggestions inside of the current camp
      * @param sug is the content of the suggestion to be added in
      */
@@ -52,7 +52,7 @@ public class SuggestionManager {
         CampDatabase.getInstance().update();
     }
     
-    /*
+    /**
      * method to edit the already existing suggestion by overriding the content with the new content
      * @param sug is the new content to be added in
      * @return the value is true if it successfully updates the content, false if it is unable to do so due to the suggestion already being approved
@@ -70,7 +70,7 @@ public class SuggestionManager {
        
     }
 
-    /*
+    /**
      * method to delete the suggestion from the current camp
      * @param suggestNum is the index passed into removeSuggestion() which deletes that specific suggestion
      * @return the value is true if it successfully deletes the suggestion, false if it is unable to do so due to the suggestion already being approved
@@ -87,7 +87,7 @@ public class SuggestionManager {
         return true;
     }
 
-    /*
+    /**
      * method to approve the suggestion for the current camp
      */
     public static void approveSuggestion() {
@@ -105,7 +105,7 @@ public class SuggestionManager {
         }
     }
 
-    /*
+    /**
      * method to print out all of the suggestions made by the committee member
      * @return arraylist of integers for userSuggestions, which help to index the suggestions
      */
@@ -126,7 +126,7 @@ public class SuggestionManager {
         return userSuggestions; 
     }
 
-    /*
+    /**
      * method to print out all of the suggestions for that camp
      * @return array list of integers for allsuggestions, which help to index the suggestions
      */

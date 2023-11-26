@@ -2,7 +2,7 @@ package login;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-/*
+/**
  * The manager that handles the methods regarding passwords.
  */
 public class PasswordManager {
