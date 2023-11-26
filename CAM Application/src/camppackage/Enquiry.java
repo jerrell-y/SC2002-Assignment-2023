@@ -1,5 +1,8 @@
 package camppackage;
 
+/*
+ * The enquiry class for camps
+ */
 public class Enquiry extends Message {
 
     private String reply;

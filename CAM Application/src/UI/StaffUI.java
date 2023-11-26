@@ -15,7 +15,9 @@ import user.UserManager;
 import util.DateHelper;
 import view.*;
 
-
+/*
+ * The UI that handles the printing of the interface that the staff user sees.
+ */
 public class StaffUI {
 
     public static int checkValidInput(Scanner scan) {
@@ -37,19 +39,19 @@ public class StaffUI {
         do {
             Staff s = (Staff) UserManager.getUser();
             Scanner sc = new Scanner(System.in);
-            System.out.println("Select Function");
+            System.out.println("================================");
+            System.out.println("List of options:");
             System.out.println("1. Create camp");
             System.out.println("2. View Created camps");
             System.out.println("3. View all camps");
             System.out.println("4. Change password");
             System.out.println("5. Logout");
-            try {
-                choice = sc.nextInt();
-            } 
-            catch (Exception e) {
-                choice = -1;
-            }
-            sc.nextLine();
+
+            System.out.println("================================");
+
+            System.out.print("Choose an option: ");
+			choice = checkValidInput(sc);
+			System.out.println();
             switch (choice) {
                 case 1: 
                     String dateString, campName;
@@ -61,24 +63,31 @@ public class StaffUI {
                         }
                     } while (campName.isEmpty());
 
-                    int c=0;
                     Date startdate, enddate;
                     do {
-                        if(c>0){
-                            System.out.println("Start date cannot be after End date!");
-                        }
                         System.out.print("Enter a start date (format yyyy-MM-dd): ");
                         dateString = sc.nextLine();
                         startdate = util.DateHelper.stringToDate(dateString);
                         System.out.print("Enter an end date (format yyyy-MM-dd): ");
                         dateString = sc.nextLine();
                         enddate = util.DateHelper.stringToDate(dateString);
-                        c++;
-                    } while (startdate.compareTo(enddate) > 0);
+                        if (startdate.compareTo(enddate) > 0) {
+                            System.out.println("Start date cannot be later than end date! \n");
+                        }
+                        else if (enddate.compareTo(new Date()) < 0) {
+                            System.out.println("End date cannot be earlier than today! \n");
+                        }
+                    } while (startdate.compareTo(enddate) > 0 || enddate.compareTo(new Date()) < 0);
 
-                    System.out.print("Enter a reg end date (format yyyy-MM-dd): ");
-                    dateString = sc.nextLine();
-                    Date regenddate = DateHelper.stringToDate(dateString);
+                    Date regenddate;
+                    do {
+                        System.out.print("Enter a registration end date (format yyyy-MM-dd): ");
+                        dateString = sc.nextLine();
+                        regenddate = DateHelper.stringToDate(dateString);
+                        if (regenddate.compareTo(new Date()) < 0) {
+                            System.out.println("Registration end date cannot be earlier than today! \n");
+                        }
+                    } while (regenddate.compareTo(new Date()) < 0);
 
                     String facultyString = "";
                     Faculty faculty = Faculty.NTU;
@@ -245,18 +254,26 @@ public class StaffUI {
                                 break;
                             
                             case 4: 
-                                ArrayList<Integer> suggest=SuggestionManager.printAllSuggestions();
-                                if(suggest.size()==0){
-                                    System.out.println("NO SUGGESTIONS");
-                                    break;
-                                }
-                                System.out.print("Select the suggestion you to wish accept or reject: ");
-                                int sugg = sc.nextInt();
-                                SuggestionManager.setSuggestion(sugg-1);
-                                System.out.println("enter 1 to accept");
-                                int y=sc.nextInt();
-                                if(y==1){
+                                ArrayList<Integer> allSuggestions = SuggestionManager.printAllSuggestions();
+
+                                int sugg;
+                                do {
+                                    System.out.print("Select the suggestion you to wish accept or reject: ");
+                                    sugg = checkValidInput(sc);
+                                    if (sugg > allSuggestions.size() || sugg <= 0) {
+                                        System.out.println("Please enter a valid suggestion number! \n");
+                                    }
+                                } while (sugg > allSuggestions.size() || sugg <= 0);
+
+                                SuggestionManager.setSuggestion(allSuggestions.get(sugg-1));
+
+                                System.out.print("Do you approve this suggestion? (Y/N): ");
+                                String approval = sc.nextLine();
+                                if (approval.equals("Y")) {
                                     SuggestionManager.approveSuggestion();
+                                }
+                                else {
+                                    System.out.println("The suggestion was not approved. \n");
                                 }
 
                                 break;

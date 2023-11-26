@@ -15,6 +15,9 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/*
+ * The database containing all the camp data from .csv.
+ */
 public class CampDatabase implements Database<Camp> {
 
     private static CampDatabase instance;
@@ -63,19 +66,26 @@ public class CampDatabase implements Database<Camp> {
                         Arrays.asList(values[12].replaceAll("\\[|\\]|\"", "").split(",")));
                 }
 
-                String committees = values[12].replaceAll("\\[|\\]|\"", "");
+                String committees = values[13].replaceAll("\\[|\\]|\"", "");
                 ArrayList<String> campCommittees = new ArrayList<String>();
                 if (!committees.equals("")) {
                     campCommittees = new ArrayList<>(
                         Arrays.asList(values[13].replaceAll("\\[|\\]|\"", "").split(",")));
                 }
 
+                String bl = values[14].replaceAll("\\[|\\]|\"", "");
+                ArrayList<String> blacklist = new ArrayList<String>();
+                if (!bl.equals("")) {
+                    blacklist = new ArrayList<>(
+                        Arrays.asList(values[14].replaceAll("\\[|\\]|\"", "").split(",")));
+                }
+
                 // Parsing Enquiries
                 ArrayList<Enquiry> enquiries = new ArrayList<>();
                 // Remove the outermost brackets
-                String enquiry = values[14].substring(2, values[14].length() - 2);
+                String enquiry = values[15].substring(2, values[15].length() - 2);
                 if (!enquiry.equals("")) {
-                    String[] enquiryData = values[14].substring(2, values[14].length() - 2).split("\\],\\[");
+                    String[] enquiryData = values[15].substring(2, values[15].length() - 2).split("\\],\\[");
 
                     for (int j = 0; j < enquiryData.length; j++) {
                         // If it's the first enquiry, remove the leading '['
@@ -106,9 +116,9 @@ public class CampDatabase implements Database<Camp> {
                 // Parsing Suggestions
                 ArrayList<Suggestion> suggestions = new ArrayList<>();
                 // Remove the very first '[' and the very last ']' from the string
-                String suggestion = values[15].substring(2, values[15].length() - 2);
+                String suggestion = values[16].substring(2, values[16].length() - 2);
                 if (!suggestion.equals("")) {
-                    String[] suggestionData = values[15].substring(2, values[15].length() - 2).split("\\],\\[");
+                    String[] suggestionData = values[16].substring(2, values[16].length() - 2).split("\\],\\[");
 
                     for (int j = 0; j < suggestionData.length; j++) {
                         // If it's the first suggestion, remove the leading '['
@@ -140,7 +150,7 @@ public class CampDatabase implements Database<Camp> {
                 camps.add(
                         new Camp(campID, campName, startDate, endDate, regEndDate, faculty, location, campAttendeeSlots,
                                 campCommitteeSlots, description, staffInCharge, visibility, campAttendees,
-                                campCommittees, enquiries, suggestions));
+                                campCommittees, blacklist ,enquiries, suggestions));
             }
             Camp.setTotalCamps(max);
         } catch (IOException e) {
@@ -179,6 +189,11 @@ public class CampDatabase implements Database<Camp> {
                 // Serialize CampCommittees and enclose outer brackets in quotes
                 sb.append("\"").append("[");
                 sb.append(String.join(",", camp.getCampCommittees()));
+                sb.append("]").append("\",");
+
+                // Serialize CampCommittees and enclose outer brackets in quotes
+                sb.append("\"").append("[");
+                sb.append(String.join(",", camp.getBlacklist()));
                 sb.append("]").append("\",");
 
                 // Serialize Enquiries and enclose outer brackets in quotes

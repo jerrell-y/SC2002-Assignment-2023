@@ -40,9 +40,9 @@ public class LoginUI {
                     String newPass1, newPass2;
                     do {
 						System.out.print("Enter your new password: ");
-						newPass1 = sc.next();
+						newPass1 = sc.nextLine();
 						System.out.print("Enter your new password again: ");
-						newPass2 = sc.next();
+						newPass2 = sc.nextLine();
 						if (!newPass1.equals(newPass2)) {
 							System.out.println("Please enter the same password!\n");
 						}

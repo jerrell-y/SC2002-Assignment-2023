@@ -184,7 +184,6 @@ public class StudentUI {
 										if (confirmString.equals("CONFIRM")) {
 											CampManager.withdraw();
 											System.out.println("Successfully removed from camp\n");
-											subChoice = 4;
 											subsubChoice = 4;
 										}
 										else {
@@ -193,10 +192,15 @@ public class StudentUI {
 										break;
 
 									case 2:
-										System.out.print("Enter your enquiry: ");
-										String enqy = scan.nextLine();
-										System.out.println();
-										EnquiryManager.addEnquiry(enqy);
+										String enq;
+										do {
+											System.out.print("Enter your enquiry: ");
+											enq = scan.nextLine();
+											if (enq.isEmpty()) {
+												System.out.println("Suggestion cannot be empty! \n");
+											}
+										} while (enq.isEmpty());
+										EnquiryManager.addEnquiry(enq);
 										System.out.println("Enquiry successfully added.\n");
 										break;
 							
@@ -240,8 +244,15 @@ public class StudentUI {
 											System.out.println();
 											switch(subsubChoice) {
 												case 1:
-													System.out.print("Enter your new enquiry: ");
-													enqy = scan.nextLine();
+													String enqy;
+													do {
+														System.out.print("Enter your new enquiry: ");
+														enqy = scan.nextLine();
+														if (enqy.isEmpty()) {
+															System.out.println("Enquiry cannot be empty! \n");
+														}
+													} while (enqy.isEmpty());
+													
 													if (EnquiryManager.editEnquiry(enqy)) {
 														System.out.println("Your enquiry was successfully edited! \n");
 														subsubChoice = 3;
@@ -343,13 +354,14 @@ public class StudentUI {
 											System.out.println();
 											switch (subsubChoice) {
 												case 1:
-													System.out.println("Enter your new suggestion: ");
-													String sgn = scan.next();
-													if (SuggestionManager.editSuggestion(sgn)) {
-														System.out.println("Your suggestion was successfully edited! \n");
-														subsubChoice = 3;
-													}
-													break;
+													String sgn;
+													do {
+														System.out.print("Enter your new suggestion: ");
+														sgn = scan.nextLine();
+														if (sgn.isEmpty()) {
+															System.out.println("Suggestion cannot be empty! \n");
+														}
+													} while (sgn.isEmpty());
 
 												case 2:
 													System.out.print("Are you sure you want to delete this suggestion? (Enter CONFIRM to continue): ");
@@ -377,9 +389,15 @@ public class StudentUI {
 										break;
 
 									case 2:
-										System.out.print("Enter your suggestion: ");
-										String sug = scan.nextLine();
-										System.out.println();
+										String sug;
+										do {
+											System.out.print("Enter your suggestion: ");
+											sug = scan.nextLine();
+											if (sug.isEmpty()) {
+												System.out.println("Suggestion cannot be empty! \n");
+											}
+										} while (sug.isEmpty());
+
 										SuggestionManager.addSuggestion(sug);
 										System.out.println("Suggestion successfully added.\n");
 										break;
@@ -425,8 +443,15 @@ public class StudentUI {
 
 											switch(subsubChoice) {
 												case 1:
-													System.out.println("Enter your reply: ");
-													String reply = scan.nextLine();
+													String reply;
+													do {
+														System.out.println("Enter your reply: ");
+														reply = scan.nextLine();
+														if (reply.isEmpty()) {
+															System.out.println("Reply cannot be empty! \n");
+														}
+													} while (reply.isEmpty());
+													
 													if (EnquiryManager.replyEnquiry(reply)) {
 														System.out.println("Successfully replied to enquiry! \n");
 														subsubChoice = 2;

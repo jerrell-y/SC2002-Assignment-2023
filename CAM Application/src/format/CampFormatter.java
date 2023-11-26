@@ -91,6 +91,8 @@ public class CampFormatter implements iFormatter<Camp>{
                         String line;
                         while ((line = br.readLine()) != null) {
                             String[] values = line.split(","); // adjust delimiter if necessary
+                            System.out.println(Arrays.toString(values));
+                            System.out.println(values[checkColumnIndex]+committee.get(i));
 
                             if (values[checkColumnIndex].contains(committee.get(i))) {
                                 pw.println(committee.get(i) + "," + values[valueColumnIndex]);
@@ -115,7 +117,7 @@ public class CampFormatter implements iFormatter<Camp>{
                 "\nFaculty: " + camp.getFaculty() +
                 "\nLocation: " + camp.getLocation() +
                 "\nCamp Attendee Slots: " + camp.getCampAttendeeSlots() +
-                "\nCamp Commitee Slots: " + camp.getCampCommitteeSlots() +
+                "\nCamp Committee Slots: " + camp.getCampCommitteeSlots() +
                 "\nDescription: " + camp.getDescription() +
                 "\nStaff in charge: " + camp.getStaffInCharge() + 
                 "\n======================================";

@@ -1,5 +1,9 @@
 package camppackage;
 
+
+/*
+ * The suggestion class for the camps
+ */
 public class Suggestion extends Message{
 	
     private boolean status;
