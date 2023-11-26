@@ -59,14 +59,17 @@ public class SuggestionManager {
         return true;
     }
 
-    public static void approveSuggestion() {     //need to implement the addpoints for the student
-
+    public static void approveSuggestion() {
         if (suggestion.getStatus()) {
             System.out.println("The suggestion has already been approved!\n");
             return;
         }
         else{
             suggestion.setStatus(true);
+            User user = UserDatabase.getInstance().getUserByID(suggestion.getUserID());
+            Student user2 = (Student) user;
+            user2.addPoints();
+            UserDatabase.getInstance().update();
             CampDatabase.getInstance().update();
         }
     }
