@@ -74,7 +74,7 @@ public class StudentUI {
 						do {
 							System.out.println("================================");
 							System.out.println("1. Register as attendee");
-							System.out.println("2. Register as commitee");
+							System.out.println("2. Register as committee");
 							System.out.println("3. Go back");
 							System.out.println("================================");
 
@@ -93,7 +93,7 @@ public class StudentUI {
 								case 2:
 									success = CampManager.registerCommitee();
 									if (success) {
-										System.out.println("Successfully registered as a commitee member! \n");
+										System.out.println("Successfully registered as a committee member! \n");
 									}
 									break;
 

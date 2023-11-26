@@ -17,69 +17,142 @@ import view.*;
 
 
 public class StaffUI {
+    public static int checkValidInput(Scanner scan) {
+		int returnValue;
+		try {
+			returnValue = Integer.parseInt(scan.nextLine());
+		}
+		catch (NumberFormatException e) {
+			returnValue = -1;
+		}
+		return returnValue;
+	}
+
     public static void start(){
         int choice;
         do {
             Staff s = (Staff) UserManager.getUser();
             Scanner sc = new Scanner(System.in);
-            System.out.println("Select Function");
+            System.out.println("================================");
+            System.out.println("List of options:");
             System.out.println("1. Create camp");
             System.out.println("2. View Created camps");
             System.out.println("3. View all camps");
             System.out.println("4. Change password");
             System.out.println("5. Logout");
-            try {
-                choice = sc.nextInt();
-            } 
-            catch (Exception e) {
-                choice = -1;
-            }
-            sc.nextLine();
+            System.out.println("================================");
+           
+            System.out.print("Choose an option: ");
+			choice = checkValidInput(sc);
+			System.out.println();
             switch (choice) {
                 case 1: {
-                    String dateString;
-                    System.out.println("enter camp name");
-                    String campname = sc.nextLine();
+                    String dateString, campName;
+                    do {
+                        System.out.print("Enter camp name: ");
+                        campName = sc.nextLine();
+                        if (campName.isEmpty()) {
+                            System.out.println("Camp name cannot be empty!\n");
+                        }
+                    } while (campName.isEmpty());
+
                     int c=0;
                     Date startdate, enddate;
                     do {
                         if(c>0){
-                            System.out.println("start date cannot be after end date");
+                            System.out.println("Start date cannot be after End date!");
                         }
-                        System.out.println("Enter a start date (format yyyy-MM-dd):");
+                        System.out.print("Enter a start date (format yyyy-MM-dd): ");
                         dateString = sc.nextLine();
                         startdate = util.DateHelper.stringToDate(dateString);
-                        System.out.println("Enter an end date (format yyyy-MM-dd):");
+                        System.out.print("Enter an end date (format yyyy-MM-dd): ");
                         dateString = sc.nextLine();
                         enddate = util.DateHelper.stringToDate(dateString);
                         c++;
-                    }while(startdate.compareTo(enddate)>0);
+                    } while (startdate.compareTo(enddate) > 0);
+
                     System.out.println("Enter a reg end date (format yyyy-MM-dd):");
                     dateString = sc.nextLine();
                     Date regenddate = DateHelper.stringToDate(dateString);
-                    System.out.println("Enter Faculty");
-                    String faculty = sc.nextLine();
-                    System.out.println("Enter location");
-                    String location = sc.nextLine();
-                    System.out.println("Enter total slots");
-                    int totalSlots = sc.nextInt();
-                    System.out.println("Enter total camp committee slots");
-                    int campCommitteeSlots = sc.nextInt();
-                    sc.nextLine();
-                    System.out.println("Enter description");
-                    String description = sc.nextLine();
-                    boolean visibility;
-                    System.out.println("Enter 1 if you want the camp to be visible");
-                    int v = sc.nextInt();
-                    if (v == 1) {
-                        visibility = true;
-                    } else visibility = false;
+
+                    String facultyString = "";
+                    Faculty faculty = Faculty.NTU;
+                    do {
+                        try {
+                            System.out.print("Enter Faculty: ");
+                            facultyString = sc.nextLine();
+                            if (facultyString.isEmpty()) {
+                                System.out.println("Faculty cannot be empty! \n");
+                            }
+                            else {
+                                faculty = Faculty.valueOf(facultyString.toUpperCase());
+                            }
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Please enter a valid faculty! \n");
+                        }
+                    } while (facultyString.isEmpty());
+
+                    String location;
+                    do {
+                        System.out.print("Enter location: ");
+                        location = sc.nextLine();
+                        if (location.isEmpty()) {
+                            System.out.println("Location cannot be empty!\n");
+                        }
+                    } while (location.isEmpty());
+
+                    int campAttendeeSlots;
+                    do {
+                        System.out.print("Enter total camp attendee slots: ");
+                        campAttendeeSlots = checkValidInput(sc);
+                        if (campAttendeeSlots <= 0) {
+                            System.out.println("Please enter a valid input! \n");
+                        }
+                    } while (campAttendeeSlots <= 0);
+
+                    int campCommitteeSlots;
+                    do {
+                        System.out.print("Enter total camp committee slots: ");
+                        campCommitteeSlots = checkValidInput(sc);
+                        if (campCommitteeSlots <= 0) {
+                            System.out.println("Please enter a valid input! \n");
+                        }
+                        else if (campCommitteeSlots > 10) {
+                            System.out.println("The maximum number of camp committee slots is 10!\n");
+                        }
+                    } while (campCommitteeSlots <= 0 || campCommitteeSlots > 10);
+
+                    String description;
+                    do {
+                        System.out.print("Enter description: ");
+                        description = sc.nextLine();
+                        if (description.isEmpty()) {
+                            System.out.println("Description cannot be empty! \n");
+                        }
+                    } while (description.isEmpty());
+
+                    String visiString;
+                    boolean visibility = true;
+                    do {
+                        System.out.print("Do you want the camp to be visible? (Y/N): ");
+                        visiString = sc.nextLine();
+                        if (visiString.equals("Y")) {
+                            visibility = true;
+                        }
+                        else if (visiString.equals("N")) {
+                            visibility = false;
+                        }
+                        else {
+                            System.out.println("Please enter a valid input! \n");
+                        }
+                    } while (!(visiString.equals("Y") || visiString.equals("N")));
+
                     String staffInCharge = s.getUserID();
-                    boolean x = s.CreateCamp(campname, startdate, enddate, regenddate, Faculty.valueOf(faculty.toUpperCase()), location, totalSlots, campCommitteeSlots, description, staffInCharge, visibility);
+                    boolean x = s.CreateCamp(campName, startdate, enddate, regenddate, faculty, location, campAttendeeSlots, campCommitteeSlots, description, staffInCharge, visibility);
                     if (x) {
-                        System.out.println("Added successfully");
+                        System.out.println("Camp added successfully! \n");
                     } else {
-                        System.out.println("error");
+                        System.out.println("There was an error.");
                     }
                     break;
                 }
@@ -90,7 +163,7 @@ public class StaffUI {
                     int ch,subch;
                     do {
                         System.out.println("Choose a camp: ");
-                        ch = sc.nextInt();
+                        ch = checkValidInput(sc);
                         if (ch > CreatedCamps.size() || ch <= 0) {
                             System.out.println("Please enter a valid camp number! \n");
                         }
@@ -99,23 +172,39 @@ public class StaffUI {
                     CampManager.printDetails();
                     
                     do{
-                    System.out.println("Select Function");
+                    System.out.println("================================");
                     System.out.println("1. Edit Camp");
                     System.out.println("2. Delete Camp");
                     System.out.println("3. View and reply enquiries");
                     System.out.println("4. View suggestions");
                     System.out.println("5. Generate report");
                     System.out.println("6. Go back");
-                    subch = sc.nextInt();
+                    System.out.println("================================");
+
+                    System.out.print("Choose an option: ");
+                    subch = checkValidInput(sc);
+                    System.out.println();
                     switch (subch) {
                         case 1: {
                             s.EditCamp();
                             break;
                         }
                         case 2: {
-                            int ID = sc.nextInt();
-                            CampDatabase.getInstance().deleteCamp(ID);
+                            String confirmString;
+                            System.out.print("Are you sure you want to delete this camp? (Enter CONFIRM to continue): ");
+                            confirmString = sc.nextLine();
+                            System.out.println();
+
+                            if (confirmString.equals("CONFIRM")) {
+                                if (CampDatabase.getInstance().deleteCamp(CreatedCamps.get(ch-1))) {
+                                    System.out.println("Your camp was successfully deleted! \n");
+                                }
+                            }
+                            else {
+                                System.out.println("Aborted the deletion process.\n");
+                            }
                             break;
+
                         }
                         case 3: {
                             ArrayList<Integer> allEnquiries = EnquiryManager.printAllEnquiry();
@@ -125,26 +214,37 @@ public class StaffUI {
 								break;
 							}
 							
-                            System.out.println("Select the enquiry you wish to reply to: ");
-                            int enquiryNum = sc.nextInt();
-                            sc.nextLine();
+                            int enquiryNum;
+                            do {
+                                System.out.print("Select the enquiry you wish to reply to: ");
+                                enquiryNum = checkValidInput(sc);
+                                if (enquiryNum > allEnquiries.size() || enquiryNum <= 0) {
+                                    System.out.println("Please enter a valid enquiry number! \n");
+                                }
+                            } while (enquiryNum > allEnquiries.size() || enquiryNum <= 0);
+
                             EnquiryManager.setEnquiry(allEnquiries.get(enquiryNum-1));
                             
                             String reply;
-                            System.out.println("Enter reply");
-                            reply=sc.nextLine();
+                            
+                            do {
+                                System.out.print("Enter reply: ");
+                                reply = sc.nextLine();
+                                if (reply.isEmpty()) {
+                                    System.out.println("Reply cannot be empty! \n");
+                                }
+                            } while (reply.isEmpty());
+
                             EnquiryManager.replyEnquiry(reply);
                             break;
                         }
                         case 4: {
                             SuggestionManager.printAllSuggestions();
-                            System.out.println("Select the suggestion you to wish accept or reject: ");
+                            System.out.print("Select the suggestion you to wish accept or reject: ");
                             int sugg = sc.nextInt();
-                            sc.nextLine();
                             SuggestionManager.setSuggestion(sugg-1);
                             System.out.println("enter 1 to accept");
                             int x=sc.nextInt();
-                            sc.nextLine();
                             if(x==1){
                                 SuggestionManager.approveSuggestion();
                             }
@@ -153,12 +253,21 @@ public class StaffUI {
                         }
                         case 5: {
                             int a;
-                            do{
+                            do {
+                                System.out.println("================================");
                                 System.out.println("1. Generate student report");
                                 System.out.println("2. Generate committee report");
-                                a=sc.nextInt();
-                            }
-                            while(a<0 || a>2);
+                                System.out.println("================================");
+
+                                System.out.print("Choose an option: ");
+                                a = checkValidInput(sc);
+                                System.out.println();
+
+                                if (a<0 || a>2) {
+                                    System.out.println("Please enter a valid option!");
+                                }
+                            } while(a<0 || a>2);
+
                             if(a==1){
                                 CampManager.generateStudentReport();
                             }
@@ -172,10 +281,10 @@ public class StaffUI {
                             break;
                         }
                         default:
-                            throw new IllegalStateException("Unexpected value: " + choice);
+                            System.out.println("Please enter a valid option! \n");
                     }
                     break;
-                }while(subch<=0 && subch>6);
+                } while(subch<=0 && subch>6);
                     break;
                 }
                 case 3: {
@@ -185,7 +294,7 @@ public class StaffUI {
 
                     do {
                         System.out.print("Choose a camp (Enter 0 to go back): ");
-                        campChoice = sc.nextInt();
+                        campChoice = checkValidInput(sc);
                         if (campChoice == 0) {
                             break;
                         }
@@ -208,9 +317,9 @@ public class StaffUI {
                     String newPass1, newPass2;
                     do {
 						System.out.print("Enter your new password: ");
-						newPass1 = sc.next();
+						newPass1 = sc.nextLine();
 						System.out.print("Enter your new password again: ");
-						newPass2 = sc.next();
+						newPass2 = sc.nextLine();
 						if (!newPass1.equals(newPass2)) {
 							System.out.println("Please enter the same password!\n");
 						}

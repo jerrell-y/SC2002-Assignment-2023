@@ -241,12 +241,18 @@ public class CampDatabase implements Database<Camp> {
         return true;
     }
 
-    public void deleteCamp(int campID) {
+    public boolean deleteCamp(int campID) {
         for (Camp camp : camps) {
             if (camp.getCampID() == campID) {
+                if (camp.getCampAttendees().size() != 0 || camp.getCampCommitees().size() != 0) {
+                    System.out.println("You cannot delete this camp because there are existing attendees/commitee members! \n");
+                    return false;
+                }
                 camps.remove(camp);
                 CampDatabase.getInstance().update();
+                break;
             }
         }
+        return true;
     }
 }
