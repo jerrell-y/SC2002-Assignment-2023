@@ -17,13 +17,11 @@ import view.ViewRegisteredCamps;
 public class StudentUI {
 	/**
 	 * Method that checks if the input coming in from the scanner is valid or not
+	 * @param scan takes in the input from the scanner
+	 * @return returnValue will check if the input is an integer or not
 	 */
 
 	public static int checkValidInput(Scanner scan) {
-		/**
-		 * @param scan takes in the input from the scanner
-		 * @return returnValue will check if the input is an integer or not
-		 */
 		int returnValue;
 		try {
 			returnValue = Integer.parseInt(scan.nextLine());
@@ -37,21 +35,9 @@ public class StudentUI {
 	* The static method that can be called by mainUI to run the UI interface for the student
 	*/
     public static void start() {
-		/**
-		 * input variables for storing data coming in from the scanner
-		 */
 		int mainChoice, subChoice = 1;
-		/**
-		 * scan gets the input from scanner
-		 */
 		Scanner scan = new Scanner(System.in);
-		/**
-		 * confirmString is used to confirm if a user wants to execute a function
-		 */
 		String confirmString;
-		/**
-		 * main loop body
-		 */
 		do {  	
 			System.out.println("================================");
 			System.out.println("List of options:");
