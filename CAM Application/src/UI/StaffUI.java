@@ -37,19 +37,19 @@ public class StaffUI {
         do {
             Staff s = (Staff) UserManager.getUser();
             Scanner sc = new Scanner(System.in);
-            System.out.println("Select Function");
+            System.out.println("================================");
+            System.out.println("List of options:");
             System.out.println("1. Create camp");
             System.out.println("2. View Created camps");
             System.out.println("3. View all camps");
             System.out.println("4. Change password");
             System.out.println("5. Logout");
-            try {
-                choice = sc.nextInt();
-            } 
-            catch (Exception e) {
-                choice = -1;
-            }
-            sc.nextLine();
+
+            System.out.println("================================");
+
+            System.out.print("Choose an option: ");
+			choice = checkValidInput(sc);
+			System.out.println();
             switch (choice) {
                 case 1: 
                     String dateString, campName;

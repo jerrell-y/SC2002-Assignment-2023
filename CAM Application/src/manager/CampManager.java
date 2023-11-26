@@ -1,6 +1,7 @@
 package manager;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import camppackage.Camp;
 import database.CampDatabase;
@@ -86,6 +87,10 @@ public class CampManager {
             System.out.println("There are no more slots available!\n");
             return false;
         }
+
+        if (camp.getRegEndDate().compareTo(new Date()) < 0) {
+            System.out.println("The registration dateline has passed and you cannot register anymore! \n");
+        }
         camp.addCampAttendee(user.getUserID());
         CampDatabase.getInstance().update();
         return true;
@@ -115,6 +120,10 @@ public class CampManager {
         if (camp.getCampCommitteeSlots() == 0) {
             System.out.println("There are no more slots available!\n");
             return false;
+        }
+
+        if (camp.getRegEndDate().compareTo(new Date()) < 0) {
+            System.out.println("The registration dateline has passed and you cannot register anymore! \n");
         }
         camp.addCampCommittee(user.getUserID());
         CampDatabase.getInstance().update();
