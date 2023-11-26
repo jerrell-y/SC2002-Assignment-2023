@@ -4,11 +4,21 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+* Used to convert the date entered as a string into a Date object.
+*/
 public class DateHelper {
     
+    /**
+     * The format of the date object (YYYY-MM-DD).
+     */
     private static final SimpleDateFormat FORMATTER = new SimpleDateFormat("yyyy-MM-dd");
 
-    // Convert YYYY-MM-DD string to a Date
+    /**
+     * Converts a String of format YYYY-MM-DD to a Date object.
+     * @param dateString The YYYY-MM-DD string.
+     * @return the date object.
+     */
     public static Date stringToDate(String dateString) {
         try {
             return FORMATTER.parse(dateString);
@@ -18,7 +28,12 @@ public class DateHelper {
         }
     }
 
-    // Convert Date to a YYYY-MM-DD string
+    
+    /**
+     * Converts a Date object into a YYYY-MM-DD string.
+     * @param date The date object.
+     * @return the date in YYYY-MM-DD format.
+     */
     public static String dateToString(Date date) {
         return FORMATTER.format(date);
     }
