@@ -2,6 +2,9 @@ package format;
 
 import user.User;
 
+/**
+ * Formats a user into a more readable String for printing purposes.
+ */
 public class UserFormatter implements iFormatter<User>{
     private static UserFormatter instance;
     

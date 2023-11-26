@@ -364,6 +364,11 @@ public class StudentUI {
 														}
 													} while (sgn.isEmpty());
 
+													if (SuggestionManager.editSuggestion(sgn)) {
+														System.out.println("Suggestion successfully edited. \n");
+													}
+													break;
+
 												case 2:
 													System.out.print("Are you sure you want to delete this suggestion? (Enter CONFIRM to continue): ");
 													confirmString = scan.nextLine();
