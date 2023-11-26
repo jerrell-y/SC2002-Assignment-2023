@@ -77,7 +77,7 @@ public class UserDatabase implements Database<User> {
                 PrintWriter staffWriter = new PrintWriter(new FileWriter(staffFile))) {
 
             // Writing headers
-            studentWriter.println("Name,Email,Faculty,Password,Points,CommitteeCampID");
+            studentWriter.println("Name,Email,Faculty,Password,Points");
             staffWriter.println("Name,Email,Faculty,Password");
 
             for (User user : users) {
