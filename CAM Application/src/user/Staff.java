@@ -242,23 +242,5 @@ public class Staff extends User{
             }
         } while (ch != 11);
     }
-   /* public void DeleteCamp (int ID) {
-        Camp c= CampManager.getCamp();
-        CampDatabase.getInstance().deleteCamp(c.getCampID());
 
-    }
-
-    */
-
-    public void ViewEnquiries(Camp camp){
-        System.out.println(camp.getEnquiries());
-    }
-
-
-
-    public void GenerateReport(){}
-    //public void GenerateReport(){}
-    public void ViewSuggestions(){
-        SuggestionManager.printAllSuggestions();
-    }
 }
