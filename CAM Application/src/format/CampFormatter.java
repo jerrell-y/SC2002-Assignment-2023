@@ -40,7 +40,7 @@ public class CampFormatter implements iFormatter<Camp>{
         ArrayList<String> attendees ;
         ArrayList<String> committee ;
         attendees=camp.getCampAttendees();
-        committee=camp.getCampCommitees();
+        committee=camp.getCampCommittees();
         String csvFile = "Student.csv";
         // Additional column values (including header)
         String[] additionalColumn = {"Attendee", "Committee"};
@@ -71,7 +71,7 @@ public class CampFormatter implements iFormatter<Camp>{
     }
     public void formatCommitteeReport(Camp camp){
         ArrayList<String> committee ;
-        committee=camp.getCampCommitees();
+        committee=camp.getCampCommittees();
         for(int i=0;i<committee.size();i++) {
                     String inputPath = "../data/camp_info.csv";
                     String outputPath = "CommitteeReport.csv";
@@ -106,7 +106,7 @@ public class CampFormatter implements iFormatter<Camp>{
                 "\nFaculty: " + camp.getFaculty() +
                 "\nLocation: " + camp.getLocation() +
                 "\nCamp Attendee Slots: " + camp.getCampAttendeeSlots() +
-                "\nCamp Commitee Slots: " + camp.getCampCommiteeSlots() +
+                "\nCamp Committee Slots: " + camp.getCampCommitteeSlots() +
                 "\nDescription: " + camp.getDescription() +
                 "\nStaff in charge: " + camp.getStaffInCharge() + 
                 "\n======================================";

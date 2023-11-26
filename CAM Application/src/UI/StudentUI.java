@@ -115,7 +115,7 @@ public class StudentUI {
 									break;
 										
 								case 2:
-									success = CampManager.registerCommitee();
+									success = CampManager.registerCommittee();
 									if (success) {
 										System.out.println("Successfully registered as a committee member! \n");
 									}
@@ -284,7 +284,7 @@ public class StudentUI {
 							} while (subsubChoice != 4);
 						}
 
-						else if (CampManager.isCommitee()) {
+						else if (CampManager.isCommittee()) {
 							int subsubChoice = 2;
 							do {
 								System.out.println("================================");

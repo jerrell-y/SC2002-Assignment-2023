@@ -36,9 +36,9 @@ public class ViewRegisteredCamps implements ViewCamps {
                 count++;
             }
 
-            else if (CampManager.isCommitee(camp)) {
+            else if (CampManager.isCommittee(camp)) {
                 System.out.println(count + ". " + cf.formatShort(camp));
-                System.out.println("Registered as an commitee member. \n");
+                System.out.println("Registered as an committee member. \n");
                 registeredCamps.add(camp.getCampID());
                 count++;
             }

@@ -105,7 +105,7 @@ public class Staff extends User{
                 System.out.println("Enter new camp committee slots");
                 int i=sc.nextInt();
                 sc.nextLine();
-                c.setCampCommiteeSlots(i);
+                c.setCampCommitteeSlots(i);
                 CampDatabase.getInstance().update();
                 System.out.println("DONE");
                 break;
