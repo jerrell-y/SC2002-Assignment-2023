@@ -86,10 +86,9 @@ public class SuggestionManager {
         CampDatabase.getInstance().update();
         return true;
     }
-    
+
     /*
      * method to approve the suggestion for the current camp
-     * @param 
      */
     public static void approveSuggestion() {
         if (suggestion.getStatus()) {
@@ -106,7 +105,10 @@ public class SuggestionManager {
         }
     }
 
-
+    /*
+     * method to print out all of the suggestions made by the committee member
+     * @return arraylist of integers for userSuggestions, which help to index the suggestions
+     */
     public static ArrayList<Integer> printUserSuggestions() { 
         Camp c = CampManager.getCamp();
         User user = UserManager.getUser();
@@ -124,6 +126,10 @@ public class SuggestionManager {
         return userSuggestions; 
     }
 
+    /*
+     * method to print out all of the suggestions for that camp
+     * @return array list of integers for allsuggestions, which help to index the suggestions
+     */
     public static ArrayList<Integer> printAllSuggestions() { 
         Camp c = CampManager.getCamp();
         ArrayList<Suggestion> sug = c.getSuggestions();
