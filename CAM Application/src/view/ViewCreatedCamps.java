@@ -7,6 +7,10 @@ import database.CampDatabase;
 import format.CampFormatter;
 import manager.CampManager;
 
+/*
+ * function to view all the created camps and display it in the UI
+ */
+
 public class ViewCreatedCamps implements ViewCamps {
     private static ViewCreatedCamps instance;
 

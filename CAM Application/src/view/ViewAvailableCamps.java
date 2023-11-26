@@ -10,6 +10,10 @@ import user.Faculty;
 import user.User;
 import user.UserManager;
 
+/*
+ * function to view all the available camps to the student and display it in the UI
+ */
+
 public class ViewAvailableCamps implements ViewCamps {
     private static ViewAvailableCamps instance;
 
