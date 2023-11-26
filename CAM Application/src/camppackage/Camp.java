@@ -211,14 +211,17 @@ public class Camp{
 
     public void addCampAttendee(String userID) {
         campAttendees.add(userID);
+        campAttendeeSlots--;
     }
 
     public void removeCampAttendee(int index) {
         campAttendees.remove(index);
+        campAttendeeSlots++;
     }
 
     public void addCampCommitee(String userID) {
         campCommitees.add(userID);
+        campCommiteeSlots--;
     }
 
     public void addEnquiry(Enquiry enquiry) {

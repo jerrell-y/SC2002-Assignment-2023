@@ -75,10 +75,8 @@ public class CampFormatter implements iFormatter<Camp>{
                 "\nRegistration End Date: " + dateFormat.format(camp.getRegEndDate().getTime()) +
                 "\nFaculty: " + camp.getFaculty() +
                 "\nLocation: " + camp.getLocation() +
-                "\nTotal Camp Attendee Slots: " + camp.getCampAttendeeSlots() +
-                "\nRemaining Camp Attendee Slots: " + (camp.getCampAttendeeSlots() - camp.getCampAttendees().size()) +
-                "\nTotal Camp Commitee Slots: " + camp.getCampCommiteeSlots() +
-                "\nRemaining Camp Commitee Slots: " + (camp.getCampCommiteeSlots() - camp.getCampCommitees().size()) +
+                "\nCamp Attendee Slots: " + camp.getCampAttendeeSlots() +
+                "\nCamp Commitee Slots: " + camp.getCampCommiteeSlots() +
                 "\nDescription: " + camp.getDescription() +
                 "\nStaff in charge: " + camp.getStaffInCharge() + 
                 "\n======================================";
