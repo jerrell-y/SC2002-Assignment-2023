@@ -15,13 +15,13 @@ import user.UserManager;
 import util.DateHelper;
 import view.*;
 
-/*
+/**
  * The UI that handles the printing of the interface that the staff user sees.
  */
 public class StaffUI {
 
     public static int checkValidInput(Scanner scan) {
-		/*
+		/**
 		 * @param scan takes in the input from the scanner
 		 * @return returnValue will check if the input is an integer or not
 		 */

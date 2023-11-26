@@ -6,7 +6,7 @@ import camppackage.Camp;
 import database.CampDatabase;
 import format.CampFormatter;
 
-/*
+/**
  * function to view all the camps and display it in the UI
  */
 

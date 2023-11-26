@@ -1,6 +1,6 @@
 package camppackage;
 
-/*
+/**
  * The super class of suggestions and enquiries
  */
 public abstract class Message {

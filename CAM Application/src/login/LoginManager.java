@@ -11,7 +11,7 @@ import camppackage.Camp;
 import camppackage.Enquiry;
 import camppackage.Suggestion;
 
-/*
+/**
  * The manager that handles the methods regarding logins.
  */
 public class LoginManager {

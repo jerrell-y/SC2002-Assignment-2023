@@ -10,7 +10,7 @@ public class MainUI {
     private static User user;
 
     public static void main(String[] args) {
-        /*
+        /**
          * Keeps running as once you exit StudentUI/StaffUI you come back to the main
          * menu screen.
          */

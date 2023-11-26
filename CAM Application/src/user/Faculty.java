@@ -1,6 +1,6 @@
 package user;
 
-/*
+/**
  * faculty enum that contains all the different faculties in NTU
  */
 

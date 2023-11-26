@@ -10,17 +10,17 @@ import user.UserManager;
 import view.ViewAvailableCamps;
 import view.ViewRegisteredCamps;
 
-/*
+/**
  * The UI that handles the printing of the interface that the student user sees.
  */
 
 public class StudentUI {
-	/*
+	/**
 	 * Method that checks if the input coming in from the scanner is valid or not
 	 */
 
 	public static int checkValidInput(Scanner scan) {
-		/*
+		/**
 		 * @param scan takes in the input from the scanner
 		 * @return returnValue will check if the input is an integer or not
 		 */
@@ -33,23 +33,23 @@ public class StudentUI {
 		}
 		return returnValue;
 	}
-	/*
+	/**
 	* The static method that can be called by mainUI to run the UI interface for the student
 	*/
     public static void start() {
-		/*
+		/**
 		 * input variables for storing data coming in from the scanner
 		 */
 		int mainChoice, subChoice = 1;
-		/*
+		/**
 		 * scan gets the input from scanner
 		 */
 		Scanner scan = new Scanner(System.in);
-		/*
+		/**
 		 * confirmString is used to confirm if a user wants to execute a function
 		 */
 		String confirmString;
-		/*
+		/**
 		 * main loop body
 		 */
 		do {  	

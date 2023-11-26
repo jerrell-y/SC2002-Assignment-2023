@@ -1,15 +1,15 @@
 package user;
 
-/*
+/**
  * class containing the student information, which is a subclass of user class
  */
 public class Student extends User{
-	/*
+	/**
 	 * The total points obtained by the student
 	 */
 	private int points;
 
-	/*
+	/**
 	 * the constructor class to create the student object
 	 * @param userID is the userID used to login
 	 * @param password is the user's password used to login
@@ -23,14 +23,14 @@ public class Student extends User{
 		this.points = points;
 	}
 
-	/*
+	/**
 	 * The function that retrieves the points from the student class
 	 * @return the points for the student
 	 */
 
 	public int getPoints() { return points; }
 	
-	/*
+	/**
 	 * function that adds points to the student class
 	 */
 

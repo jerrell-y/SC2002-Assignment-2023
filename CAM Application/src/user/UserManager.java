@@ -1,16 +1,16 @@
 package user;
 
-/*
+/**
  * class that contains the getter and setter method for the user class
  */
 
 public class UserManager {
-    /*
+    /**
      * stores the current user object into user
      */
     private static User user;
 
-    /*
+    /**
      * getter method
      * @return returns the user object
      */
@@ -18,7 +18,7 @@ public class UserManager {
     public static User getUser() {
         return user;
     }
-    /*
+    /**
      * setter method
      * @param user object to be stored inside
      */
