@@ -43,6 +43,8 @@ public class CampFormatter implements iFormatter<Camp>{
         attendees=camp.getCampAttendees();
         committee=camp.getCampCommittees();
         String csvFile = "Student.csv";
+        String x=CampFormatter.getInstance().formatFull(camp);
+
         // Additional column values (including header)
         String[] additionalColumn = {"Attendee", "Committee"};
 
@@ -56,6 +58,8 @@ public class CampFormatter implements iFormatter<Camp>{
             committee.set(i, row);
         }
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(csvFile))) {
+            bw.write(x);
+            bw.newLine();
             for (String line : attendees) {
                 bw.write(line);
                 bw.newLine();
@@ -64,6 +68,7 @@ public class CampFormatter implements iFormatter<Camp>{
                 bw.write(line);
                 bw.newLine();
             }
+
             System.out.println("CSV file was created successfully.");
         } catch (IOException e) {
             System.out.println("An error occurred.");
@@ -81,29 +86,30 @@ public class CampFormatter implements iFormatter<Camp>{
             e.printStackTrace();
         }
 
+
         for(int i=0;i<committee.size();i++) {
 
             int checkColumnIndex = 1; // index of the column to check
-                    int valueColumnIndex = 4; // index of the value column
+            int valueColumnIndex = 4; // index of the value column
 
-                    try (BufferedReader br = new BufferedReader(new FileReader(inputPath));
-                         PrintWriter pw = new PrintWriter(new FileWriter(outputPath,true))) {
-                        String line;
-                        while ((line = br.readLine()) != null) {
-                            String[] values = line.split(","); // adjust delimiter if necessary
-                            System.out.println(Arrays.toString(values));
-                            System.out.println(values[checkColumnIndex]+committee.get(i));
+            try (BufferedReader br = new BufferedReader(new FileReader(inputPath));
+                 PrintWriter pw = new PrintWriter(new FileWriter(outputPath,true))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] values = line.split(","); // adjust delimiter if necessary
+                    System.out.println(Arrays.toString(values));
+                    System.out.println(values[checkColumnIndex]+committee.get(i));
 
-                            if (values[checkColumnIndex].contains(committee.get(i))) {
-                                pw.println(committee.get(i) + "," + values[valueColumnIndex]);
-                            }
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    if (values[checkColumnIndex].contains(committee.get(i))) {
+                        pw.println(committee.get(i) + "," + values[valueColumnIndex]);
                     }
                 }
-        System.out.println("SUCCESS");
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+        }
+        System.out.println("SUCCESS");
+    }
 
 
     public String formatFull(Camp camp) {

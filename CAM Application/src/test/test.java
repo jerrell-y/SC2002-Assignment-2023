@@ -1,4 +1,4 @@
-package test;
+/*package test;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,3 +34,5 @@ public class test {
         testStatic.show();
     }
 }
+
+ */

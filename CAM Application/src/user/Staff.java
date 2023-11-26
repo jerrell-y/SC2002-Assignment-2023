@@ -6,16 +6,32 @@ import java.util.*;
 
 import UI.StaffUI;
 
+/*
+ * class containing the staff information, as well as the methods that a staff is able of using. It is the child class of user
+ */
+
 public class Staff extends User{
+    /*
+     * constructor that creates the staff object
+     * @param userID is the current userID
+     * @param password is the password of the staff
+     * @param name is the real name of the staff
+     * @faculty is the faculty the staff belongs to
+     */
     public Staff(String userID, String password, String name, Faculty faculty) {
         super(userID, password, name, faculty);
     }
-
+    /*
+     * function creates camps by taking in the camp information as the parameters
+     */
     public boolean CreateCamp(String campName, Date startDate, Date endDate, Date regEndDate, Faculty faculty, String location, int campAttendeeSlots, int campCommiteeSlots, String description, String staffInCharge, boolean visibility){
         Camp c = new Camp(campName, startDate, endDate, regEndDate, faculty, location, campAttendeeSlots, campCommiteeSlots, description, staffInCharge,visibility);
         boolean x=CampDatabase.getInstance().addCamp(c);
         return x;
     }
+    /*
+     * function for editing camps
+     */
     public void EditCamp () {
         Camp c = CampManager.getCamp();
         if (c.getCampAttendees().size() != 0 || c.getCampCommittees().size() != 0) {
