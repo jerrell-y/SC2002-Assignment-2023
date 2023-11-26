@@ -34,12 +34,12 @@ public class Staff extends User{
             System.out.println("6. Location");
             System.out.println("7. Camp attendee slots");
             System.out.println("8. Camp committee slots");
-            System.out.println("9. description");
+            System.out.println("9. Description");
             System.out.println("10. Visibility");
             System.out.println("11. Go back");
             System.out.println("================================");
 
-            System.out.println("Enter the attribute you wish to edit: ");
+            System.out.print("Enter the attribute you wish to edit: ");
             ch = StaffUI.checkValidInput(sc);
             System.out.println();
             switch (ch) {
