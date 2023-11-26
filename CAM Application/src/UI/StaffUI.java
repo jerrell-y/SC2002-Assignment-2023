@@ -166,13 +166,18 @@ public class StaffUI {
                                 System.out.println("1. Generate student report");
                                 System.out.println("2. Generate committee report");
                                 a=sc.nextInt();
+                                sc.nextLine();
                             }
-                            while(a<0 || a>2);
+                            while(a<0 || a>10);
                             if(a==1){
-                                CampManager.generateStudentReport();
-                            }
-                            else{
+                                //CampManager.generateStudentReport();
                                 CampManager.generateCommitteeReport();
+                                break;
+                            }
+                            else if(a==2){
+                                System.out.println("in the loop");
+                                CampManager.generateCommitteeReport();
+                                break;
                             }
                             break;
                         }

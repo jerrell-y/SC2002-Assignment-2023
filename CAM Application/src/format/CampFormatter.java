@@ -72,6 +72,7 @@ public class CampFormatter implements iFormatter<Camp>{
     public void formatCommitteeReport(Camp camp){
         ArrayList<String> committee ;
         committee=camp.getCampCommitees();
+        ArrayList<String> test= new ArrayList<>();
         for(int i=0;i<committee.size();i++) {
                     String inputPath = "../data/camp_info.csv";
                     String outputPath = "CommitteeReport.csv";
@@ -85,13 +86,15 @@ public class CampFormatter implements iFormatter<Camp>{
                             String[] values = line.split(","); // adjust delimiter if necessary
 
                             if (values.length > valueColumnIndex && values[checkColumnIndex].equals(committee.get(i))) {
-                                pw.println(values[checkColumnIndex] + "," + values[valueColumnIndex]);
+                                test.add(committee.get(i));
+                                System.out.println(test);
                             }
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
+        System.out.println("SUCCESS");
             }
 
 
