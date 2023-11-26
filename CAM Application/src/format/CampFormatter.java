@@ -95,12 +95,21 @@ public class CampFormatter implements iFormatter<Camp>{
         committee=camp.getCampCommittees();
         String inputPath = "../data/student_list.csv";
         String outputPath = "CommitteeReport.csv";
+        String x=CampFormatter.getInstance().formatFull(camp);
         try (FileWriter fw = new FileWriter(outputPath, false)) {
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-
+        try (
+             PrintWriter pw = new PrintWriter(new FileWriter(outputPath,true))) {
+            pw.write(x);
+           pw.println();
+           pw.write("NAME "+"   POINTS");
+           pw.println();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         for(int i=0;i<committee.size();i++) {
 
             int checkColumnIndex = 1; // index of the column to check
@@ -115,7 +124,7 @@ public class CampFormatter implements iFormatter<Camp>{
                     System.out.println(values[checkColumnIndex]+committee.get(i));
 
                     if (values[checkColumnIndex].contains(committee.get(i))) {
-                        pw.println(committee.get(i) + "," + values[valueColumnIndex]);
+                        pw.println(committee.get(i) + " , " + values[valueColumnIndex]);
                     }
                 }
             } catch (IOException e) {

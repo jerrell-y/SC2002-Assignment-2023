@@ -38,7 +38,8 @@ public class SuggestionManager {
     }
     
     /**
-     * method to add in a suggestion to the list of suggestions inside of the current camp
+     * method to add in a suggestion to the list of suggestions inside of the current camp. It awards points to the committee member
+     * who adds the suggestion.
      * @param sug is the content of the suggestion to be added in
      */
     public static void addSuggestion(String sug) { 
@@ -55,7 +56,8 @@ public class SuggestionManager {
     /**
      * method to edit the already existing suggestion by overriding the content with the new content
      * @param sug is the new content to be added in
-     * @return the value is true if it successfully updates the content, false if it is unable to do so due to the suggestion already being approved
+     * @return the value is true if it successfully updates the content, false if it is unable to do so due to the suggestion 
+     * already being approved
      */
     public static boolean editSuggestion(String sug) { 
         if (suggestion.getStatus()) {      
@@ -88,7 +90,8 @@ public class SuggestionManager {
     }
 
     /**
-     * method to approve the suggestion for the current camp
+     * method to approve the suggestion for the current camp. It will award the committee member who had proposed the
+     * suggestion accordingly.
      */
     public static void approveSuggestion() {
         if (suggestion.getStatus()) {
@@ -107,7 +110,7 @@ public class SuggestionManager {
 
     /**
      * method to print out all of the suggestions made by the committee member
-     * @return arraylist of integers for userSuggestions, which help to index the suggestions
+     * @return an ArrarList<Integer> of all the indexes of the current list being looked at, to be used later 
      */
     public static ArrayList<Integer> printUserSuggestions() { 
         Camp c = CampManager.getCamp();
@@ -128,7 +131,7 @@ public class SuggestionManager {
 
     /**
      * method to print out all of the suggestions for that camp
-     * @return array list of integers for allsuggestions, which help to index the suggestions
+     * @return an ArrarList<Integer> of all the indexes of the current list being looked at, to be used later 
      */
     public static ArrayList<Integer> printAllSuggestions() { 
         Camp c = CampManager.getCamp();
